@@ -1,0 +1,15 @@
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+  background-color: rgba(5, 5, 5, 0.95);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(20, 20, 20, 0.95);
+}
