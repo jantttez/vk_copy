@@ -1,0 +1,23 @@
+.button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: rgba(50, 50, 50, 0.8);
+  }
+
+  & span {
+    margin-left: 10px;
+  }
+}
