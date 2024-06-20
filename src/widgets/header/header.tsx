@@ -3,9 +3,7 @@ import { ChevronDown, Search } from "lucide-react";
 
 import { useEffect, useRef, useState } from "react";
 
-import vkLogo from "@shared/assets/vkLogo.svg";
-
-import { DropDownContent, HeaderPopup } from "@components/index";
+import { DropDownContent, HeaderPopup, VkLogo } from "@components/index";
 
 export function Header() {
   const [isFocused, setIsFocused] = useState(false);
@@ -57,11 +55,8 @@ export function Header() {
 
   return (
     <header className={styles.header}>
+      <VkLogo />
       <hr className={styles.devider} />
-      <div className={styles.logoBage}>
-        <img src={vkLogo} alt="vkLogo" className={styles.vkLogo} />
-        <h1>ВКОНТАКТЕ</h1>
-      </div>
       <div className={styles.searchContainer} ref={searchRef}>
         <div className={styles.inputGroup}>
           <button onClick={searchHandler} className={styles.inputLeftAddon}>

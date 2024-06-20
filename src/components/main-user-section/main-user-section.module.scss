@@ -2,3 +2,18 @@
   border: 1px solid white;
   width: 100%;
 }
+
+.mainSection {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.postListAndInput {
+  width: 100%;
+}
+
+.leftSection {
+  width: 75%;
+  align-self: flex-start;
+}

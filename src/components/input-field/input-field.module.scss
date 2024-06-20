@@ -1,14 +1,19 @@
 .InputField {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   min-height: 6%;
   max-height: fit-content;
   border-radius: 10px;
 
-  margin: 10px 0px 10px 0px;
+  margin: 0px 0px 10px 0px;
   background-color: rgba(40, 40, 40, 0.9);
   border: 1px solid rgba(200, 200, 200, 0.5);
+
+  > hr {
+    margin-left: 10%;
+    width: 80%;
+  }
 }
 
 .inputContainer {
@@ -29,8 +34,26 @@
   display: flex;
   flex-direction: column;
   margin: 5px;
+  > hr {
+    margin-left: 10%;
+    width: 80%;
+  }
 }
 
 .popoverButton {
   align-self: flex-end;
+  margin: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: rgba(60, 60, 60, 0.9);
+}
+
+.inputTextArea {
+  color: white;
+  background-color: rgba(40, 40, 40, 0.9);
+  resize: vertical;
+  max-height: 100%;
+  outline: none;
+  border: none;
+  padding: 5px;
 }

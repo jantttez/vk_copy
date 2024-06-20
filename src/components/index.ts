@@ -4,3 +4,7 @@ export * from "./side-bar/side-bar";
 export * from "./main-feed-section/main-feed-section";
 export * from "./main-user-section/main-user-section";
 export * from "./user-header/user-header";
+export * from "./vk-logo/vk-logo";
+export * from "./input-field/input-field";
+export * from "./post/post";
+export * from "./post-list/post-list";

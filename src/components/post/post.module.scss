@@ -1,0 +1,86 @@
+// Post.module.scss
+.post {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  margin: 16px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: bold;
+}
+
+.date {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+
+.main {
+  margin-top: 16px;
+}
+
+.text {
+  margin-bottom: 12px;
+}
+
+.image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.actionButton span {
+  margin-left: 8px;
+}

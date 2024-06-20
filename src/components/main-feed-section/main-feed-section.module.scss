@@ -1,4 +1,13 @@
 .mainContainer {
+  display: flex;
   border: 1px solid green;
   width: 85%;
+}
+
+.feed {
+  width: 60%;
+}
+
+.rightSection {
+  width: 40%;
 }
