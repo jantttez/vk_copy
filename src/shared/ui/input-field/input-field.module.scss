@@ -1,0 +1,36 @@
+.InputField {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-height: 6%;
+  max-height: fit-content;
+  border-radius: 10px;
+
+  margin: 10px 0px 10px 0px;
+  background-color: rgba(40, 40, 40, 0.9);
+  border: 1px solid rgba(200, 200, 200, 0.5);
+}
+
+.inputContainer {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.inputImage {
+  margin: 5px 5px 5px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.popoverContent {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.popoverButton {
+  align-self: flex-end;
+}

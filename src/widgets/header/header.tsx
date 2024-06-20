@@ -65,7 +65,7 @@ export function Header() {
       <div className={styles.searchContainer} ref={searchRef}>
         <div className={styles.inputGroup}>
           <button onClick={searchHandler} className={styles.inputLeftAddon}>
-            <Search />
+            <Search size={15} />
           </button>
           <input
             className={styles.searchInput}

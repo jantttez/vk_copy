@@ -1,15 +1,19 @@
-import { Feed, Redirect } from "@pages/index";
+import { FeedPage, Redirect, UserPage } from "@pages/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/feed",
-    element: <Feed />,
+    element: <FeedPage />,
   },
   {
     path: "/",
     element: <Redirect />,
+  },
+  {
+    path: "/:userId",
+    element: <UserPage />,
   },
 ]);
 
