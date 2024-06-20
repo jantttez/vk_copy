@@ -1,0 +1,17 @@
+.selector {
+  border: 1px solid rgba(200, 200, 200, 0.1);
+  padding: 7px 0px 10px 0px;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+
+  .option {
+    background-color: #1e1e1e;
+    color: white;
+    font-size: 14px;
+
+    &:checked {
+      background-color: rgba(40, 40, 40, 0.9);
+    }
+  }
+}

@@ -4,6 +4,9 @@ import { Dispatch, MutableRefObject, SetStateAction, useEffect } from "react";
 
 import { Input } from "@chakra-ui/react";
 import { AvatarUrl } from "@shared/constant";
+import { SendHorizontal } from "lucide-react";
+
+import { lorem } from "@shared/constant";
 
 interface Props {
   inputFieldRef: MutableRefObject<HTMLDivElement | null>;
@@ -34,19 +37,20 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
     <div className={styles.InputField} ref={inputFieldRef} onClick={fieldActiveHandler}>
       <div className={styles.inputContainer}>
         <img src={AvatarUrl} alt="avatar" className={styles.inputImage} />
-        {isActive ? <></> : <Input placeholder="Что у вас нового?" variant="unstyled" />}
+        {isActive ? (
+          <Input placeholder="Url изображения..." variant="unstyled" />
+        ) : (
+          <Input placeholder="Что у вас нового?" variant="unstyled" />
+        )}
+        <button className={styles.popoverButton} onClick={() => console.log("hello")}>
+          <SendHorizontal />
+        </button>
       </div>
       {isActive ? (
         <>
           <hr />
           <div className={styles.popoverContent} onClick={(e) => e.stopPropagation()}>
-            <textarea className={styles.inputTextArea} placeholder="Что у вас нового?">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat voluptate dolore unde obcaecati mollitia,
-              ipsum minima autem doloribus corrupti asperiores commodi, earum amet. Excepturi, accusamus dolor maxime
-              autem nam soluta.
-            </textarea>
-            <hr />
-            <button className={styles.popoverButton}>отправить</button>
+            <textarea className={styles.inputTextArea} defaultValue={lorem} placeholder="Что у вас нового?"></textarea>
           </div>
         </>
       ) : (

@@ -1,12 +1,12 @@
-// Post.module.scss
+@import "@app/styles/mixins";
+
 .post {
-  background-color: #1e1e1e;
+  @include vizual;
   color: #fff;
   border-radius: 8px;
   padding: 16px;
   width: 100%;
   margin: 16px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     width: 100%;

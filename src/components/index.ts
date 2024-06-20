@@ -8,3 +8,4 @@ export * from "./vk-logo/vk-logo";
 export * from "./input-field/input-field";
 export * from "./post/post";
 export * from "./post-list/post-list";
+export * from "./filter-field/filter-field";

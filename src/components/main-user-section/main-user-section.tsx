@@ -1,6 +1,6 @@
 import styles from "./main-user-section.module.scss";
 
-import { PostList, UserHeader } from "@components/index";
+import { FilterField, PostList, UserHeader } from "@components/index";
 
 import { InputField } from "@components/index";
 import { useRef, useState } from "react";
@@ -25,6 +25,7 @@ export function MainUserSection() {
       <section className={styles.mainSection}>
         <div className={styles.postListAndInput}>
           <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
+          <FilterField />
           <PostList posts={mockPosts} />
         </div>
         <div className={styles.leftSection}>
