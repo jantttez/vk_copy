@@ -1,0 +1,15 @@
+.popup {
+  position: absolute;
+  top: 110%;
+  width: calc(100% - 20px);
+  height: 50vh;
+  //right: 32%;
+  width: 40%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid #555;
+}

@@ -1,1 +1,2 @@
-export { Home } from "./Home/Home";
+export { Feed } from "./feed/feed";
+export { Redirect } from "./redirect";
