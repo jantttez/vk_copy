@@ -7,17 +7,20 @@ import { useNavigate } from "react-router-dom";
 import avatarka from "@shared/assets/Смысл.jpg";
 import { DropDownMenuButton } from "@shared/ui";
 import { Theme } from "@shared/types";
-import { useClickOutside } from "@shared/hooks";
-import { useTheme } from "@shared/hooks";
+import { useClickOutside, useUpdateTheme } from "@shared/hooks";
+import { useThemeStore } from "src/store";
+import { useShallow } from "zustand/react/shallow";
 
 export function DropDownContent() {
   const [themeMenuIsOpen, setThemeIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const subMenuRef = useRef<HTMLDivElement | null>(null);
-  const isSelect = true;
-  const { theme, setTheme } = useTheme();
+
+  const { theme, setTheme } = useThemeStore(useShallow((state) => state));
 
   useClickOutside({ ref: subMenuRef, setState: setThemeIsMenuOpen });
+
+  useUpdateTheme({ theme: theme });
 
   const handleThemeClick = () => {
     setThemeIsMenuOpen(!themeMenuIsOpen);
@@ -35,8 +38,8 @@ export function DropDownContent() {
       <p className={styles.userId}>ID: 12345</p>
       <DropDownMenuButton Icon={Palette} handleClick={handleThemeClick} title="Change Theme" />
       {themeMenuIsOpen && (
-        <div className={styles.subMenu} ref={subMenuRef}>
-          <div className={styles.subMenuItem} onClick={() => setTheme(Theme.light)}>
+        <div className={styles.subMenu} ref={subMenuRef} onClick={() => setTheme(Theme.light)}>
+          <div className={styles.subMenuItem}>
             <Sun /> Light
             {theme === Theme.light ? (
               <div className={styles.check}>

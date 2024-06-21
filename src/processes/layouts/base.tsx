@@ -2,11 +2,11 @@ import { SideBar } from "@widgets/index";
 import styles from "./main-skeleton.module.scss";
 import { ReactNode } from "react";
 
-interface MainSkeletonProps {
+interface Props {
   component: ReactNode;
 }
 
-export function MainSkeleton({ component }: MainSkeletonProps) {
+export function Base({ component }: Props) {
   return (
     <main className={styles.mainContainer}>
       <SideBar />

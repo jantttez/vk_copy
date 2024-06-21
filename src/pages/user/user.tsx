@@ -1,11 +1,11 @@
 import { MainUserSection } from "@widgets/index";
-import { Header, MainSkeleton } from "@processes/index";
+import { Header, Base } from "@processes/index";
 
 export function UserPage() {
   return (
     <>
       <Header />
-      <MainSkeleton component={<MainUserSection />} />
+      <Base component={<MainUserSection />} />
     </>
   );
 }

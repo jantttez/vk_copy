@@ -1,2 +1,2 @@
 export * from "./use-click-outside";
-export * from "./use-theme";
+export * from "./use-update-theme";
