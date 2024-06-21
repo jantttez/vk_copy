@@ -2,11 +2,14 @@ import styles from "./post.module.scss";
 import { MoreHorizontal, Heart, MessageSquare } from "lucide-react";
 
 import { IPost } from "@shared/types";
-import { lorem } from "@shared/constant";
+import { useState } from "react";
+import CommentsList from "@components/comment-list/comment-list";
 
 //TODO: сделать секцию с комментариями
 
 export function Post({ userAvatar, userName, date, text, image }: IPost) {
+  const [writeComment, setWriteComment] = useState(false);
+
   return (
     <div className={styles.post}>
       <div className={styles.header}>
@@ -30,12 +33,12 @@ export function Post({ userAvatar, userName, date, text, image }: IPost) {
           <Heart />
           <span>Like</span>
         </button>
-        <button className={styles.actionButton}>
+        <button className={styles.actionButton} onClick={() => setWriteComment(!writeComment)}>
           <MessageSquare />
           <span>Comment</span>
         </button>
       </div>
-      <div>{lorem}</div>
+      {writeComment ? <CommentsList /> : <></>}
     </div>
   );
 }

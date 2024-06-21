@@ -27,7 +27,8 @@
       "@pages/*": ["src/pages/*"],
       "@app/*": ["src/app/*"],
       "@widgets/*": ["src/widgets/*"],
-      "@processes/*": ["src/processes/*"]
+      "@processes/*": ["src/processes/*"],
+      "@store/*": ["src/store/*"]
     }
   },
   "include": ["src"],

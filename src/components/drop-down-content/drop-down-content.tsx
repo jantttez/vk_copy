@@ -8,7 +8,7 @@ import avatarka from "@shared/assets/Смысл.jpg";
 import { DropDownMenuButton } from "@shared/ui";
 import { Theme } from "@shared/types";
 import { useClickOutside, useUpdateTheme } from "@shared/hooks";
-import { useThemeStore } from "src/store";
+import { useThemeStore } from "@store/index";
 import { useShallow } from "zustand/react/shallow";
 
 export function DropDownContent() {
@@ -38,8 +38,8 @@ export function DropDownContent() {
       <p className={styles.userId}>ID: 12345</p>
       <DropDownMenuButton Icon={Palette} handleClick={handleThemeClick} title="Change Theme" />
       {themeMenuIsOpen && (
-        <div className={styles.subMenu} ref={subMenuRef} onClick={() => setTheme(Theme.light)}>
-          <div className={styles.subMenuItem}>
+        <div className={styles.subMenu} ref={subMenuRef}>
+          <div className={styles.subMenuItem} onClick={() => setTheme(Theme.light)}>
             <Sun /> Light
             {theme === Theme.light ? (
               <div className={styles.check}>

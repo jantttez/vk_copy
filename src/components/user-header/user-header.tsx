@@ -1,5 +1,6 @@
-import { CircleAlert } from "lucide-react";
+import { CircleAlert, Handshake, MessageCircle } from "lucide-react";
 import styles from "./user-header.module.scss";
+import { UserHeaderButton } from "@shared/ui";
 
 interface UserHeaderProps {
   avatar: string;
@@ -9,6 +10,8 @@ interface UserHeaderProps {
 }
 
 export function UserHeader({ avatar, name, status, onEditProfile }: UserHeaderProps) {
+  const isFriend = false;
+
   return (
     <div className={styles.header}>
       <div className={styles.userInfoMain}>
@@ -24,9 +27,14 @@ export function UserHeader({ avatar, name, status, onEditProfile }: UserHeaderPr
         </div>
       </div>
       <div className={styles.buttonGroup}>
-        <button className={styles.editButton} onClick={onEditProfile}>
-          Редактировать профиль
-        </button>
+        {isFriend ? (
+          <div className={styles.userButtonGroup}>
+            <UserHeaderButton Icon={Handshake} size={20} />
+            <UserHeaderButton Icon={MessageCircle} title="сообщения" size={20} />
+          </div>
+        ) : (
+          <UserHeaderButton title="Редактировать профиль" size={20} />
+        )}
       </div>
     </div>
   );

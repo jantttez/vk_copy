@@ -12,6 +12,7 @@ export default defineConfig({
       "@app": path.resolve(__dirname, "./src/app"),
       "@widgets": path.resolve(__dirname, "./src/widgets"),
       "@processes": path.resolve(__dirname, "./src/processes"),
+      "@store": path.resolve(__dirname, "./src/store"),
     },
   },
 });

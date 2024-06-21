@@ -13,13 +13,3 @@ html,
 ::-webkit-scrollbar-thumb {
   background-color: rgba(20, 20, 20, 0.95);
 }
-
-:root[data-theme="light"] {
-  --background-color: white;
-  --text-color: black;
-}
-
-:root[data-theme="dark"] {
-  --background-color: black;
-  --text-color: white;
-}

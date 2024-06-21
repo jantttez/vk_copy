@@ -1,5 +1,5 @@
 import { SideBar } from "@widgets/index";
-import styles from "./main-skeleton.module.scss";
+import styles from "./base.module.scss";
 import { ReactNode } from "react";
 
 interface Props {
