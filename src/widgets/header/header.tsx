@@ -4,35 +4,18 @@ import { ChevronDown, Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { DropDownContent, HeaderPopup, VkLogo } from "@components/index";
+import { useClickOutside } from "@shared/hooks";
 
 export function Header() {
   const [isFocused, setIsFocused] = useState(false);
-  const [avatarIsActiv, setAvatarIsActiv] = useState(false);
+  const [avatarIsActive, setAvatarIsActiv] = useState(false);
   const searchRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const dproDownMenuRef = useRef<HTMLDivElement | null>(null);
+  const dropDownMenuRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const DropDownMenuOutsideHandler = (e: any) => {
-      if (dproDownMenuRef.current && !dproDownMenuRef.current.contains(e.target)) {
-        setAvatarIsActiv(false);
-      }
-    };
+  useClickOutside<HTMLDivElement>({ ref: dropDownMenuRef, setState: setAvatarIsActiv });
 
-    const searchOutsideHandler = (e: any) => {
-      if (searchRef.current && !searchRef.current.contains(e.target)) {
-        setIsFocused(false);
-      }
-    };
-
-    document.addEventListener("mousedown", DropDownMenuOutsideHandler);
-    document.addEventListener("mousedown", searchOutsideHandler);
-
-    return () => {
-      document.removeEventListener("mousedown", DropDownMenuOutsideHandler);
-      document.removeEventListener("mousedown", searchOutsideHandler);
-    };
-  }, []);
+  useClickOutside<HTMLDivElement>({ ref: searchRef, setState: setIsFocused });
 
   const searchHandler = () => {
     if (inputRef.current) {
@@ -42,11 +25,11 @@ export function Header() {
   };
 
   const avatarEvent = () => {
-    setAvatarIsActiv(!avatarIsActiv);
+    setAvatarIsActiv(!avatarIsActive);
   };
 
   const dropDownMenuHandler = () => {
-    setAvatarIsActiv(!avatarIsActiv);
+    setAvatarIsActiv(!avatarIsActive);
   };
 
   const searchInputEvent = () => {
@@ -72,7 +55,7 @@ export function Header() {
         </div>
         {isFocused && <HeaderPopup />}
       </div>
-      <div className={`${styles.avatar} ${avatarIsActiv ? styles.active : ""}`} ref={dproDownMenuRef}>
+      <div className={`${styles.avatar} ${avatarIsActive ? styles.active : ""}`} ref={dropDownMenuRef}>
         <button className={styles.avatarButton} onClick={avatarEvent}>
           <img
             src="https://i.pinimg.com/564x/0f/86/4b/0f864b918af5a8310fed7c12e76468a9.jpg"
@@ -82,7 +65,7 @@ export function Header() {
           <ChevronDown />
         </button>
         <div
-          className={`${styles.dropDownMenu} ${avatarIsActiv ? styles.active : styles.inactive}`}
+          className={`${styles.dropDownMenu} ${avatarIsActive ? styles.active : styles.inactive}`}
           onClick={dropDownMenuHandler}
         >
           <DropDownContent />

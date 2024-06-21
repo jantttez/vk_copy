@@ -7,6 +7,7 @@ import { AvatarUrl } from "@shared/constant";
 import { SendHorizontal } from "lucide-react";
 
 import { lorem } from "@shared/constant";
+import { useClickOutside } from "@shared/hooks";
 
 interface Props {
   inputFieldRef: MutableRefObject<HTMLDivElement | null>;
@@ -15,19 +16,7 @@ interface Props {
 }
 
 export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
-  useEffect(() => {
-    const clickOutsideHandler = (e: MouseEvent) => {
-      if (inputFieldRef.current && !inputFieldRef.current.contains(e.target as Node)) {
-        setIsActive(false);
-      }
-    };
-
-    document.addEventListener("mousedown", clickOutsideHandler);
-
-    return () => {
-      document.removeEventListener("mousedown", clickOutsideHandler);
-    };
-  }, [inputFieldRef, setIsActive]);
+  useClickOutside<HTMLDivElement>({ ref: inputFieldRef, setState: setIsActive });
 
   const fieldActiveHandler = () => {
     setIsActive(!isActive);
