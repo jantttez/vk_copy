@@ -9,3 +9,6 @@ export * from "./input-field/input-field";
 export * from "./post/post";
 export * from "./post-list/post-list";
 export * from "./filter-field/filter-field";
+export * from "./friend-section/friend-section";
+export * from "./friends-card/friends-card";
+export * from "./subsctiption-section/subsctiption-section";

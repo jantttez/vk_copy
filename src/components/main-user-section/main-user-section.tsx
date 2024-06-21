@@ -1,11 +1,11 @@
 import styles from "./main-user-section.module.scss";
 
-import { FilterField, PostList, UserHeader } from "@components/index";
+import { FilterField, FriendsSection, PostList, SubscriptionsSection, UserHeader } from "@components/index";
 
 import { InputField } from "@components/index";
 import { useRef, useState } from "react";
 
-import { mockPosts } from "@shared/constant";
+import { mockPosts, onlineFriends, allFriends } from "@shared/constant";
 
 export function MainUserSection() {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
@@ -29,8 +29,8 @@ export function MainUserSection() {
           <PostList posts={mockPosts} />
         </div>
         <div className={styles.leftSection}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi quia quo iusto cum molestiae soluta, pariatur
-          doloremque eos eum libero fugit officiis quis consequuntur! Cumque dolorum iure temporibus aut suscipit.
+          <FriendsSection onlineFriends={onlineFriends} allFriends={allFriends} />
+          <SubscriptionsSection />
         </div>
       </section>
     </div>

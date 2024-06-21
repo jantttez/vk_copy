@@ -2,6 +2,9 @@ import styles from "./post.module.scss";
 import { MoreHorizontal, Heart, MessageSquare } from "lucide-react";
 
 import { IPost } from "@shared/types";
+import { lorem } from "@shared/constant";
+
+//TODO: сделать секцию с комментариями
 
 export function Post({ userAvatar, userName, date, text, image }: IPost) {
   return (
@@ -32,6 +35,7 @@ export function Post({ userAvatar, userName, date, text, image }: IPost) {
           <span>Comment</span>
         </button>
       </div>
+      <div>{lorem}</div>
     </div>
   );
 }

@@ -9,7 +9,7 @@
   max-height: fit-content;
   border-radius: 10px;
 
-  margin: 0px 0px 10px 0px;
+  margin: 0px 0px 20px 0px;
 
   > hr {
     margin-left: 10%;
@@ -45,7 +45,11 @@
   margin: 5px;
   padding: 5px;
   border-radius: 10px;
-  background-color: rgba(60, 60, 60, 0.9);
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba(60, 60, 60, 0.9);
+  }
 }
 
 .inputTextArea {
