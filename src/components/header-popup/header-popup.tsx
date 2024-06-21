@@ -1,18 +1,14 @@
 import { UserRoundPlus } from "lucide-react";
 import styles from "./header-popup.module.scss";
 
-interface Person {
-  id: number;
-  name: string;
-  avatar: string;
-}
+import { Person } from "@shared/types";
 
-interface DropdownContentProps {
+interface Props {
   people: Person[];
   onAddFriend: (id: number) => void;
 }
 
-export function HeaderPopup({ people, onAddFriend }: DropdownContentProps) {
+export function HeaderPopup({ people, onAddFriend }: Props) {
   return (
     <div className={styles.popup}>
       <h2>Люди</h2>

@@ -15,7 +15,7 @@ export function DropDownContent() {
   const navigate = useNavigate();
   const subMenuRef = useRef<HTMLDivElement | null>(null);
   const isSelect = true;
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   useClickOutside({ ref: subMenuRef, setState: setThemeIsMenuOpen });
 
@@ -38,9 +38,9 @@ export function DropDownContent() {
         <div className={styles.subMenu} ref={subMenuRef}>
           <div className={styles.subMenuItem} onClick={() => setTheme(Theme.light)}>
             <Sun /> Light
-            {isSelect ? (
+            {theme === Theme.light ? (
               <div className={styles.check}>
-                <Check size={20} />
+                <Check size={18} />
               </div>
             ) : (
               <></>
@@ -48,9 +48,9 @@ export function DropDownContent() {
           </div>
           <div className={styles.subMenuItem} onClick={() => setTheme(Theme.dark)}>
             <Moon /> Dark
-            {isSelect ? (
+            {theme === Theme.dark ? (
               <div className={styles.check}>
-                <Check size={20} />
+                <Check size={18} />
               </div>
             ) : (
               <></>
