@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 
 import { DropDownContent, HeaderPopup, VkLogo } from "@components/index";
 import { useClickOutside } from "@shared/hooks";
+import { mockPeople } from "@shared/constant";
 
 export function Header() {
   const [isFocused, setIsFocused] = useState(false);
@@ -36,6 +37,10 @@ export function Header() {
     setIsFocused(!isFocused);
   };
 
+  const handleAddFriend = (id: number) => {
+    console.log(`Add friend with id: ${id}`);
+  };
+
   return (
     <header className={styles.header}>
       <VkLogo />
@@ -53,7 +58,7 @@ export function Header() {
             ref={inputRef}
           />
         </div>
-        {isFocused && <HeaderPopup />}
+        {isFocused && <HeaderPopup people={mockPeople} onAddFriend={handleAddFriend} />}
       </div>
       <div className={`${styles.avatar} ${avatarIsActive ? styles.active : ""}`} ref={dropDownMenuRef}>
         <button className={styles.avatarButton} onClick={avatarEvent}>

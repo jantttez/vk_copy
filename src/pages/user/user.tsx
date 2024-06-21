@@ -1,4 +1,4 @@
-import { MainUserSection } from "@components/index";
+import { MainUserSection } from "@widgets/index";
 import { Header, MainSkeleton } from "@processes/index";
 
 export function UserPage() {

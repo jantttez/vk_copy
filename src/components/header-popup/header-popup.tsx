@@ -1,9 +1,33 @@
+import { UserRoundPlus } from "lucide-react";
 import styles from "./header-popup.module.scss";
 
-export function HeaderPopup() {
+interface Person {
+  id: number;
+  name: string;
+  avatar: string;
+}
+
+interface DropdownContentProps {
+  people: Person[];
+  onAddFriend: (id: number) => void;
+}
+
+export function HeaderPopup({ people, onAddFriend }: DropdownContentProps) {
   return (
-    <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-      <button onClick={() => console.log("нажата")}>нажми</button>
+    <div className={styles.popup}>
+      <h2>Люди</h2>
+      <hr className={styles.divider} />
+      <ul className={styles.peopleList}>
+        {people.map((person) => (
+          <li key={person.id} className={styles.personItem}>
+            <img src={person.avatar} alt={person.name} className={styles.avatar} />
+            <span className={styles.name}>{person.name}</span>
+            <button className={styles.addButton} onClick={() => onAddFriend(person.id)}>
+              <UserRoundPlus size={20} />
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

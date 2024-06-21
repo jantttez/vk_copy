@@ -9,7 +9,7 @@ interface Props {
 
 export function SideBarButton({ title, clickAction, Icon }: Props) {
   return (
-    <button className={styles.button}>
+    <button className={styles.button} onClick={clickAction}>
       {Icon}
       <span>{title}</span>
     </button>

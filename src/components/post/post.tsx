@@ -23,7 +23,7 @@ export function Post({ userAvatar, userName, date, text, image }: IPost) {
       </div>
       <div className={styles.main}>
         <p className={styles.text}>{text}</p>
-        {image && <img src={image} alt="Post Image" className={styles.image} />}
+        {image ? <img src={image} alt="Post Image" className={styles.image} /> : <></>}
       </div>
       <div className={styles.footer}>
         <button className={styles.actionButton}>

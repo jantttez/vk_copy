@@ -1,4 +1,4 @@
-import { MainFeedSection } from "@components/index";
+import { MainFeedSection } from "@widgets/index";
 import { Header, MainSkeleton } from "@processes/index";
 
 export function FeedPage() {

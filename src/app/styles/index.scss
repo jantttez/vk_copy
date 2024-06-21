@@ -3,7 +3,6 @@ html,
 #root {
   margin: 0;
   padding: 0;
-  height: 100%;
   font-family: Arial, sans-serif;
   background-color: rgba(5, 5, 5, 0.95);
 }
@@ -13,4 +12,14 @@ html,
 }
 ::-webkit-scrollbar-thumb {
   background-color: rgba(20, 20, 20, 0.95);
+}
+
+:root[data-theme="light"] {
+  --background-color: white;
+  --text-color: black;
+}
+
+:root[data-theme="dark"] {
+  --background-color: black;
+  --text-color: white;
 }

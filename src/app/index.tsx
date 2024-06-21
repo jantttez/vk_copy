@@ -1,6 +1,7 @@
 import { FeedPage, Redirect, UserPage } from "@pages/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "./providers/theme-provider";
 
 const router = createBrowserRouter([
   {
@@ -20,9 +21,11 @@ const router = createBrowserRouter([
 export function App() {
   return (
     <>
-      <ChakraProvider>
-        <RouterProvider router={router} />
-      </ChakraProvider>
+      <ThemeProvider>
+        <ChakraProvider>
+          <RouterProvider router={router} />
+        </ChakraProvider>
+      </ThemeProvider>
     </>
   );
 }

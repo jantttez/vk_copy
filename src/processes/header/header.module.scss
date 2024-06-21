@@ -82,7 +82,7 @@
   cursor: pointer;
 
   &.active {
-    background-color: red;
+    background-color: rgba(50, 50, 50, 1);
   }
 
   .avatarButton {
@@ -106,7 +106,6 @@
     width: 15%;
     height: 50vh;
     right: 20%;
-    background-color: red;
     transition: all 0.5s ease;
 
     &.active {
