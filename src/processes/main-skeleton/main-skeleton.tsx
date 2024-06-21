@@ -1,4 +1,4 @@
-import { SideBar } from "@components/index";
+import { SideBar } from "@widgets/index";
 import styles from "./main-skeleton.module.scss";
 import { ReactNode } from "react";
 

@@ -1,7 +1,7 @@
 import styles from "./header.module.scss";
 import { ChevronDown, Search } from "lucide-react";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { DropDownContent, HeaderPopup, VkLogo } from "@components/index";
 import { useClickOutside } from "@shared/hooks";
