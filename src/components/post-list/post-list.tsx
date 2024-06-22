@@ -1,25 +1,17 @@
 import styles from "./post-list.module.scss";
 
-import { Post } from "@components/index";
-import { IPost } from "@shared/types";
+import { PostCard } from "@components/index";
+import { Post } from "@shared/types";
 
-interface PostListProps {
-  posts: IPost[];
+interface Props {
+  posts: Post[];
 }
 
-export function PostList({ posts }: PostListProps) {
+export function PostList({ posts }: Props) {
   return (
     <div className={styles.postList}>
       {posts.map((post) => (
-        <Post
-          key={post.id}
-          id={post.id}
-          userAvatar={post.userAvatar}
-          userName={post.userName}
-          date={post.date}
-          text={post.text}
-          image={post.image}
-        />
+        <PostCard key={post.id} post={post} />
       ))}
     </div>
   );

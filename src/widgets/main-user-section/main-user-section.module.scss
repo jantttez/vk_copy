@@ -6,14 +6,18 @@
   display: flex;
   width: 100%;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 
-.postListAndInput {
+.postList {
+  width: 100%;
+}
+
+.fields {
   width: 100%;
 }
 
 .leftSection {
-  width: 75%;
+  width: 40%;
   align-self: flex-start;
 }

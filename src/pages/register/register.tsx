@@ -48,6 +48,9 @@ export function RegisterPage() {
           updatedAt: getCurrentDate(),
           userTheme: Theme.light,
           isPostView: visibility.all,
+          isProfileView: visibility.all,
+          friends: [],
+          subscription: [],
         };
 
         userService.addUser(user);

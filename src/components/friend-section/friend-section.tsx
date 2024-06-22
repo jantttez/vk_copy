@@ -1,20 +1,23 @@
 import styles from "./friend-section.module.scss";
 
-import { IFriend } from "@shared/types";
+import { Friend } from "@shared/types";
 
 import { FriendsCard } from "@components/friends-card/friends-card";
 
 interface Props {
-  onlineFriends: IFriend[];
-  allFriends: IFriend[];
+  friends: Friend[];
 }
 
-export function FriendsSection({ onlineFriends, allFriends }: Props) {
+export function FriendsSection({ friends }: Props) {
   return (
-    <div className={styles.friendsSection}>
-      <FriendsCard title="Друзья Онлайн" FriendList={onlineFriends} />
-      <hr className={styles.divader} />
-      <FriendsCard title="Друзья" FriendList={allFriends} />
-    </div>
+    <>
+      {!friends ? (
+        <></>
+      ) : (
+        <div className={styles.friendsSection}>
+          <FriendsCard title="Друзья" FriendList={friends} />
+        </div>
+      )}
+    </>
   );
 }

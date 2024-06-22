@@ -1,4 +1,4 @@
-import { useAuthStore } from "@store/index";
+import { useAuthStore } from "@shared/lib/storage/index";
 import Cookies from "js-cookie";
 
 export function useAutoAuth() {

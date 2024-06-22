@@ -1,10 +1,10 @@
 import styles from "./friends-card.module.scss";
 
-import { IFriend } from "@shared/types";
+import { Friend } from "@shared/types";
 
 interface Props {
   title: string;
-  FriendList: IFriend[];
+  FriendList: Friend[];
 }
 
 export function FriendsCard({ title, FriendList }: Props) {
@@ -15,9 +15,9 @@ export function FriendsCard({ title, FriendList }: Props) {
         <span>{FriendList.length}</span>
       </div>
       <div className={styles.avatars}>
-        {FriendList.slice(0, 4).map((friend) => (
+        {FriendList.slice(0, 3).map((friend) => (
           <div key={friend.id} className={styles.userCase}>
-            <img src={friend.avatar} alt={friend.name} className={styles.avatar} />
+            <img src={friend.photo} alt={friend.name} className={styles.avatar} />
             <h3>{friend.name}</h3>
           </div>
         ))}

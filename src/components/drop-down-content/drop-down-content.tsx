@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import { DropDownMenuButton } from "@shared/ui";
 import { Theme } from "@shared/types";
 import { useClickOutside, useUpdateTheme } from "@shared/hooks";
-import { useThemeStore, useUserStore } from "@store/index";
+import { useThemeStore, useUserStore } from "@shared/lib/storage/index";
 import { useShallow } from "zustand/react/shallow";
 
 export function DropDownContent() {

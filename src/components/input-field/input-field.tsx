@@ -5,9 +5,8 @@ import { Dispatch, MutableRefObject, SetStateAction } from "react";
 import { Input } from "@chakra-ui/react";
 import { SendHorizontal } from "lucide-react";
 
-import { lorem } from "@shared/constant";
 import { useClickOutside } from "@shared/hooks";
-import { useUserStore } from "@store/use-user-store";
+import { useUserStore } from "@shared/lib/storage/use-user-store";
 
 interface Props {
   inputFieldRef: MutableRefObject<HTMLDivElement | null>;
@@ -41,7 +40,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
         <>
           <hr />
           <div className={styles.popoverContent} onClick={(e) => e.stopPropagation()}>
-            <textarea className={styles.inputTextArea} defaultValue={lorem} placeholder="Что у вас нового?"></textarea>
+            <textarea className={styles.inputTextArea} placeholder="Что у вас нового?"></textarea>
           </div>
         </>
       ) : (

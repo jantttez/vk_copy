@@ -28,7 +28,7 @@
       "@app/*": ["src/app/*"],
       "@widgets/*": ["src/widgets/*"],
       "@processes/*": ["src/processes/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/shared/lib/storage/*"]
     }
   },
   "include": ["src"],

@@ -12,7 +12,38 @@
       "createdAt": "2024/5/6:22-26",
       "updatedAt": "2024/5/6:22-26",
       "userTheme": "light",
-      "isPostView": "all"
+      "isPostView": "all",
+      "isProfileView": "all",
+      "friends": [
+        {
+          "id": "1",
+          "photo": "https://i.pinimg.com/736x/33/a7/d8/33a7d8dd4d5c8c0448e5834be13db81b.jpg",
+          "name": "qweqweqew"
+        },
+        {
+          "id": "2",
+          "photo": "https://i.pinimg.com/736x/33/a7/d8/33a7d8dd4d5c8c0448e5834be13db81b.jpg",
+          "name": "qweqweqew"
+        },
+        {
+          "id": "3",
+          "photo": "https://i.pinimg.com/736x/33/a7/d8/33a7d8dd4d5c8c0448e5834be13db81b.jpg",
+          "name": "qweqweqew"
+        },
+        {
+          "id": "4",
+          "photo": "https://i.pinimg.com/736x/33/a7/d8/33a7d8dd4d5c8c0448e5834be13db81b.jpg",
+          "name": "qweqweqew"
+        }
+      ],
+      "subscription": [
+        {
+          "id": "1",
+          "photo": "https://i.pinimg.com/564x/b5/d9/fb/b5d9fbd9c5c24fd6df072a97dfc0524b.jpg",
+          "name": "дадая",
+          "descriptions": ""
+        }
+      ]
     }
   ],
   "Posts": [

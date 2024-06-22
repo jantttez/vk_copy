@@ -1,5 +1,5 @@
-export interface IFriend {
+export interface Friend {
   id: number;
-  avatar: string;
+  photo: string;
   name: string;
 }

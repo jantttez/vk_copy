@@ -1,0 +1,21 @@
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.subBox {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #252525;
+  }
+}

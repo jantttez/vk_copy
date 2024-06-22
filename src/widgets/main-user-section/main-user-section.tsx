@@ -5,24 +5,29 @@ import { FilterField, FriendsSection, PostList, SubscriptionsSection, UserHeader
 import { InputField } from "@components/index";
 import { useRef, useState } from "react";
 
-import { mockPosts, onlineFriends, allFriends } from "@shared/constant";
+import { useUserStore } from "@shared/lib/storage";
+import { Post } from "@shared/types";
 
 export function MainUserSection() {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(false);
 
+  const mockPosts: Post[] = [];
+
+  const currentUser = useUserStore((state) => state.user);
+
   return (
     <div className={styles.mainContainer}>
-      <UserHeader />
+      <UserHeader user={currentUser} />
       <section className={styles.mainSection}>
-        <div className={styles.postListAndInput}>
+        <div className={styles.fields}>
           <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
           <FilterField />
-          <PostList posts={mockPosts} />
         </div>
+        <div className={styles.postList}>{mockPosts ? <PostList posts={mockPosts} /> : <></>}</div>
         <div className={styles.leftSection}>
-          <FriendsSection onlineFriends={onlineFriends} allFriends={allFriends} />
-          <SubscriptionsSection />
+          {currentUser?.friends ? <FriendsSection friends={currentUser?.friends} /> : <></>}
+          <SubscriptionsSection subscriptions={currentUser?.subscription} />
         </div>
       </section>
     </div>

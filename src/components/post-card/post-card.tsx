@@ -1,23 +1,27 @@
-import styles from "./post.module.scss";
+import styles from "./post-card.module.scss";
 import { MoreHorizontal, Heart, MessageSquare } from "lucide-react";
 
-import { IPost } from "@shared/types";
+import { Post as IPost } from "@shared/types";
 import { useState } from "react";
 import CommentsList from "@components/comment-list/comment-list";
 
 //TODO: сделать секцию с комментариями
 
-export function Post({ userAvatar, userName, date, text, image }: IPost) {
+interface Props {
+  post: IPost;
+}
+
+export function PostCard({ post }: Props) {
   const [writeComment, setWriteComment] = useState(false);
 
   return (
     <div className={styles.post}>
       <div className={styles.header}>
         <div className={styles.userInfo}>
-          <img src={userAvatar} alt="User Avatar" className={styles.avatar} />
+          <img src={post.authorPhoto} alt="User Avatar" className={styles.avatar} />
           <div className={styles.userDetails}>
-            <span className={styles.userName}>{userName}</span>
-            <span className={styles.date}>{date}</span>
+            <span className={styles.userName}>{post.authorName}</span>
+            <span className={styles.date}>{post.createdAt}</span>
           </div>
         </div>
         <button className={styles.menuButton}>
@@ -25,8 +29,8 @@ export function Post({ userAvatar, userName, date, text, image }: IPost) {
         </button>
       </div>
       <div className={styles.main}>
-        <p className={styles.text}>{text}</p>
-        {image ? <img src={image} alt="Post Image" className={styles.image} /> : <></>}
+        <p className={styles.text}>{post.postContent}</p>
+        {post.postImage ? <img src={post.postImage} alt="Post Image" className={styles.image} /> : <></>}
       </div>
       <div className={styles.footer}>
         <button className={styles.actionButton}>

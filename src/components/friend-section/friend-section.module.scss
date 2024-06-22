@@ -11,6 +11,9 @@
   margin: 0px 0px 0px 20px;
 }
 
+.friendsSection {
+  width: 95%;
+}
 .section {
   display: flex;
   flex-direction: column;
@@ -18,50 +21,7 @@
   margin: 10px 0px;
 }
 
-.userCase {
-  display: flex;
-  padding: 5px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #252525;
-  }
-}
-
-h1 {
-  font-size: 1.2rem;
-  margin: 0;
-}
-.header {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 10px;
-
-  > span {
-    margin-left: 10px;
-  }
-}
-
-.avatars {
-  display: flex;
-  align-self: center;
-  gap: 20px;
-}
-
-.avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 .divader {
   border: 1px solid #333;
-  width: 100%;
+  width: 70%;
 }
