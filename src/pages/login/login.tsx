@@ -3,7 +3,6 @@ import styles from "./login.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Cookies from "js-cookie";
-import { pageMiddleware } from "@pages/page-middleware";
 
 interface ILoginForm {
   email: string;
@@ -14,7 +13,6 @@ export function LoginPage() {
   const { register, handleSubmit, formState } = useForm<ILoginForm>({
     mode: "onChange",
   });
-  pageMiddleware();
 
   const navigator = useNavigate();
 

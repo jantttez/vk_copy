@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 
 import { DropDownMenuButton } from "@shared/ui";
 import { Theme } from "@shared/types";
-import { useClickOutside, useLogout, useUpdateTheme } from "@shared/hooks";
+import { useClickOutside, useUpdateTheme } from "@shared/hooks";
 import { useThemeStore, useUserStore } from "@store/index";
 import { useShallow } from "zustand/react/shallow";
 
@@ -32,14 +32,11 @@ export function DropDownContent() {
   };
 
   const handleLogout = () => {
-    const navigator = useNavigate();
     Cookies.remove("access-token");
     Cookies.remove("userId");
 
     navigator("/");
   };
-
-  const logout = useLogout();
 
   return (
     <div className={styles.dropdownContent} onClick={(e) => e.stopPropagation()}>
@@ -72,7 +69,7 @@ export function DropDownContent() {
       )}
       <DropDownMenuButton Icon={Settings} handleClick={handleSettingsClick} title="Settings" />
 
-      <DropDownMenuButton Icon={LogOut} handleClick={logout} title="Logout" />
+      <DropDownMenuButton Icon={LogOut} handleClick={handleLogout} title="Logout" />
     </div>
   );
 }

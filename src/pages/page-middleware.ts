@@ -11,16 +11,16 @@ export function pageMiddleware() {
 
   if (!userId) {
     navigator("/login");
-  }
+  } else {
+    const { addUserIdToStore, addUserToStore } = useUserStore(useShallow((state) => state));
+    const setTheme = useThemeStore((state) => state.setTheme);
 
-  const { addUserIdToStore, addUserToStore } = useUserStore(useShallow((state) => state));
-  const setTheme = useThemeStore((state) => state.setTheme);
+    const { user } = useUserById({ userId: userId, isEnabled: true });
 
-  const { user } = useUserById({ userId: userId, isEnabled: true });
-
-  if (user) {
-    addUserIdToStore(userId);
-    addUserToStore(user);
-    setTheme(user.userTheme);
+    if (user) {
+      addUserIdToStore(userId);
+      addUserToStore(user);
+      setTheme(user.userTheme);
+    }
   }
 }
