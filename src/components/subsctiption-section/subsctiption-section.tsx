@@ -12,8 +12,8 @@ export function SubscriptionsSection() {
         </div>
         <div className={styles.subList}>
           {subscriptions.map((subscription) => (
-            <div className={styles.subBox}>
-              <img key={subscription.id} src={subscription.avatar} alt={subscription.name} className={styles.avatar} />
+            <div key={subscription.id} className={styles.subBox}>
+              <img src={subscription.avatar} alt={subscription.name} className={styles.avatar} />
               <div>
                 <h1>title</h1>
                 <h3>disciption</h3>

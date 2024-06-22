@@ -3,18 +3,19 @@ import styles from "./drop-down-content.module.scss";
 import { Settings, LogOut, Sun, Moon, Check, Palette } from "lucide-react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-import avatarka from "@shared/assets/Смысл.jpg";
 import { DropDownMenuButton } from "@shared/ui";
 import { Theme } from "@shared/types";
-import { useClickOutside, useUpdateTheme } from "@shared/hooks";
-import { useThemeStore } from "@store/index";
+import { useClickOutside, useLogout, useUpdateTheme } from "@shared/hooks";
+import { useThemeStore, useUserStore } from "@store/index";
 import { useShallow } from "zustand/react/shallow";
 
 export function DropDownContent() {
   const [themeMenuIsOpen, setThemeIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
+  const navigator = useNavigate();
   const subMenuRef = useRef<HTMLDivElement | null>(null);
+  const currentUser = useUserStore((state) => state.user);
 
   const { theme, setTheme } = useThemeStore(useShallow((state) => state));
 
@@ -27,15 +28,23 @@ export function DropDownContent() {
   };
 
   const handleSettingsClick = () => {
-    navigate("/settings");
+    navigator("/settings");
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    const navigator = useNavigate();
+    Cookies.remove("access-token");
+    Cookies.remove("userId");
+
+    navigator("/");
+  };
+
+  const logout = useLogout();
 
   return (
     <div className={styles.dropdownContent} onClick={(e) => e.stopPropagation()}>
-      <img src={avatarka} alt="User Avatar" className={styles.avatar} />
-      <p className={styles.userId}>ID: 12345</p>
+      <img src={currentUser?.userPhoto} alt="User Avatar" className={styles.avatar} />
+      <p className={styles.userId}>ID: {currentUser?.id}</p>
       <DropDownMenuButton Icon={Palette} handleClick={handleThemeClick} title="Change Theme" />
       {themeMenuIsOpen && (
         <div className={styles.subMenu} ref={subMenuRef}>
@@ -63,7 +72,7 @@ export function DropDownContent() {
       )}
       <DropDownMenuButton Icon={Settings} handleClick={handleSettingsClick} title="Settings" />
 
-      <DropDownMenuButton Icon={LogOut} handleClick={handleLogout} title="Logout" />
+      <DropDownMenuButton Icon={LogOut} handleClick={logout} title="Logout" />
     </div>
   );
 }

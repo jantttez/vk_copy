@@ -16,8 +16,8 @@ export function FriendsCard({ title, FriendList }: Props) {
       </div>
       <div className={styles.avatars}>
         {FriendList.slice(0, 4).map((friend) => (
-          <div className={styles.userCase}>
-            <img key={friend.id} src={friend.avatar} alt={friend.name} className={styles.avatar} />
+          <div key={friend.id} className={styles.userCase}>
+            <img src={friend.avatar} alt={friend.name} className={styles.avatar} />
             <h3>{friend.name}</h3>
           </div>
         ))}

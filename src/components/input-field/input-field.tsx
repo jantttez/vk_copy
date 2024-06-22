@@ -3,11 +3,11 @@ import styles from "./input-field.module.scss";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
 
 import { Input } from "@chakra-ui/react";
-import { AvatarUrl } from "@shared/constant";
 import { SendHorizontal } from "lucide-react";
 
 import { lorem } from "@shared/constant";
 import { useClickOutside } from "@shared/hooks";
+import { useUserStore } from "@store/use-user-store";
 
 interface Props {
   inputFieldRef: MutableRefObject<HTMLDivElement | null>;
@@ -18,6 +18,8 @@ interface Props {
 export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
   useClickOutside<HTMLDivElement>({ ref: inputFieldRef, setState: setIsActive });
 
+  const currentUser = useUserStore((state) => state.user);
+
   const fieldActiveHandler = () => {
     setIsActive(!isActive);
   };
@@ -25,7 +27,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
   return (
     <div className={styles.InputField} ref={inputFieldRef} onClick={fieldActiveHandler}>
       <div className={styles.inputContainer}>
-        <img src={AvatarUrl} alt="avatar" className={styles.inputImage} />
+        <img src={currentUser?.userPhoto} alt="avatar" className={styles.inputImage} />
         {isActive ? (
           <Input placeholder="Url изображения..." variant="unstyled" />
         ) : (
