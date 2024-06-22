@@ -1,7 +1,10 @@
 import { FeedPage, LoginPage, Redirect, RegisterPage, UserPage } from "@pages/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { app } from "./firebase";
+import { firebaseConfig } from "@app/firebase";
+import { initializeApp } from "firebase/app";
+
+export const app = initializeApp(firebaseConfig);
 
 const router = createBrowserRouter([
   {

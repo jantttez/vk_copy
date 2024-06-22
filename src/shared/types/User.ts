@@ -1,14 +1,15 @@
 import { Theme } from "./Theme";
 
-enum visibility {
-  all,
-  friends,
+export enum visibility {
+  all = "all",
+  friends = "friends",
 }
 
 export interface User {
   id: string;
   createdAt: string;
   updatedAt: string;
+  userPhoto: string;
   name: string;
   userName: string;
   status: string;

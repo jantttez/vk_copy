@@ -3,7 +3,9 @@ import styles from "./register.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useToastError } from "@shared/hooks";
-import { useToast } from "@chakra-ui/react";
+import { userService } from "@shared/services";
+import { Theme, User, visibility } from "@shared/types";
+import { getCurrentDate } from "@shared/utils";
 
 interface IRegisterForm {
   PhotoUrl: string;
@@ -32,18 +34,23 @@ export function RegisterPage() {
     const password = data.password;
     createUserWithEmailAndPassword(auth, email, password)
       .then((FullUserResponse) => {
-        // const userCredentials = FullUserResponse.user;
-        // const user = {
-        //  id: userCredentials.uid,
-        //  photo: "",
-        //  userName: data.userName,
-        //  name: data.name,
-        //  email: data.email,
-        //  status: "",
-        //  password: password,
-        //  token: userCredentials.refreshToken,
-        //  registerDate: Date.now(),
-        // };
+        const userCredentials = FullUserResponse.user;
+        const user: User = {
+          id: userCredentials.uid,
+          userPhoto: data.PhotoUrl,
+          userName: data.userName,
+          name: data.name,
+          email: data.email,
+          status: "",
+          password: password,
+          token: userCredentials.refreshToken,
+          createdAt: getCurrentDate(),
+          updatedAt: getCurrentDate(),
+          userTheme: Theme.light,
+          isPostView: visibility.all,
+        };
+
+        userService.addUser(user);
 
         navigator("/Login");
       })

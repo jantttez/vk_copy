@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./login.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Cookies from "js-cookie";
+import { useAuthStore } from "@store/index";
 
 interface ILoginForm {
   email: string;
@@ -13,6 +14,10 @@ export function LoginPage() {
   const { register, handleSubmit, formState } = useForm<ILoginForm>({
     mode: "onChange",
   });
+
+  const navigator = useNavigate();
+
+  const setAuth = useAuthStore((state) => state.setAuth);
 
   const loginUser = (data: ILoginForm) => {
     const auth = getAuth();
@@ -27,6 +32,10 @@ export function LoginPage() {
 
         Cookies.set("access-token", accessToken);
         Cookies.set("userId", userId);
+
+        setAuth(true);
+
+        navigator("/feed");
       })
       .catch((e: Error) => console.error(e));
   };
