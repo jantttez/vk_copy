@@ -9,7 +9,7 @@ interface UserHeaderProps {
   onEditProfile: () => void;
 }
 
-export function UserHeader({ avatar, name, status, onEditProfile }: UserHeaderProps) {
+export function UserHeader({ avatar, name, status }: UserHeaderProps) {
   const isFriend = false;
 
   return (

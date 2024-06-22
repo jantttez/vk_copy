@@ -44,7 +44,6 @@ export function Header() {
   return (
     <header className={styles.header}>
       <VkLogo />
-      <hr className={styles.devider} />
       <div className={styles.searchContainer} ref={searchRef}>
         <div className={styles.inputGroup}>
           <button onClick={searchHandler} className={styles.inputLeftAddon}>

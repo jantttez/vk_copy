@@ -1,6 +1,6 @@
 import styles from "./input-field.module.scss";
 
-import { Dispatch, MutableRefObject, SetStateAction, useEffect } from "react";
+import { Dispatch, MutableRefObject, SetStateAction } from "react";
 
 import { Input } from "@chakra-ui/react";
 import { AvatarUrl } from "@shared/constant";

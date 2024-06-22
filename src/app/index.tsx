@@ -1,6 +1,7 @@
-import { FeedPage, Redirect, UserPage } from "@pages/index";
+import { FeedPage, LoginPage, Redirect, RegisterPage, UserPage } from "@pages/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { app } from "./firebase";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,14 @@ const router = createBrowserRouter([
   {
     path: "/:userId",
     element: <UserPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
 ]);
 

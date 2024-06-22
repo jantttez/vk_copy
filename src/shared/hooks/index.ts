@@ -1,2 +1,3 @@
 export * from "./use-click-outside";
 export * from "./use-update-theme";
+export * from "./use-toast-error";

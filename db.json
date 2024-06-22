@@ -1,0 +1,54 @@
+{
+  "Users": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "Posts": [
+    {
+      "id": "1",
+      "authorId": "1",
+      "createdAt": "24 июня",
+      "authorPhoto": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "authorName": "John Doe",
+      "postContent": "This is a sample post text.",
+      "postImage": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "likes": [""]
+    },
+    {
+      "id": "2",
+      "authorId": "1",
+      "createdAt": "24 июня",
+      "authorPhoto": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "authorName": "John Doe",
+      "postContent": "This is a sample post text2.",
+      "postImage": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "likes": [""]
+    },
+    {
+      "id": "3",
+      "authorId": "1",
+      "createdAt": "24 июня",
+      "authorPhoto": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "authorName": "John Doe",
+      "postContent": "This is a sample post text3.",
+      "postImage": "",
+      "likes": [""]
+    }
+  ],
+  "Comments": [
+    {
+      "id": 1,
+      "authorPhoto": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "authorName": "Пользователь 1",
+      "createdAt": "22 июня 2024",
+      "content": "Первый комментарий..."
+    },
+    {
+      "id": 2,
+      "authorPhoto": "https://i.pinimg.com/564x/66/82/d1/6682d133ad39dc784969fc0408ff9a9f.jpg",
+      "authorName": "Пользователь 2",
+      "createdAt": "22 июня 2024",
+      "content": "второй комментарий..."
+    }
+  ]
+}
