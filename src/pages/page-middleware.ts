@@ -1,5 +1,5 @@
 import { useUserById } from "@shared/hooks";
-import { getUserId } from "@shared/utils";
+import { getUserId } from "@shared/lib/utils";
 import { useThemeStore } from "@shared/lib/storage/use-theme-store";
 import { useUserStore } from "@shared/lib/storage/use-user-store";
 import { useNavigate } from "react-router-dom";

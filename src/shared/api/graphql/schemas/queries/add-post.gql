@@ -1,0 +1,5 @@
+mutation InsertPost($objects: [inputs!]!) {
+  insert_posts(objects: $objects) {
+    affected_rows
+  }
+}

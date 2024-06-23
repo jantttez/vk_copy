@@ -1,0 +1,12 @@
+query GET_POSTS {
+  posts {
+    id
+    createdAt
+    authorId
+    authorPhoto
+    authorName
+    postContent
+    postImage
+    likes
+  }
+}

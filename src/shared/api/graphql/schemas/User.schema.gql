@@ -1,0 +1,17 @@
+type User {
+  id: String!
+  createdAt: String!
+  updatedAt: String?
+  userPhoto: String?
+  name: String!
+  userName: String!
+  friends: [Friend]?
+  subscription: [Subscription]?
+  status: String?
+  email: String!
+  password: String!
+  token: String!
+  userTheme: String?
+  isPostView: String!
+  isProfileView: String!
+}

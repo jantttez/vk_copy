@@ -3,7 +3,7 @@ import { SideBarButton } from "@shared/ui/index";
 import { AudioLines, BadgeHelp, Contact, CreditCard, MessageCircle, Newspaper, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { routes } from "@shared/constant";
-import { getUserId } from "@shared/utils";
+import { getUserId } from "@shared/lib/utils";
 
 export function SideBar() {
   const navigate = useNavigate();

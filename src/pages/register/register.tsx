@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useToastError } from "@shared/hooks";
 import { userService } from "@shared/services";
 import { Theme, User, visibility } from "@shared/types";
-import { getCurrentDate } from "@shared/utils";
+import { getCurrentDate } from "@shared/lib/utils";
 import { routes } from "@shared/constant";
 
 interface IRegisterForm {

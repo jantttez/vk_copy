@@ -6,7 +6,7 @@ import { InputField } from "@components/index";
 import { useRef, useState } from "react";
 
 import { useUserStore } from "@shared/lib/storage";
-import { getUserId } from "@shared/utils";
+import { getUserId } from "@shared/lib/utils";
 import { useUserPostsWithPagination } from "@shared/hooks/use-user-posts-with-pagination";
 import { Spinner } from "@chakra-ui/react";
 
