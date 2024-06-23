@@ -1,0 +1,18 @@
+query GET_USER_BY_ID($id: String!) {
+  users(id: $id) {
+    id
+    createdAt
+    updatedAt
+    userPhoto
+    name
+    userName
+    friends
+    subscription
+    status
+    email
+    password
+    token
+    isPostView
+    isProfileView
+  }
+}
