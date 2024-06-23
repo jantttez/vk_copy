@@ -3,3 +3,4 @@ export { Redirect } from "./redirect";
 export { UserPage } from "./user/user";
 export { LoginPage } from "./login/login.tsx";
 export { RegisterPage } from "./register/register.tsx";
+export { PaymentPage } from "./payment/payment.tsx";

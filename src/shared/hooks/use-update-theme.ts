@@ -7,6 +7,6 @@ interface Props {
 
 export function useUpdateTheme({ theme }: Props) {
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    //document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 }

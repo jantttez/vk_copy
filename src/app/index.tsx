@@ -1,9 +1,10 @@
-import { FeedPage, LoginPage, Redirect, RegisterPage, UserPage } from "@pages/index";
+import { FeedPage, LoginPage, PaymentPage, Redirect, RegisterPage, UserPage } from "@pages/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { firebaseConfig } from "@app/firebase";
 import { initializeApp } from "firebase/app";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { theme } from "@shared/lib/index";
 
 export const app = initializeApp(firebaseConfig);
 
@@ -30,13 +31,17 @@ const router = createBrowserRouter([
     path: "/register",
     element: <RegisterPage />,
   },
+  {
+    path: "/payments",
+    element: <PaymentPage />,
+  },
 ]);
 
 export function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <RouterProvider router={router} />
         </ChakraProvider>
       </QueryClientProvider>

@@ -7,9 +7,9 @@ import Cookies from "js-cookie";
 
 import { DropDownMenuButton } from "@shared/ui";
 import { Theme } from "@shared/types";
-import { useClickOutside, useUpdateTheme } from "@shared/hooks";
-import { useThemeStore, useUserStore } from "@shared/lib/storage/index";
-import { useShallow } from "zustand/react/shallow";
+import { useClickOutside } from "@shared/hooks";
+import { useUserStore } from "@shared/lib/storage/index";
+import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 
 export function DropDownContent() {
   const [themeMenuIsOpen, setThemeIsMenuOpen] = useState(false);
@@ -17,11 +17,7 @@ export function DropDownContent() {
   const subMenuRef = useRef<HTMLDivElement | null>(null);
   const currentUser = useUserStore((state) => state.user);
 
-  const { theme, setTheme } = useThemeStore(useShallow((state) => state));
-
   useClickOutside({ ref: subMenuRef, setState: setThemeIsMenuOpen });
-
-  useUpdateTheme({ theme: theme });
 
   const handleThemeClick = () => {
     setThemeIsMenuOpen(!themeMenuIsOpen);
@@ -38,6 +34,11 @@ export function DropDownContent() {
     navigator("/");
   };
 
+  //надо будет еще ращз запонмить что можно так темы менять в чакре
+  const ThemeIcon = useColorModeValue(Sun, Moon);
+  //const text = useColorModeValue(Theme.light, Theme.dark);
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <div className={styles.dropdownContent} onClick={(e) => e.stopPropagation()}>
       <img src={currentUser?.userPhoto} alt="User Avatar" className={styles.avatar} />
@@ -45,25 +46,9 @@ export function DropDownContent() {
       <DropDownMenuButton Icon={Palette} handleClick={handleThemeClick} title="Change Theme" />
       {themeMenuIsOpen && (
         <div className={styles.subMenu} ref={subMenuRef}>
-          <div className={styles.subMenuItem} onClick={() => setTheme(Theme.light)}>
-            <Sun /> Light
-            {theme === Theme.light ? (
-              <div className={styles.check}>
-                <Check size={18} />
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className={styles.subMenuItem} onClick={() => setTheme(Theme.dark)}>
-            <Moon /> Dark
-            {theme === Theme.dark ? (
-              <div className={styles.check}>
-                <Check size={18} />
-              </div>
-            ) : (
-              <></>
-            )}
+          <div className={styles.subMenuItem} onClick={toggleColorMode}>
+            <ThemeIcon />
+            <h3>{colorMode}</h3>
           </div>
         </div>
       )}
