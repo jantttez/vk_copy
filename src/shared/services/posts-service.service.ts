@@ -10,14 +10,19 @@ class PostService {
   }
 
   async getUserPostsWithPagination(limit: number, page: number, userId: string) {
-    const response = await axios.get(this.URL, {
-      params: {
-        _per_page: limit,
-        _page: page,
-        authorId: userId,
-      },
-    });
-    return response.data;
+    try {
+      const response = await axios.get(this.URL, {
+        params: {
+          _per_page: limit,
+          _page: page,
+          authorId: userId,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching user posts with pagination:", error);
+      return null;
+    }
   }
 
   async getPostsWithParams(): Promise<Post[]> {

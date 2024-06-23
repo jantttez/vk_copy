@@ -6,6 +6,7 @@ import { useToastError } from "@shared/hooks";
 import { userService } from "@shared/services";
 import { Theme, User, visibility } from "@shared/types";
 import { getCurrentDate } from "@shared/utils";
+import { routes } from "@shared/constant";
 
 interface IRegisterForm {
   PhotoUrl: string;
@@ -55,7 +56,7 @@ export function RegisterPage() {
 
         userService.addUser(user);
 
-        navigator("/Login");
+        navigator(routes.signIn);
       })
       .catch((e: Error) => console.error(e));
   };
@@ -100,10 +101,10 @@ export function RegisterPage() {
         />
         <button type="submit">Register</button>
         <p>
-          Do you have an account? <Link to="/Login">Sign In</Link>
+          Do you have an account? <Link to={routes.signIn}>Sign In</Link>
         </p>
         <p>
-          Похуй? <Link to="/">Back</Link>
+          Похуй? <Link to={routes.home}>Back</Link>
         </p>
       </form>
     </div>

@@ -9,10 +9,16 @@ interface Props {
 
 export function PostList({ posts }: Props) {
   return (
-    <div className={styles.postList}>
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-    </div>
+    <>
+      {posts ? (
+        <div className={styles.postList}>
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 }

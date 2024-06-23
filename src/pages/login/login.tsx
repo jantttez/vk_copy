@@ -3,6 +3,7 @@ import styles from "./login.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Cookies from "js-cookie";
+import { routes } from "@shared/constant";
 
 interface ILoginForm {
   email: string;
@@ -30,7 +31,7 @@ export function LoginPage() {
         Cookies.set("access-token", accessToken);
         Cookies.set("userId", userId);
 
-        navigator("/");
+        navigator(routes.home);
       })
       .catch((e: Error) => console.error(e));
   };
@@ -61,10 +62,10 @@ export function LoginPage() {
         />
         <button type="submit">Log In</button>
         <p>
-          Don't have an account? <Link to="/Register">Register</Link>
+          Don't have an account? <Link to={routes.register}>Register</Link>
         </p>
         <p>
-          Похуй? <Link to="/">Back</Link>
+          Похуй? <Link to={routes.home}>Back</Link>
         </p>
       </form>
     </div>

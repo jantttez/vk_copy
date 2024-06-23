@@ -1,12 +1,22 @@
 .mainContainer {
   width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .mainSection {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   margin: 20px auto;
+}
+
+.right_section {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 20px;
 }
 
 .postList {
@@ -15,9 +25,9 @@
 
 .fields {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .leftSection {
   width: 40%;
-  align-self: flex-start;
 }
