@@ -2,6 +2,7 @@ import { useAutoAuth } from "@shared/hooks";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { routes } from "@shared/constant";
 
 export function Redirect() {
   const navigate = useNavigate();
@@ -10,9 +11,9 @@ export function Redirect() {
 
   useEffect(() => {
     if (authStatus) {
-      navigate("/feed");
+      navigate(routes.feed);
     } else {
-      navigate("/login");
+      navigate(routes.signIn);
     }
   }, [authStatus]);
 
