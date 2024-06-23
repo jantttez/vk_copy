@@ -16,7 +16,6 @@ export function MainUserSection() {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 5;
   const userId = getUserId();
-  console.log(userId);
 
   const currentUser = useUserStore((state) => state.user);
 
