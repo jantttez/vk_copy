@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { DropDownContent, HeaderPopup, VkLogo } from "@components/index";
 import { useClickOutside } from "@shared/hooks";
 import { mockPeople } from "@shared/constant";
-import { useUserStore } from "@shared/lib/storage/use-user-store";
+import { useUserStore } from "@shared/lib/storage";
 
 export function Header() {
   const [isFocused, setIsFocused] = useState(false);

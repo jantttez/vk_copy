@@ -1,3 +1,5 @@
+
+
 type User {
   id: String!
   createdAt: String!
@@ -5,13 +7,14 @@ type User {
   userPhoto: String?
   name: String!
   userName: String!
-  friends: [Friend]?
-  subscription: [Subscription]?
+  friends: String?
+  subscription: String?
   status: String?
   email: String!
   password: String!
   token: String!
-  userTheme: String?
   isPostView: String!
   isProfileView: String!
 }
+
+

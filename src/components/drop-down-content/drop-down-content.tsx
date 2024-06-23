@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import { DropDownMenuButton } from "@shared/ui";
-import { Theme } from "@shared/types";
 import { useClickOutside } from "@shared/hooks";
 import { useUserStore } from "@shared/lib/storage/index";
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";

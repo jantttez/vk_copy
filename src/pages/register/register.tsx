@@ -7,6 +7,8 @@ import { userService } from "@shared/services";
 import { Theme, User, visibility } from "@shared/types";
 import { getCurrentDate } from "@shared/lib/utils";
 import { routes } from "@shared/constant";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "@shared/api";
 
 interface IRegisterForm {
   PhotoUrl: string;
@@ -20,6 +22,8 @@ export function RegisterPage() {
   const { register, handleSubmit, formState } = useForm<IRegisterForm>({
     mode: "onChange",
   });
+
+  const [InsertUser] = useMutation(ADD_USER);
 
   const navigator = useNavigate();
   useToastError({
