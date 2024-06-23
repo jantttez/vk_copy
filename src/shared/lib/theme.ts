@@ -8,8 +8,8 @@ export const theme = extendTheme(
 
     colors: {
       brand: {
-        light: "rgba(200,200,200,0.7)",
-        dark: "rgba(40,40,40,0.9)",
+        light: "rgba(255,255,255,0.7)",
+        dark: "rgba(10,10,10,0.9)",
         activeBg: "rgba(213, 211, 255, 0.2)",
       },
     },

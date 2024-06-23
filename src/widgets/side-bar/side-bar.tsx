@@ -25,14 +25,18 @@ export function SideBar() {
 
   return (
     <div className={styles.sideBar}>
-      <SideBarButton clickAction={userPage} title="Моя страница" Icon={<User size={20} color="rgba(0,0,0, 1)" />} />
-      <SideBarButton clickAction={feedPage} title="Новости" Icon={<Newspaper size={20} color="rgba(0,0,0, 1)" />} />
-      <SideBarButton clickAction={friendPage} title="Друзья" Icon={<Contact size={20} color="rgba(0,0,0, 1)" />} />
-      <SideBarButton clickAction={() => {}} title="Музыка" Icon={<AudioLines size={20} color="rgba(0,0,0, 1)" />} />
-      <SideBarButton clickAction={() => {}} title="Чат" Icon={<MessageCircle size={20} color="rgba(0,0,0, 1)" />} />
-      <SideBarButton clickAction={paymentPage} title="покупки" Icon={<CreditCard size={20} color="rgba(0,0,0, 1)" />} />
+      <SideBarButton clickAction={userPage} title="Моя страница" Icon={<User size={20} color="rgba(30,30,30, 1)" />} />
+      <SideBarButton clickAction={feedPage} title="Новости" Icon={<Newspaper size={20} color="rgba(30,30,30, 1)" />} />
+      <SideBarButton clickAction={friendPage} title="Друзья" Icon={<Contact size={20} color="rgba(30,30,30, 1)" />} />
+      <SideBarButton clickAction={() => {}} title="Музыка" Icon={<AudioLines size={20} color="rgba(30,30,30, 1)" />} />
+      <SideBarButton clickAction={() => {}} title="Чат" Icon={<MessageCircle size={20} color="rgba(30,30,30, 1)" />} />
+      <SideBarButton
+        clickAction={paymentPage}
+        title="покупки"
+        Icon={<CreditCard size={20} color="rgba(30,30,30, 1)" />}
+      />
       <hr className={styles.divider} />
-      <SideBarButton title="Помощь" Icon={<BadgeHelp size={20} color="rgba(0,0,0, 1)" />} />
+      <SideBarButton title="Помощь" Icon={<BadgeHelp size={20} color="rgba(30,30,30, 1)" />} />
     </div>
   );
 }
