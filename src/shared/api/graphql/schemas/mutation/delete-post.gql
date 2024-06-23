@@ -1,0 +1,5 @@
+mutation DELETE_POST($id: String!) {
+  delete_posts_by_pk(id: $id) {
+    id
+  }
+}

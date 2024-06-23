@@ -1,5 +1,5 @@
 type Post {
-  id: Int
+  id: String!
   createdAt: String
   authorId: String
   authorPhoto: String

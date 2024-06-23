@@ -1,6 +1,6 @@
 
 
-type User {
+export type User {
   id: String!
   createdAt: String!
   updatedAt: String?

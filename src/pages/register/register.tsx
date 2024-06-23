@@ -3,12 +3,11 @@ import styles from "./register.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useToastError } from "@shared/hooks";
-import { userService } from "@shared/services";
-import { Theme, User, visibility } from "@shared/types";
 import { getCurrentDate } from "@shared/lib/utils";
 import { routes } from "@shared/constant";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "@shared/api";
+import { Spinner } from "@chakra-ui/react";
 
 interface IRegisterForm {
   PhotoUrl: string;
@@ -23,8 +22,6 @@ export function RegisterPage() {
     mode: "onChange",
   });
 
-  const [InsertUser] = useMutation(ADD_USER);
-
   const navigator = useNavigate();
   useToastError({
     userNameError: formState.errors.userName?.message,
@@ -33,41 +30,44 @@ export function RegisterPage() {
     passwordError: formState.errors.password?.message,
   });
 
-  const RegisterUser = (data: IRegisterForm) => {
+  const [addUser, { error, loading }] = useMutation(ADD_USER);
+
+  const onSubmit: SubmitHandler<IRegisterForm> = (data) => {
     const auth = getAuth();
     const email = data.email;
     const password = data.password;
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((FullUserResponse) => {
-        const userCredentials = FullUserResponse.user;
-        const user: User = {
-          id: userCredentials.uid,
-          userPhoto: data.PhotoUrl,
-          userName: data.userName,
-          name: data.name,
-          email: data.email,
-          status: "",
-          password: password,
-          token: userCredentials.refreshToken,
-          createdAt: getCurrentDate(),
-          updatedAt: getCurrentDate(),
-          userTheme: Theme.light,
-          isPostView: visibility.all,
-          isProfileView: visibility.all,
-          friends: [],
-          subscription: [],
-        };
+    createUserWithEmailAndPassword(auth, email, password).then((FullUserResponse) => {
+      const userCredentials = FullUserResponse.user;
+      const currentDate = getCurrentDate();
 
-        userService.addUser(user);
-
-        navigator(routes.signIn);
+      addUser({
+        variables: {
+          objects: [
+            {
+              id: userCredentials.uid,
+              userPhoto: data.PhotoUrl,
+              userName: data.userName,
+              name: data.name,
+              email: data.email,
+              password: password,
+              token: userCredentials.refreshToken,
+              createdAt: currentDate,
+              userTheme: "light",
+              isPostView: "all",
+              isProfileView: "all",
+            },
+          ],
+        },
       })
-      .catch((e: Error) => console.error(e));
+        .then((e) => {
+          navigator(routes.signIn);
+        })
+        .catch((error) => console.error(error));
+    });
   };
 
-  const onSubmit: SubmitHandler<IRegisterForm> = (data) => {
-    RegisterUser(data);
-  };
+  if (error) return <div>errorrs {error.message}</div>;
+  if (loading) return <Spinner />;
 
   return (
     <div className={styles.RegisterContainer}>

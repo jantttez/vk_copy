@@ -7,8 +7,8 @@ interface UserStoreState {
 }
 
 interface UserStoreAction {
-  addUserToStore: (newUser: User) => void;
-  addUserIdToStore: (userId: string) => void;
+  addUserToStore: (newUser: User) => Promise<void>;
+  addUserIdToStore: (userId: string) => Promise<void>;
   removeUserFromStore: () => void;
   updateUserForStore: (UpdatedUser: User) => void;
 }
@@ -16,8 +16,8 @@ interface UserStoreAction {
 export const useUserStore = create<UserStoreState & UserStoreAction>((set) => ({
   userId: null,
   user: null,
-  addUserToStore: (newUser: User) => set(() => ({ user: newUser })),
-  addUserIdToStore: (userId: string) => set(() => ({ userId: userId })),
+  addUserToStore: async (newUser: User) => set(() => ({ user: newUser })),
+  addUserIdToStore: async (userId: string) => set(() => ({ userId: userId })),
   removeUserFromStore: () => set(() => ({ user: null })),
   updateUserForStore: (UpdatedUser: User) => set(() => ({ user: UpdatedUser })),
 }));

@@ -7,8 +7,8 @@ export function getCurrentDate() {
   const day = eee.getDay();
   const hours = eee.getHours();
   const minute = eee.getMinutes();
-  const time = `${hours}-${minute}`;
-  const date = `${year}/${month}/${day}:${time}`;
+  const time = `${hours}:${minute}`;
+  const date = `${year}/${month}/${day}-${time}`;
 
   return date;
 }

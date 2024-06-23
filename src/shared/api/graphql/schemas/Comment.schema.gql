@@ -1,0 +1,9 @@
+type Comment {
+  id: String!
+  createdAt: String!
+  authorPhoto: String?
+  postId: String!
+  authorName: String!
+  content: String!
+}
+

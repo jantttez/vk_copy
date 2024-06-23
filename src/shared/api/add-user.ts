@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
-  mutation InsertUser($objects: [users_data!]!) {
+  mutation addUser($objects: [users_insert_input!]!) {
     insert_users(objects: $objects) {
       affected_rows
     }
