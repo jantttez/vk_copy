@@ -49,6 +49,7 @@ export function RegisterPage() {
               name: data.name,
               email: data.email,
               password: password,
+              friends: [],
               token: userCredentials.refreshToken,
               createdAt: currentDate,
               userTheme: "light",

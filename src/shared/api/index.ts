@@ -7,3 +7,5 @@ export { GET_POPUP_PEOPLE } from "./get-popup-people";
 export * from "./add-comment";
 export * from "./delete-comment";
 export * from "./get-post-comments";
+export * from "./get-user-friends_ids";
+export * from "./get-user-friends";

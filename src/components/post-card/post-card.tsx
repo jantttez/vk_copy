@@ -48,7 +48,11 @@ export function PostCard({ post }: Props) {
       </div>
       <div className={styles.main}>
         <p className={styles.text}>{post.postContent}</p>
-        {post.postImage ? <img src={post.postImage} alt="Post Image" className={styles.image} /> : <></>}
+        {post.postImage && post.postImage !== null ? (
+          <img src={post.postImage} alt="Post Image" className={styles.image} />
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles.footer}>
         <button className={styles.actionButton}>

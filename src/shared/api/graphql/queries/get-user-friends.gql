@@ -1,0 +1,7 @@
+query GET_USER_FRIENDS($ids: [String!]!) {
+  users(where: { id: { _in: $ids } }) {
+    id
+    userPhoto
+    name
+  }
+}

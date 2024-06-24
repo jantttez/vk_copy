@@ -1,8 +1,8 @@
 import styles from "./friend-section.module.scss";
 
-import { Friend } from "@shared/types";
-
 import { FriendsCard } from "@components/friends-card/friends-card";
+
+import { Friend } from "@shared/types";
 
 interface Props {
   friends: Friend[];
@@ -10,14 +10,8 @@ interface Props {
 
 export function FriendsSection({ friends }: Props) {
   return (
-    <>
-      {!friends ? (
-        <></>
-      ) : (
-        <div className={styles.friendsSection}>
-          <FriendsCard title="Друзья" FriendList={friends} />
-        </div>
-      )}
-    </>
+    <div className={styles.friendsSection}>
+      <FriendsCard title="Друзья" FriendList={friends} />
+    </div>
   );
 }

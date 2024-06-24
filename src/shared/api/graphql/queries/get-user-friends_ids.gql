@@ -1,0 +1,5 @@
+query GET_USER_FRIENDS_IDS($id: String!) {
+  users(where: { id: { _eq: $id } }) {
+    friends
+  }
+}

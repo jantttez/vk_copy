@@ -6,6 +6,7 @@ export const GET_POPUP_PEOPLE = gql`
       id
       name
       userPhoto
+      friends
     }
   }
 `;

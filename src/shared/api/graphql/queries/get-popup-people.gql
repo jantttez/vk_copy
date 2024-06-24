@@ -3,5 +3,6 @@ query GET_POPUP_PEOPLE {
     id
     name
     userPhoto
+    friends
   }
 }

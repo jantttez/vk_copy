@@ -19,11 +19,9 @@ export interface CommentForm {
 }
 
 export function CommentsList({ postId }: Props) {
-  if (!postId) return null;
   const { data, loading, error } = useQuery(GET_POST_COMMENTS, {
     variables: { postId: postId },
   });
-
   const { register, watch, reset } = useForm<CommentForm>({
     mode: "onChange",
   });
@@ -32,20 +30,27 @@ export function CommentsList({ postId }: Props) {
 
   const currentUser = useUserStore((state) => state.user);
 
+  let authorPhoto, authorId, authorName;
+
+  if (currentUser) {
+    authorPhoto = currentUser.userPhoto;
+    authorId = currentUser.id;
+    authorName = currentUser.name;
+  }
+
   const id = getNewUUID();
   const inputContent = watch("commentContent");
 
-  if (error) return <div>error: {error.message}</div>;
   const [ADD_COMMENT, { loading: loadState, error: errorState }] = useMutation(ADD_POST_COMMENT, {
     variables: {
       objects: [
         {
           id: id,
           createdAt: Date.now(),
-          authorPhoto: currentUser?.userPhoto,
+          authorPhoto: authorPhoto,
           postId: postId,
-          authorId: currentUser?.id,
-          authorName: currentUser?.name,
+          authorId: authorId,
+          authorName: authorName,
           content: inputContent,
         },
       ],
@@ -61,6 +66,11 @@ export function CommentsList({ postId }: Props) {
       });
     }
   };
+
+  if (loading) return <Spinner />;
+  if (error) return <div>error: {error.message}</div>;
+
+  if (!data) return <div>нету</div>;
 
   return (
     <div className={styles.commentsList}>
