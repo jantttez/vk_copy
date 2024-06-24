@@ -3,7 +3,6 @@ import styles from "./register.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useToastError } from "@shared/hooks";
-import { getCurrentDate } from "@shared/lib/utils";
 import { routes } from "@shared/constant";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "@shared/api";
@@ -38,7 +37,7 @@ export function RegisterPage() {
     const password = data.password;
     createUserWithEmailAndPassword(auth, email, password).then((FullUserResponse) => {
       const userCredentials = FullUserResponse.user;
-      const currentDate = getCurrentDate();
+      const currentDate = Date.now();
 
       addUser({
         variables: {

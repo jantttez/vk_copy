@@ -48,8 +48,6 @@ export function Header() {
 
   const { data, loading } = useQuery(GET_POPUP_PEOPLE);
 
-  console.log(data);
-
   return (
     <header className={styles.header}>
       <VkLogo />

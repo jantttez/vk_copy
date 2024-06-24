@@ -1,13 +1,21 @@
 import { Comment } from "@components/index";
 import styles from "./comments-list.module.scss";
-import { Input, Spinner } from "@chakra-ui/react";
+import { Input, Spinner, useToast } from "@chakra-ui/react";
 import { SendHorizontal } from "lucide-react";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_POST_COMMENTS } from "@shared/api/get-post-comments";
 import { Comment as IComment } from "@shared/types";
+import { ADD_POST_COMMENT } from "@shared/api";
+import { getNewUUID } from "@shared/lib";
+import { useForm } from "react-hook-form";
+import { useUserStore } from "@shared/lib/storage";
 
 interface Props {
   postId: string;
+}
+
+export interface CommentForm {
+  commentContent: string;
 }
 
 export function CommentsList({ postId }: Props) {
@@ -15,7 +23,42 @@ export function CommentsList({ postId }: Props) {
     variables: { postId: postId },
   });
 
+  const { register, watch, reset } = useForm<CommentForm>({
+    mode: "onChange",
+  });
+
+  const toast = useToast();
+
+  const currentUser = useUserStore((state) => state.user);
+
+  const id = getNewUUID();
+  const inputContent = watch("commentContent");
+
   if (error) return <div>error: {error.message}</div>;
+  const [ADD_COMMENT, { loading: loadState, error: errorState }] = useMutation(ADD_POST_COMMENT, {
+    variables: {
+      objects: [
+        {
+          id: id,
+          createdAt: `${Date.now()}`,
+          authorPhoto: currentUser?.userPhoto,
+          postId: postId,
+          authorName: currentUser?.name,
+          content: inputContent,
+        },
+      ],
+    },
+    refetchQueries: [GET_POST_COMMENTS, "GET_POST_COMMENTS"],
+  });
+
+  const addHandler = () => {
+    ADD_COMMENT();
+    if (!loading) {
+      reset({
+        commentContent: "",
+      });
+    }
+  };
 
   return (
     <div className={styles.commentsList}>
@@ -25,21 +68,36 @@ export function CommentsList({ postId }: Props) {
         data.comments.map((comment: IComment) => (
           <div key={comment.id}>
             <hr />
-            <Comment
-              avatar={comment.authorPhoto}
-              username={comment.authorName}
-              date={comment.createdAt}
-              text={comment.content}
-            />
+            <Comment comment={comment} />
           </div>
         ))
       )}
 
+      <hr />
       <div className={styles.inputContainer}>
-        <Input placeholder="Что у вас нового?" variant="unstyled" />
-        <button className={styles.popoverButton} onClick={() => console.log("hello")}>
-          <SendHorizontal />
-        </button>
+        <Input
+          placeholder="Что у вас нового?"
+          variant="unstyled"
+          {...register("commentContent", {
+            required: "comment field is required",
+            maxLength: {
+              value: 150,
+              message: "comment filed must be shorted than 150 characters",
+            },
+          })}
+        />
+        {loadState ? (
+          <Spinner />
+        ) : (
+          <button className={styles.popoverButton} onClick={addHandler}>
+            <SendHorizontal />
+          </button>
+        )}
+        {errorState ? (
+          toast({ description: errorState.message, title: "ADD ERROR", status: "error", duration: 1000 })
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

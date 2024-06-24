@@ -1,6 +1,5 @@
-export function getCurrentDate() {
-  const qqq = Date.now();
-  const eee = new Date(qqq);
+export function extractDateFromTimestamp(timestamp: number) {
+  const eee = new Date(timestamp);
 
   const year = eee.getFullYear();
   const month = eee.getMonth();

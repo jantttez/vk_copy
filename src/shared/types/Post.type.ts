@@ -1,6 +1,6 @@
 export interface Post {
   id: string;
-  createdAt: string;
+  createdAt: number;
   authorId: string;
   authorPhoto: string;
   authorName: string;

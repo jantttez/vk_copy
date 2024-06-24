@@ -11,7 +11,7 @@ import { useUserStore } from "@shared/lib/storage/use-user-store";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { ADD_POST, GET_POSTS } from "@shared/api";
-import { getCurrentDate, getNewUUID } from "@shared/lib";
+import { getNewUUID } from "@shared/lib";
 
 interface Props {
   inputFieldRef: MutableRefObject<HTMLDivElement | null>;
@@ -39,12 +39,12 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
 
   ///
   const [addPost, { loading, error }] = useMutation(ADD_POST, {
-    refetchQueries: [GET_POSTS, "GET_POSTS"],
+    refetchQueries: ["GET_POSTS", "GET_USER_POSTS"],
   });
 
   const onSubmit: SubmitHandler<FormState> = (data) => {
     const id = getNewUUID();
-    const date = getCurrentDate();
+    const date = `${Date.now()}`;
 
     const authorPhoto =
       currentUser?.userPhoto || "https://i.pinimg.com/564x/47/c5/f3/47c5f364042ff4dff0bcd3a9fccf44eb.jpg";
@@ -65,7 +65,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
           },
         ],
       },
-    }).then((e) => console.log("успешно"));
+    }).catch((e) => console.error(e));
 
     reset();
   };

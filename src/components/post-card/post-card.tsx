@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ShowMore, CommentsList } from "@components/index";
 import { useMutation } from "@apollo/client";
 import { DELETE_POST_BY_ID } from "@shared/api/delete.post";
+import { extractDateFromTimestamp } from "@shared/lib";
 
 interface Props {
   post: IPost;
@@ -20,6 +21,8 @@ export function PostCard({ post }: Props) {
     refetchQueries: ["GET_POSTS", "GET_USER_POSTS"],
   });
 
+  const createrAt = extractDateFromTimestamp(Number(post.createdAt));
+
   return (
     <div className={styles.post}>
       <div className={styles.header}>
@@ -27,7 +30,7 @@ export function PostCard({ post }: Props) {
           <img src={post.authorPhoto} alt="User Avatar" className={styles.avatar} />
           <div className={styles.userDetails}>
             <span className={styles.userName}>{post.authorName}</span>
-            <span className={styles.date}>{post.createdAt}</span>
+            <span className={styles.date}>{createrAt}</span>
           </div>
         </div>
         <button

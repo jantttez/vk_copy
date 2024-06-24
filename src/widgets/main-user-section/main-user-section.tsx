@@ -26,7 +26,7 @@ export function MainUserSection() {
 
   return (
     <div className={styles.mainContainer}>
-      <UserHeader user={currentUser} />
+      {currentUser ? <UserHeader user={currentUser} /> : <Spinner />}
       <section className={styles.mainSection}>
         <div className={styles.right_section}>
           <div className={styles.fields}>

@@ -1,0 +1,5 @@
+mutation ADD_COMMENT($objects: [comments_insert_input!]!) {
+  insert_comments(objects: $objects) {
+    affected_rows
+  }
+}

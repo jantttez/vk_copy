@@ -2,13 +2,19 @@ import { CircleAlert, Handshake, MessageCircle } from "lucide-react";
 import styles from "./user-header.module.scss";
 import { UserHeaderButton } from "@shared/ui";
 import { User } from "@shared/types";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
-  user: User | null;
+  user: User;
 }
 
 export function UserHeader({ user }: Props) {
   const isFriend = false;
+  const naviagte = useNavigate();
+
+  const editHandler = () => {
+    naviagte(`/${user.id}/edit`);
+  };
 
   return (
     <div className={styles.header}>
@@ -16,8 +22,8 @@ export function UserHeader({ user }: Props) {
         <img src={user?.userPhoto} alt="User Avatar" className={styles.avatar} />
 
         <div className={styles.userInfo}>
-          <h1 className={styles.name}>{user?.name}</h1>
-          <p className={styles.status}>{user?.status}</p>
+          <h1 className={styles.name}>{user.name}</h1>
+          <p className={styles.status}>{user.status}</p>
           <a href="#more" className={styles.moreLink}>
             <CircleAlert size={18} />
             Подробнее
@@ -31,7 +37,7 @@ export function UserHeader({ user }: Props) {
             <UserHeaderButton Icon={MessageCircle} title="сообщения" size={20} />
           </div>
         ) : (
-          <UserHeaderButton title="Edit" size={20} />
+          <UserHeaderButton title="Edit" size={20} clickAction={editHandler} />
         )}
       </div>
     </div>
