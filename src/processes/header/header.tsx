@@ -42,10 +42,6 @@ export function Header() {
     setIsFocused(!isFocused);
   };
 
-  const handleAddFriend = (id: number) => {
-    console.log(`Add friend with id: ${id}`);
-  };
-
   const { data, loading } = useQuery(GET_POPUP_PEOPLE);
 
   return (
@@ -64,13 +60,7 @@ export function Header() {
             ref={inputRef}
           />
         </div>
-        {loading ? (
-          <Spinner />
-        ) : isFocused ? (
-          <HeaderPopup people={data["users"]} onAddFriend={handleAddFriend} />
-        ) : (
-          <></>
-        )}
+        {loading ? <Spinner /> : isFocused ? <HeaderPopup people={data["users"]} /> : <></>}
       </div>
       <div className={`${styles.avatar} ${avatarIsActive ? styles.active : ""}`} ref={dropDownMenuRef}>
         <button className={styles.avatarButton} onClick={avatarEvent}>
