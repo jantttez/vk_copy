@@ -44,7 +44,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
 
   const onSubmit: SubmitHandler<FormState> = (data) => {
     const id = getNewUUID();
-    const date = `${Date.now()}`;
+    const date = Date.now();
 
     const authorPhoto =
       currentUser?.userPhoto || "https://i.pinimg.com/564x/47/c5/f3/47c5f364042ff4dff0bcd3a9fccf44eb.jpg";
@@ -61,7 +61,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
             authorName: authorName,
             postImage: data.imageUrl,
             postContent: data.inputText,
-            likes: "",
+            likes: [],
           },
         ],
       },

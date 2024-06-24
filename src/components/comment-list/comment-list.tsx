@@ -19,6 +19,7 @@ export interface CommentForm {
 }
 
 export function CommentsList({ postId }: Props) {
+  if (!postId) return null;
   const { data, loading, error } = useQuery(GET_POST_COMMENTS, {
     variables: { postId: postId },
   });
@@ -40,9 +41,10 @@ export function CommentsList({ postId }: Props) {
       objects: [
         {
           id: id,
-          createdAt: `${Date.now()}`,
+          createdAt: Date.now(),
           authorPhoto: currentUser?.userPhoto,
           postId: postId,
+          authorId: currentUser?.id,
           authorName: currentUser?.name,
           content: inputContent,
         },
@@ -76,13 +78,18 @@ export function CommentsList({ postId }: Props) {
       <hr />
       <div className={styles.inputContainer}>
         <Input
-          placeholder="Что у вас нового?"
+          placeholder="что вы думаете по этому поводу?"
           variant="unstyled"
+          required
           {...register("commentContent", {
             required: "comment field is required",
             maxLength: {
               value: 150,
               message: "comment filed must be shorted than 150 characters",
+            },
+            minLength: {
+              value: 4,
+              message: " comment field must be longer than 4 characters",
             },
           })}
         />

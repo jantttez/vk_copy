@@ -66,7 +66,7 @@ export function RegisterPage() {
   };
 
   if (error) return <div>errorrs {error.message}</div>;
-  if (loading) return <Spinner />;
+  if (loading) return <Spinner justifySelf={"center"} alignSelf={"center"} />;
 
   return (
     <div className={styles.RegisterContainer}>

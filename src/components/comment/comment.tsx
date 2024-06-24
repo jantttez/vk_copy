@@ -6,6 +6,7 @@ import { Comment as IComment } from "@shared/types";
 import { useMutation } from "@apollo/client";
 import { DELETE_COMMENT_BY_ID, GET_POST_COMMENTS } from "@shared/api";
 import { Spinner } from "@chakra-ui/react";
+import { useUserStore } from "@shared/lib/storage";
 
 interface Props {
   comment: IComment;
@@ -21,14 +22,16 @@ export function Comment({ comment }: Props) {
     setMenuVisible(!menuVisible);
   };
 
+  const curUser = useUserStore((store) => store.user);
+
+  let curUserName;
+
+  curUser ? (curUserName = curUser.name) : (curUserName = "");
+
   const [DELETE_COMMENT, { loading, error }] = useMutation(DELETE_COMMENT_BY_ID, {
     variables: { id: comment.id },
     refetchQueries: [GET_POST_COMMENTS, "GET_POST_COMMENTS"],
   });
-
-  const replyToComment = () => {
-    // Логика ответа на комментарий
-  };
 
   const createdAt = extractDateFromTimestamp(Number(comment.createdAt));
   if (error) return <div>error: {error.message}</div>;
@@ -52,8 +55,14 @@ export function Comment({ comment }: Props) {
       <div className={styles.menu}>
         {menuVisible && (
           <div className={styles.dropdownMenu} ref={dropDownMenuRef}>
-            {loading ? <Spinner /> : <button onClick={DELETE_COMMENT}>Удалить</button>}
-            <button onClick={replyToComment}>Ответить</button>
+            {loading ? (
+              <Spinner />
+            ) : curUserName === comment.authorName ? (
+              <button onClick={DELETE_COMMENT}>Удалить</button>
+            ) : (
+              <></>
+            )}
+            <button onClick={() => {}}>Ответить</button>
           </div>
         )}
       </div>

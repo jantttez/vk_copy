@@ -6,5 +6,5 @@ export interface Post {
   authorName: string;
   postContent: string;
   postImage?: string | null;
-  likes: string;
+  likes: string[];
 }

@@ -1,6 +1,4 @@
 import { Theme } from "./Theme.type";
-import { Friend } from "./Friend.type";
-import { Subscription } from "./Subscription.type";
 
 export enum visibility {
   all = "all",
@@ -14,8 +12,8 @@ export interface User {
   userPhoto: string;
   name: string;
   userName: string;
-  friends: Friend[];
-  subscription: Subscription[];
+  friends: string[];
+  subscription: string[];
   status: string;
   email: string;
   password: string;

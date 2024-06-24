@@ -2,13 +2,13 @@
 
 export type User {
   id: String!
-  createdAt: String!
-  updatedAt: String?
+  createdAt: Int!
+  updatedAt: Int?
   userPhoto: String?
   name: String!
   userName: String!
-  friends: String?
-  subscription: String?
+  friends: [String?]!
+  subscription: [String?]!
   status: String?
   email: String!
   password: String!

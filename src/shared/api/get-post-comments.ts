@@ -5,6 +5,7 @@ export const GET_POST_COMMENTS = gql`
     comments(where: { postId: { _eq: $postId } }) {
       id
       createdAt
+      authorId
       authorPhoto
       postId
       authorName

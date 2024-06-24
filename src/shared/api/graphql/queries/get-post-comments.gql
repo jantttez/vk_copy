@@ -3,6 +3,7 @@ query GET_POST_COMMENTS($postId: String!) {
     id
     createdAt
     authorPhoto
+    authorId
     postId
     authorName
     content
