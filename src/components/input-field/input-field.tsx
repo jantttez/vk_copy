@@ -38,7 +38,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
   });
 
   ///
-  const [addPost, { data, loading, error }] = useMutation(ADD_POST, {
+  const [addPost, { loading, error }] = useMutation(ADD_POST, {
     refetchQueries: [GET_POSTS, "GET_POSTS"],
   });
 

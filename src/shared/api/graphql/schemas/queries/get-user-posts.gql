@@ -1,0 +1,12 @@
+query GET_USER_POSTS($id: String!) {
+  posts(authorId: $id) {
+    id
+    createdAt
+    authorId
+    authorPhoto
+    authorName
+    postContent
+    postImage
+    likes
+  }
+}

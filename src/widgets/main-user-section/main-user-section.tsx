@@ -8,6 +8,8 @@ import { useRef, useState } from "react";
 import { useUserStore } from "@shared/lib/storage";
 import { getUserId } from "@shared/lib/utils";
 import { Spinner } from "@chakra-ui/react";
+import { useQuery } from "@apollo/client";
+import { GET_USER_POSTS } from "@shared/api";
 
 export function MainUserSection() {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
@@ -18,7 +20,9 @@ export function MainUserSection() {
 
   const currentUser = useUserStore((state) => state.user);
 
-  const isFetching = true;
+  const { data, loading } = useQuery(GET_USER_POSTS, {
+    variables: { id: userId },
+  });
 
   return (
     <div className={styles.mainContainer}>
@@ -29,10 +33,10 @@ export function MainUserSection() {
             <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
             <FilterField />
           </div>
-          {isFetching ? (
+          {loading ? (
             <Spinner justifySelf={"center"} alignSelf={"center"} />
           ) : (
-            <div className={styles.postList}>{userPosts ? <PostList posts={userPosts} /> : <></>}</div>
+            <div className={styles.postList}>{data ? <PostList posts={data.posts} /> : <></>}</div>
           )}
         </div>
         <div className={styles.leftSection}>

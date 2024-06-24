@@ -3,9 +3,9 @@ import { MoreHorizontal, Heart, MessageSquare } from "lucide-react";
 
 import { Post as IPost } from "@shared/types";
 import { useState } from "react";
-import CommentsList from "@components/comment-list/comment-list";
-
-//TODO: сделать секцию с комментариями
+import { ShowMore, CommentsList } from "@components/index";
+import { useMutation } from "@apollo/client";
+import { DELETE_POST_BY_ID } from "@shared/api/delete.post";
 
 interface Props {
   post: IPost;
@@ -13,6 +13,12 @@ interface Props {
 
 export function PostCard({ post }: Props) {
   const [writeComment, setWriteComment] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+
+  const [DELETE_POST, { loading, error }] = useMutation(DELETE_POST_BY_ID, {
+    variables: { id: post.id },
+    refetchQueries: ["GET_POSTS", "GET_USER_POSTS"],
+  });
 
   return (
     <div className={styles.post}>
@@ -24,8 +30,17 @@ export function PostCard({ post }: Props) {
             <span className={styles.date}>{post.createdAt}</span>
           </div>
         </div>
-        <button className={styles.menuButton}>
+        <button
+          className={styles.menuButton}
+          onMouseEnter={() => setShowMore(true)}
+          onMouseLeave={() => setShowMore(false)}
+        >
           <MoreHorizontal />
+          {showMore ? (
+            <ShowMore authorId={post.authorId} loading={loading} error={error} deleteAction={DELETE_POST} />
+          ) : (
+            <></>
+          )}
         </button>
       </div>
       <div className={styles.main}>

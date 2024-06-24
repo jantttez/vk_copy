@@ -12,3 +12,4 @@ export * from "./subsctiption-section/subsctiption-section";
 export * from "./comment-list/comment-list";
 export * from "./comment/comment";
 export * from "./subsctiption-card/subsctiption-card";
+export * from "./show-more/show-more";
