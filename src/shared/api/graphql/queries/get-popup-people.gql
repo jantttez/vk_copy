@@ -1,0 +1,7 @@
+query GET_POPUP_PEOPLE {
+  users(limit: 3) {
+    id
+    name
+    userPhoto
+  }
+}

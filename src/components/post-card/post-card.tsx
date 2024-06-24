@@ -57,7 +57,7 @@ export function PostCard({ post }: Props) {
           <span>Comment</span>
         </button>
       </div>
-      {writeComment ? <CommentsList /> : <></>}
+      {writeComment ? <CommentsList postId={post.id} /> : <></>}
     </div>
   );
 }

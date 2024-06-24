@@ -5,8 +5,10 @@ import { useRef, useState } from "react";
 
 import { DropDownContent, HeaderPopup, VkLogo } from "@components/index";
 import { useClickOutside } from "@shared/hooks";
-import { mockPeople } from "@shared/constant";
 import { useUserStore } from "@shared/lib/storage";
+import { useQuery } from "@apollo/client";
+import { GET_POPUP_PEOPLE } from "@shared/api/index";
+import { Spinner } from "@chakra-ui/react";
 
 export function Header() {
   const [isFocused, setIsFocused] = useState(false);
@@ -44,6 +46,10 @@ export function Header() {
     console.log(`Add friend with id: ${id}`);
   };
 
+  const { data, loading } = useQuery(GET_POPUP_PEOPLE);
+
+  console.log(data);
+
   return (
     <header className={styles.header}>
       <VkLogo />
@@ -60,7 +66,13 @@ export function Header() {
             ref={inputRef}
           />
         </div>
-        {isFocused && <HeaderPopup people={mockPeople} onAddFriend={handleAddFriend} />}
+        {loading ? (
+          <Spinner />
+        ) : isFocused ? (
+          <HeaderPopup people={data["users"]} onAddFriend={handleAddFriend} />
+        ) : (
+          <></>
+        )}
       </div>
       <div className={`${styles.avatar} ${avatarIsActive ? styles.active : ""}`} ref={dropDownMenuRef}>
         <button className={styles.avatarButton} onClick={avatarEvent}>
