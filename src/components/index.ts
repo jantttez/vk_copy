@@ -16,3 +16,6 @@ export * from "./show-more/show-more";
 export * from "./popup-user-card/popup-user-card";
 export * from "./upload-file";
 export * from "./player/player";
+export * from "./music-card/music-card";
+export * from "./music-list/music-list";
+export * from "./modal-window/modal-window";

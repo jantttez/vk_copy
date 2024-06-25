@@ -1,3 +1,5 @@
+@import "@app/styles/mixins";
+
 .main {
   border: 1px solid blue;
 }
@@ -6,9 +8,19 @@
   display: flex;
   width: 100%;
 }
+.rightBody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.music_field {
+  @include vizual;
+}
+
 .rightSection {
   border: 1px solid white;
-  width: 60%;
+  width: 100%;
 }
 
 .leftSection {

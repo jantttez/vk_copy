@@ -1,6 +1,6 @@
 import styles from "./input-field.module.scss";
 
-import { Dispatch, MutableRefObject, SetStateAction, useId } from "react";
+import { Dispatch, MutableRefObject, SetStateAction } from "react";
 
 import { Input, Spinner } from "@chakra-ui/react";
 import { SendHorizontal } from "lucide-react";
@@ -10,7 +10,7 @@ import { useUserStore } from "@shared/lib/storage/use-user-store";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { ADD_POST, GET_POSTS } from "@shared/api";
+import { ADD_POST } from "@shared/api";
 import { getNewUUID } from "@shared/lib";
 
 interface Props {

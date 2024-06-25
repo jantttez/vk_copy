@@ -3,32 +3,93 @@
 .player {
   @include vizual;
   position: fixed;
-  height: 10vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 43%;
-  height: 10vh;
-  border-radius: 10px;
   bottom: 0;
-}
-
-.leftSection {
-}
-
-.centerSection {
-}
-
-.rightSection {
+  left: 45%;
+  transform: translateX(-50%);
+  margin-left: 5%;
   display: flex;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+
+  .ImageCover {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .leftSection,
+  .centerSection,
+  .rightSection {
+    display: flex;
+    align-items: center;
+  }
+
+  .leftSection {
+    width: 30%;
+    justify-content: flex-start;
+
+    button {
+      margin-right: 10px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+
+  .centerSection {
+    flex: 2;
+    align-items: center;
+    justify-self: flex-start;
+
+    button {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .centerRange {
+      display: flex;
+      width: 80%; /* Обеспечивает полную ширину */
+      margin: 5px 0;
+
+      input[type="range"] {
+        width: 100%; /* Растягивает range элемент */
+      }
+    }
+
+    .rightSection {
+      flex: 1;
+      justify-content: flex-end;
+      position: relative; /* Относительное позиционирование для родителя */
+
+      button {
+        background: none;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        z-index: 1; /* Разместите кнопку над слайдером */
+      }
+    }
+  }
 }
 
-.vertivalClider {
-  position: relative;
-  writing-mode: vertical-rl;
+// .rightSection {
+//   width: 20%;
+//   right: 10px;
+//   position: absolute;
+//   justify-content: flex-end;
 
-  bottom: 100px;
-  transform: rotate(180deg);
-  width: 20px;
-  height: 20%;
-}
+//   button {
+//     cursor: pointer;
+//   }
+
+//   .verticalSlider {
+//     position: relative;
+//     transform: rotate(-90deg);
+//   }
+// }
