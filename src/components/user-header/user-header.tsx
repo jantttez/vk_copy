@@ -3,12 +3,18 @@ import styles from "./user-header.module.scss";
 import { UserHeaderButton } from "@shared/ui";
 import { User } from "@shared/types";
 import { useNavigate } from "react-router-dom";
+import { ModalWindow } from "@components/modal-window/modal-window";
+import { useState } from "react";
+import { Spinner } from "@chakra-ui/react";
 
 interface Props {
   user: User;
 }
 
 export function UserHeader({ user }: Props) {
+  const [modalMoreIsActive, setModalMoreIsActive] = useState(false);
+  const [imageMore, setImageMore] = useState(false);
+
   const isFriend = false;
   const naviagte = useNavigate();
 
@@ -19,15 +25,21 @@ export function UserHeader({ user }: Props) {
   return (
     <div className={styles.header}>
       <div className={styles.userInfoMain}>
-        <img src={user?.userPhoto} alt="User Avatar" className={styles.avatar} />
+        <img src={user?.userPhoto} alt="User Avatar" className={styles.avatar} onClick={() => setImageMore(true)} />
+        <ModalWindow isActive={imageMore} setIsActive={setImageMore}>
+          <img src={user?.userPhoto} alt="User Avatar" style={{ borderRadius: "10px" }} />
+        </ModalWindow>
 
         <div className={styles.userInfo}>
           <h1 className={styles.name}>{user.name}</h1>
           <p className={styles.status}>{user.status}</p>
-          <a href="#more" className={styles.moreLink}>
+          <div className={styles.moreLink} onClick={() => setModalMoreIsActive(true)}>
             <CircleAlert size={18} />
             Подробнее
-          </a>
+          </div>
+          <ModalWindow isActive={modalMoreIsActive} setIsActive={setModalMoreIsActive}>
+            <Spinner />
+          </ModalWindow>
         </div>
       </div>
       <div className={styles.buttonGroup}>

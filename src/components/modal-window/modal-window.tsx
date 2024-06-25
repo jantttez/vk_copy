@@ -1,24 +1,21 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import styles from "./modal-window.module.scss";
 
 interface Props {
   isActive: boolean;
-  setIsActive: () => void;
+  setIsActive: Dispatch<SetStateAction<boolean>>;
   children: ReactNode;
 }
 
 export function ModalWindow({ isActive, setIsActive, children }: Props) {
-  const rootClasses = [styles.modalWindow];
-
+  const rootclasses = [styles.modalWindow];
   if (isActive) {
-    rootClasses.join(styles.active);
+    rootclasses.push(styles.active);
   }
 
-  //onClick={(e) => setIsActive(false)} надо подумать мб я сделаю с помощью useBoolean стейт
-
   return (
-    <div className={rootClasses.join(" ")}>
-      <div className={styles.moadlContent} onClick={(e) => e.stopPropagation()}>
+    <div className={rootclasses.join(" ")} onClick={() => setIsActive(false)}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>

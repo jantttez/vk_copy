@@ -3,7 +3,7 @@ import { MoreHorizontal, Heart, MessageSquare } from "lucide-react";
 
 import { Post as IPost } from "@shared/types";
 import { useState } from "react";
-import { ShowMore, CommentsList } from "@components/index";
+import { ShowMore, CommentsList, ModalWindow } from "@components/index";
 import { useMutation } from "@apollo/client";
 import { DELETE_POST_BY_ID } from "@shared/api";
 import { extractDateFromTimestamp } from "@shared/lib";
@@ -15,6 +15,7 @@ interface Props {
 export function PostCard({ post }: Props) {
   const [writeComment, setWriteComment] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [imageZoom, setImageZoom] = useState(false);
 
   const [DELETE_POST, { loading, error }] = useMutation(DELETE_POST_BY_ID, {
     variables: { id: post.id },
@@ -33,6 +34,7 @@ export function PostCard({ post }: Props) {
             <span className={styles.date}>{createrAt}</span>
           </div>
         </div>
+
         <button
           className={styles.menuButton}
           onMouseEnter={() => setShowMore(true)}
@@ -49,7 +51,12 @@ export function PostCard({ post }: Props) {
       <div className={styles.main}>
         <p className={styles.text}>{post.postContent}</p>
         {post.postImage && post.postImage !== null ? (
-          <img src={post.postImage} alt="Post Image" className={styles.image} />
+          <div onClick={() => setImageZoom(!imageZoom)} style={{ cursor: "pointer" }}>
+            <ModalWindow isActive={imageZoom} setIsActive={setImageZoom}>
+              <img src={post.postImage} alt="Post Image" style={{ borderRadius: "15px" }} />
+            </ModalWindow>
+            <img src={post.postImage} alt="Post Image" className={styles.image} />
+          </div>
         ) : (
           <></>
         )}

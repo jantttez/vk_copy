@@ -1,22 +1,22 @@
 import { Song } from "@shared/types";
 import { lorem } from "./lorem";
 
-import ArnuderCover from "@shared/assets/songs-covers/arnudeCover.png";
+import ArnuderCover from "@shared/assets/song-covers/arnudeCover.png";
 import ArnudeSong from "@shared/assets/songs/Arnaud Le Texier - Step (Affin).mp3";
 
-import BilliAlisCover from "@shared/assets/songs-covers/last_cause.png";
+import BilliAlisCover from "@shared/assets/song-covers/last_cause.png";
 import BilliAlishSong from "@shared/assets/songs/Billie Eilish - Lost Cause (Official Music Video).mp3";
 
-import blackSabaCover from "@shared/assets/songs-covers/blqack_saba.png";
+import blackSabaCover from "@shared/assets/song-covers/blqack_saba.png";
 import blackSabaSong from "@shared/assets/songs/Black Sabbath - Planet Caravan  2012 Remaster [4K Music Visualizer].mp3";
 
-import niveckCover from "@shared/assets/songs-covers/nivek.png";
+import niveckCover from "@shared/assets/song-covers/nivek.png";
 import nivekSong from "@shared/assets/songs/NIVEK FFORHS - Missing Textures.mp3";
 
-import tyleCover from "@shared/assets/songs-covers/jagerr-03-46.png";
+import tyleCover from "@shared/assets/song-covers/jagerr-03-46.png";
 import tylerSong from "@shared/assets/songs/Tyler, The Creator - JUGGERNAUT (Official Video).mp3";
 
-import UntCover from "@shared/assets/songs-covers/gobCover.png";
+import UntCover from "@shared/assets/song-covers/gobCover.png";
 import UntSong from "@shared/assets/songs/Unt. (Kadenz Remix).mp3";
 
 export const songs: Song[] = [
