@@ -1,3 +1,3 @@
-export * from "./comment-crud";
-export * from "./post-crud";
-export * from "./user-crud";
+export * from "./comment";
+export * from "./post";
+export * from "./user";
