@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./music-card.module.scss";
 import { Song } from "@shared/types";
 import { FormatedNumToDuraction } from "@shared/lib";
+import { useSongStore } from "@shared/lib/storage";
 
 interface MusicCardProps {
   song: Song;
@@ -9,9 +10,10 @@ interface MusicCardProps {
 
 export const MusicCard: React.FC<MusicCardProps> = ({ song }) => {
   const formattedTime = FormatedNumToDuraction(song.duration);
+  const addSong = useSongStore((state) => state.addSong);
 
   return (
-    <div className={styles.musicCard}>
+    <div className={styles.musicCard} onClick={() => addSong(song)}>
       <div className={styles.leftSide}>
         <img src={song.songCover} alt={`${song.songName} cover`} className={styles.cover} />
         <div className={styles.songInfo}>

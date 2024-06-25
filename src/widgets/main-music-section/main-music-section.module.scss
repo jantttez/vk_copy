@@ -23,10 +23,12 @@
 }
 
 .leftSection {
-  width: 10vw;
+  width: 15vw;
 
   .UploadBtn {
     @include vizual;
-    width: 100%;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
   }
 }

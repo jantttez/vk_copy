@@ -35,7 +35,7 @@ export const songs: Song[] = [
     songName: "Last Cause",
     authorPhoto: "https://i.pinimg.com/564x/a3/b8/86/a3b886fc93b65a3efa3390fbbb4bab04.jpg",
     authorName: "Billi Eilish",
-    duration: 229,
+    duration: 228,
     songPath: BilliAlishSong,
     description: lorem,
   },
@@ -65,7 +65,7 @@ export const songs: Song[] = [
     authorPhoto:
       "https://yt3.googleusercontent.com/rIEDV4fQKzMLE3wgIzHcqabX5rc418TqabPyU3yuJEJhAsprl-3ui7fly__WgOpts0BboHpXZPc=s176-c-k-c0x00ffffff-no-rj",
     authorName: "Tyler The Creator",
-    duration: 216,
+    duration: 96,
     songPath: tylerSong,
     description: lorem,
   },

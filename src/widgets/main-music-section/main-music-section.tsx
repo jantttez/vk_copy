@@ -1,21 +1,26 @@
 import { MusicList, Player, UploadFile } from "@components/index";
 import styles from "./main-music-section.module.scss";
 import { songs } from "@shared/constant";
-import { Song } from "@shared/types";
 import { useEffect, useState } from "react";
 import { useSongStore } from "@shared/lib/storage";
-import { useShallow } from "zustand/react/shallow";
 
 export function MainMusicSection() {
-  const { addSong, song, replaseSong } = useSongStore(useShallow((state) => state));
+  const { song } = useSongStore((state) => state);
 
-  const [audioSrc, setAudioSrc] = useState("");
+  const [audioSrc, setAudioSrc] = useState<string | null>(null);
 
-  const [songFile, setSongFile] = useState();
+  const [songFile, setSongFile] = useState<any>();
 
   useEffect(() => {
-    setAudioSrc(song.songPath);
-  }, [song]);
+    if (song) {
+      console.log("файл не отработал");
+      setAudioSrc(null);
+    } else if (songFile) {
+      console.log("файл отработал");
+
+      setAudioSrc(songFile[0]);
+    }
+  }, [song, songFile]);
 
   return (
     <div className={styles.main}>
@@ -31,7 +36,7 @@ export function MainMusicSection() {
           </UploadFile>
         </div>
       </div>
-      <Player audioSrc={audioSrc} currentSong={song} />
+      {song || audioSrc ? <Player audioSrc={audioSrc} currentSong={song} /> : <></>}
     </div>
   );
 }

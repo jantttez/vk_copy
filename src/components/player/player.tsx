@@ -1,4 +1,4 @@
-import { Slider, SliderFilledTrack, SliderThumb, SliderTrack, useBoolean } from "@chakra-ui/react";
+import { useBoolean } from "@chakra-ui/react";
 import styles from "./player.module.scss";
 import { AudioLines, Pause, Play } from "lucide-react";
 import { Song } from "@shared/types";
@@ -18,9 +18,37 @@ export function Player({ audioSrc, currentSong }: Props) {
   const [isPlay, setIsPlay] = useBoolean();
   const [currnetTime, setCurrentTime] = useState(0);
   const rangeRef = useRef<HTMLInputElement | null>(null);
-  const [audioPlay, setAudioPlay] = useState<HTMLAudioElement>();
+  const [audioPlay, setAudioPlay] = useState<HTMLAudioElement | null>();
+  const [userSongName, setUserSongName] = useState<string>();
 
-  const formattedTime = FormatedNumToDuraction(currentSong!.duration);
+  useEffect(() => {
+    let audio: HTMLAudioElement | null = null;
+
+    if (audioSrc) {
+      const src = URL.createObjectURL(audioSrc);
+      setUserSongName(audioSrc.name);
+      audio = new Audio(src);
+    } else if (currentSong) {
+      audio = new Audio(currentSong.songPath);
+    }
+
+    if (audio) {
+      audio.volume = volume / 100;
+      setAudioPlay(audio);
+    }
+
+    return () => {
+      if (audioPlay) {
+        audioPlay.pause();
+        audioPlay.currentTime = 0;
+      }
+      setCurrentTime(0);
+      setAudioPlay(null);
+      setIsPlay.toggle;
+    };
+  }, [audioSrc, currentSong]);
+
+  const formattedTime = currentSong ? FormatedNumToDuraction(currentSong!.duration) : "";
 
   useEffect(() => {
     if (audioPlay) {
@@ -38,21 +66,9 @@ export function Player({ audioSrc, currentSong }: Props) {
     }
   }, [audioPlay]);
 
-  const currnetUser = useUserStore((state) => state.user);
-
   const { changeVolume, volume } = useSongStore(useShallow((state) => state));
 
   useClickOutside<HTMLInputElement>({ ref: rangeRef, setState: setVolumeActive });
-
-  useEffect(() => {
-    if (audioSrc) {
-      const audio = new Audio(audioSrc);
-      setAudioPlay(audio);
-    } else {
-      const audio = new Audio(currentSong!.songPath);
-      setAudioPlay(audio);
-    }
-  }, [audioSrc, currentSong]);
 
   const chanegTimeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setCurrentTime(parseFloat(e.target.value));
@@ -61,7 +77,7 @@ export function Player({ audioSrc, currentSong }: Props) {
 
   const chanegVolumeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     changeVolume(parseInt(e.target.value));
-    audioPlay!.volume = parseInt(e.target.value) / 100;
+    audioPlay!.volume = volume / 100;
   };
 
   const PlayStopHanlder = () => {
@@ -74,27 +90,24 @@ export function Player({ audioSrc, currentSong }: Props) {
       }
     }
   };
-  const step = Math.max(1, Math.floor(currentSong!.duration / 1000));
 
   return (
     <div className={styles.player}>
       <div className={styles.leftSection}>
-        {currentSong === null ? (
+        {audioSrc ? (
           <>
             <>
-              <img src={currnetUser?.userPhoto} alt="song cover" className={styles.ImageCover} />
               <div className={styles.songinfo}>
-                <h5>{currnetUser?.name}</h5>
-                <h5>{currnetUser?.name}</h5>
+                <h5>{userSongName}</h5>
               </div>
             </>
           </>
         ) : (
           <>
-            <img src={currentSong.songCover} alt="song cover" className={styles.ImageCover} />
+            <img src={currentSong?.songCover} alt="song cover" className={styles.ImageCover} />
             <div>
-              <h5>{currentSong.songName}</h5>
-              <h5>{currentSong.authorName}</h5>
+              <h5>{currentSong?.songName}</h5>
+              <h5>{currentSong?.authorName}</h5>
             </div>
           </>
         )}
@@ -108,7 +121,7 @@ export function Player({ audioSrc, currentSong }: Props) {
             onChange={chanegTimeHandler}
             value={currnetTime}
             min={0}
-            max={currentSong.duration}
+            max={currentSong?.duration}
             step={1}
           />
           <span>{formattedTime}</span>

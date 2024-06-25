@@ -1,9 +1,7 @@
 import { Song } from "@shared/types";
 import { create } from "zustand";
-import { songs } from "@shared/constant";
-
 interface SongStoreState {
-  song: Song;
+  song: Song | null;
   volume: number;
 }
 
@@ -13,7 +11,7 @@ interface SongStoreAction {
 }
 
 export const useSongStore = create<SongStoreState & SongStoreAction>((set) => ({
-  song: songs[0],
+  song: null,
   volume: 50,
   addSong: (song: Song) => set(() => ({ song: song })),
   changeVolume: (volume: number) => set(() => ({ volume: volume })),

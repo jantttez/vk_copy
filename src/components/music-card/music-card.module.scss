@@ -12,6 +12,11 @@
   width: 100%;
   max-width: 600px;
   margin: 10px 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(30, 30, 30, 0.4);
+  }
 
   .leftSide {
     display: flex;
