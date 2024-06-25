@@ -14,3 +14,4 @@ export * from "./comment/comment";
 export * from "./subsctiption-card/subsctiption-card";
 export * from "./show-more/show-more";
 export * from "./popup-user-card/popup-user-card";
+export * from "./upload-file";
