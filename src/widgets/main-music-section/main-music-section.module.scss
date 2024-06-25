@@ -1,0 +1,17 @@
+.main {
+  border: 1px solid blue;
+}
+
+.body {
+  display: flex;
+  width: 100%;
+}
+.rightSection {
+  border: 1px solid white;
+  width: 60%;
+}
+
+.leftSection {
+  border: 1px solid white;
+  width: 40%;
+}

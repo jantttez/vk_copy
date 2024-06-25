@@ -19,8 +19,6 @@ export function PostList({ posts }: Props) {
     setFilteredPosts(filtered);
   }, [posts]);
 
-  console.log(typeof posts[0].createdAt);
-
   return (
     <>
       {filteredPosts ? (

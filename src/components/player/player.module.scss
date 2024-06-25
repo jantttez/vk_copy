@@ -1,0 +1,34 @@
+@import "@app/styles/mixins";
+
+.player {
+  @include vizual;
+  position: fixed;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 43%;
+  height: 10vh;
+  border-radius: 10px;
+  bottom: 0;
+}
+
+.leftSection {
+}
+
+.centerSection {
+}
+
+.rightSection {
+  display: flex;
+}
+
+.vertivalClider {
+  position: relative;
+  writing-mode: vertical-rl;
+
+  bottom: 100px;
+  transform: rotate(180deg);
+  width: 20px;
+  height: 20%;
+}

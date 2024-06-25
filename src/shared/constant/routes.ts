@@ -5,4 +5,5 @@ export const routes = {
   feed: "/feed",
   friends: "/friends",
   payments: "/payments",
+  music: "/music",
 };

@@ -1,4 +1,4 @@
-import { EditPage, FeedPage, LoginPage, PaymentPage, Redirect, RegisterPage, UserPage } from "@pages/index";
+import { EditPage, FeedPage, LoginPage, MusicPage, PaymentPage, Redirect, RegisterPage, UserPage } from "@pages/index";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { firebaseConfig } from "@app/firebase";
@@ -61,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "/:userId/edit",
     element: <EditPage />,
+  },
+  {
+    path: "/music",
+    element: <MusicPage />,
   },
 ]);
 
