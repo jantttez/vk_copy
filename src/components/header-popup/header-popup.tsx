@@ -20,7 +20,7 @@ export function HeaderPopup({ people, onAddFriend }: Props) {
             <li key={person.id} className={styles.personItem}>
               <img src={person.userPhoto} alt={person.name} className={styles.avatar} />
               <span className={styles.name}>{person.name}</span>
-              <button className={styles.addButton} onClick={() => onAddFriend(person.id)}>
+              <button className={styles.addButton} onClick={() => {}}>
                 <UserRoundPlus size={20} />
               </button>
             </li>
