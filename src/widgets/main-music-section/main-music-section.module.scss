@@ -1,7 +1,6 @@
 @import "@app/styles/mixins";
 
 .main {
-  border: 1px solid blue;
 }
 
 .body {
@@ -11,6 +10,7 @@
 .rightBody {
   width: 100%;
   display: flex;
+  padding: 5px;
   flex-direction: column;
 }
 
@@ -19,11 +19,14 @@
 }
 
 .rightSection {
-  border: 1px solid white;
-  width: 100%;
+  width: 35vw;
 }
 
 .leftSection {
-  border: 1px solid white;
-  width: 40%;
+  width: 10vw;
+
+  .UploadBtn {
+    @include vizual;
+    width: 100%;
+  }
 }

@@ -1,0 +1,1 @@
+export const lorem = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit excepturi delectus minima inventore ea. Est minima itaque incidunt fugit odio eaque nemo tenetur, deleniti nam id, quia facilis vero quas.`;
