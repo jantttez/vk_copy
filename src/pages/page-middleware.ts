@@ -15,7 +15,7 @@ export function pageMiddleware() {
   } else {
     const { addUserIdToStore, addUserToStore } = useUserStore(useShallow((state) => state));
 
-    const { data, loading, error } = useQuery(GET_USER_BY_ID, {
+    const { data, loading } = useQuery(GET_USER_BY_ID, {
       variables: { id: id },
     });
 

@@ -1,0 +1,5 @@
+mutation UPDATE_USER(много полей юзера) {
+    users(where: { id: { _eq: $id}, _set : {и вот тут все новые значения}) {
+        affected_arrows
+    }
+}

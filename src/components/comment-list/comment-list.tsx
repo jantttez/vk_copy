@@ -3,7 +3,7 @@ import styles from "./comments-list.module.scss";
 import { Input, Spinner, useToast } from "@chakra-ui/react";
 import { SendHorizontal } from "lucide-react";
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_POST_COMMENTS } from "@shared/api/get-post-comments";
+import { GET_POST_COMMENTS } from "@shared/api";
 import { Comment as IComment } from "@shared/types";
 import { ADD_POST_COMMENT } from "@shared/api";
 import { getNewUUID } from "@shared/lib";

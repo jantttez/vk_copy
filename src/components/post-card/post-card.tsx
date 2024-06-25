@@ -5,7 +5,7 @@ import { Post as IPost } from "@shared/types";
 import { useState } from "react";
 import { ShowMore, CommentsList } from "@components/index";
 import { useMutation } from "@apollo/client";
-import { DELETE_POST_BY_ID } from "@shared/api/delete.post";
+import { DELETE_POST_BY_ID } from "@shared/api";
 import { extractDateFromTimestamp } from "@shared/lib";
 
 interface Props {
