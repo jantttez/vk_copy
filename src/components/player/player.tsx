@@ -6,7 +6,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSongStore, useUserStore } from "@shared/lib/storage";
 import { useShallow } from "zustand/react/shallow";
 import { FormatedNumToDuraction } from "@shared/lib";
-import { useClickOutside } from "@shared/hooks";
+import { useAudioTimeupdate, useClickOutside, useNewAudio } from "@shared/hooks";
 
 interface Props {
   audioSrc: any;
@@ -21,52 +21,22 @@ export function Player({ audioSrc, currentSong }: Props) {
   const [audioPlay, setAudioPlay] = useState<HTMLAudioElement | null>();
   const [userSongName, setUserSongName] = useState<string>();
 
-  useEffect(() => {
-    let audio: HTMLAudioElement | null = null;
-
-    if (audioSrc) {
-      const src = URL.createObjectURL(audioSrc);
-      setUserSongName(audioSrc.name);
-      audio = new Audio(src);
-    } else if (currentSong) {
-      audio = new Audio(currentSong.songPath);
-    }
-
-    if (audio) {
-      audio.volume = volume / 100;
-      setAudioPlay(audio);
-    }
-
-    return () => {
-      if (audioPlay) {
-        audioPlay.pause();
-        audioPlay.currentTime = 0;
-      }
-      setCurrentTime(0);
-      setAudioPlay(null);
-      setIsPlay.toggle;
-    };
-  }, [audioSrc, currentSong]);
+  const { changeVolume, volume } = useSongStore(useShallow((state) => state));
 
   const formattedTime = currentSong ? FormatedNumToDuraction(currentSong!.duration) : "";
 
-  useEffect(() => {
-    if (audioPlay) {
-      const audio = audioPlay;
+  useNewAudio({
+    audioSrc: audioSrc,
+    audioPlay: audioPlay,
+    currentSong: currentSong,
+    setAudioPlay: setAudioPlay,
+    setCurrentTime: setCurrentTime,
+    setIsPlay: setIsPlay,
+    setUserSongName: setUserSongName,
+    volume: volume,
+  });
 
-      const handleTimeUpdate = () => {
-        setCurrentTime(audio.currentTime);
-      };
-
-      audio.addEventListener("timeupdate", handleTimeUpdate);
-
-      return () => {
-        audio.removeEventListener("timeupdate", handleTimeUpdate);
-      };
-    }
-  }, [audioPlay]);
-
-  const { changeVolume, volume } = useSongStore(useShallow((state) => state));
+  useAudioTimeupdate({ audioPlay: audioPlay, setCurrentTime: setCurrentTime });
 
   useClickOutside<HTMLInputElement>({ ref: rangeRef, setState: setVolumeActive });
 
