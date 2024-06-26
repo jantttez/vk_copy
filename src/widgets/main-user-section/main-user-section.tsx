@@ -10,7 +10,6 @@ import { getUserId } from "@shared/lib/utils";
 import { Spinner } from "@chakra-ui/react";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_USER_FRIENDS_IDS, GET_USER_POSTS, GET_USER_FRIEND } from "@shared/api";
-import { Friend } from "@shared/types";
 
 export function MainUserSection() {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
@@ -40,6 +39,7 @@ export function MainUserSection() {
       });
     }
   }, [friendsIdsData, friendsIdsLoading]);
+
   return (
     <div className={styles.mainContainer}>
       {currentUser ? <UserHeader user={currentUser} /> : <Spinner />}
@@ -63,7 +63,7 @@ export function MainUserSection() {
           ) : (
             <FriendsSection friends={[]} />
           )}
-          <SubscriptionsSection subscriptions={currentUser?.subscription} />
+          {/*<SubscriptionsSection subscriptions={currentUser?.subscription} /> */}
         </div>
       </section>
     </div>

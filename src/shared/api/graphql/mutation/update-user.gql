@@ -1,5 +1,15 @@
-mutation UPDATE_USER(много полей юзера) {
-    users(where: { id: { _eq: $id}, _set : {и вот тут все новые значения}) {
-        affected_arrows
-    }
+mutation updateUser(
+  $id: String!
+  $name: String!
+  $userName: String!
+  $status: String
+  $email: String
+  $password: String
+) {
+  update_users(
+    where: { id: { _eq: $id } }
+    _set: { name: $name, userName: $userName, status: $status, email: $email, password: $password }
+  ) {
+    affected_rows
+  }
 }

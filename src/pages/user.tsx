@@ -12,10 +12,22 @@ export function UserPage() {
 
   const curUserId = getUserId();
 
+  //TODO: можно поидеи сделать так что у тебя будет подгружаться юзер в в мейнЮзер секции
+  // либо можно вот как я ниже, но так по идеи будет очень много боейлер плейт кода
+
   return (
     <>
-      <Header />
-      {loading ? <Spinner /> : userId === curUserId ? <Base component={<MainUserSection />} /> : <></>}
+      {userId !== curUserId ? (
+        <>
+          <Header />
+          <Base component={<Spinner />} />
+        </>
+      ) : (
+        <>
+          <Header />
+          {loading ? <Spinner /> : <Base component={<MainUserSection />} />}
+        </>
+      )}
     </>
   );
 }

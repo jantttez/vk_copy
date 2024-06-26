@@ -4,3 +4,4 @@ export * from "./get-popup-people";
 export * from "./get-user-by-id";
 export * from "./get-user-friends";
 export * from "./get-user-friends_ids";
+export * from "./update-user";
