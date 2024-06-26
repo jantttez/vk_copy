@@ -39,6 +39,15 @@
 
 .userButtonGroup {
   display: flex;
+
+  .tooltip {
+    @include vizual;
+    padding: 5px;
+    border-radius: 10px;
+    position: absolute;
+    top: 10%;
+    font-size: 1rem;
+  }
 }
 
 .avatar {

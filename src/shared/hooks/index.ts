@@ -4,3 +4,4 @@ export * from "./use-toast-error";
 export * from "./use-auto-auth";
 export * from "./use-audio-timeupdate";
 export * from "./use-new-audio";
+export * from "./use-user-navigate";

@@ -4,11 +4,11 @@ import { pageMiddleware } from "./page-middleware";
 import { Spinner } from "@chakra-ui/react";
 
 export function MusicPage() {
-  const loading = pageMiddleware();
+  const state = pageMiddleware();
   return (
     <>
       <Header />
-      {loading ? <Spinner /> : <Base component={<MainMusicSection />} />}
+      {state!.loading ? <Spinner /> : <Base component={<MainMusicSection />} />}
     </>
   );
 }

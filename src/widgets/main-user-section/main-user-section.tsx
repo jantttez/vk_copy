@@ -10,22 +10,27 @@ import { getUserId } from "@shared/lib/utils";
 import { Spinner } from "@chakra-ui/react";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_USER_FRIENDS_IDS, GET_USER_POSTS, GET_USER_FRIEND } from "@shared/api";
+import { User } from "@shared/types";
 
-export function MainUserSection() {
+interface Props {
+  currentUser: User;
+}
+
+export function MainUserSection({ currentUser }: Props) {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 5;
   const userId = getUserId();
 
-  const currentUser = useUserStore((state) => state.user);
+  // const currentUser = useUserStore((state) => state.user);
 
   const { data, loading } = useQuery(GET_USER_POSTS, {
-    variables: { id: userId },
+    variables: { id: currentUser.id },
   });
 
   const { data: friendsIdsData, loading: friendsIdsLoading } = useQuery(GET_USER_FRIENDS_IDS, {
-    variables: { id: userId },
+    variables: { id: currentUser.id },
   });
 
   const [GET_USER_FRIENDS, { data: friends, loading: friendsLoading }] = useLazyQuery(GET_USER_FRIEND);
@@ -46,7 +51,11 @@ export function MainUserSection() {
       <section className={styles.mainSection}>
         <div className={styles.right_section}>
           <div className={styles.fields}>
-            <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
+            {userId !== currentUser.id ? (
+              <></>
+            ) : (
+              <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
+            )}
             <FilterField />
           </div>
           {loading ? (

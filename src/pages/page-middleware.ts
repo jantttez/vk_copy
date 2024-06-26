@@ -5,6 +5,7 @@ import { useShallow } from "zustand/react/shallow";
 import { routes } from "@shared/constant";
 import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID } from "@shared/api";
+import { User } from "@shared/types";
 
 export function pageMiddleware() {
   const id = getUserId();
@@ -18,11 +19,14 @@ export function pageMiddleware() {
     const { data, loading } = useQuery(GET_USER_BY_ID, {
       variables: { id: id },
     });
+    let user = {};
 
     if (data) {
       addUserIdToStore(id);
       addUserToStore(data["users_by_pk"]);
+      user = data["users_by_pk"] as User;
     }
-    return loading;
+
+    return { loading, user };
   }
 }

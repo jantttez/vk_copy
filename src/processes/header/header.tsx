@@ -9,6 +9,7 @@ import { useUserStore } from "@shared/lib/storage";
 import { useQuery } from "@apollo/client";
 import { GET_POPUP_PEOPLE } from "@shared/api/index";
 import { Spinner } from "@chakra-ui/react";
+import { getUserId } from "@shared/lib";
 
 export function Header() {
   const [isFocused, setIsFocused] = useState(false);
@@ -22,6 +23,8 @@ export function Header() {
   useClickOutside<HTMLDivElement>({ ref: searchRef, setState: setIsFocused });
 
   const currentUser = useUserStore((state) => state.user);
+
+  const usrId = getUserId();
 
   const searchHandler = () => {
     if (inputRef.current) {
@@ -63,10 +66,15 @@ export function Header() {
         {loading ? <Spinner /> : isFocused ? <HeaderPopup people={data["users"]} /> : <></>}
       </div>
       <div className={`${styles.avatar} ${avatarIsActive ? styles.active : ""}`} ref={dropDownMenuRef}>
-        <button className={styles.avatarButton} onClick={avatarEvent}>
-          <img src={currentUser?.userPhoto} alt="Avatar" className={styles.avatarPhoto} />
-          <ChevronDown />
-        </button>
+        {currentUser?.id === usrId ? (
+          <button className={styles.avatarButton} onClick={avatarEvent}>
+            <img src={currentUser?.userPhoto} alt="Avatar" className={styles.avatarPhoto} />
+            <ChevronDown />
+          </button>
+        ) : (
+          <></>
+        )}
+
         <div
           className={`${styles.dropDownMenu} ${avatarIsActive ? styles.active : styles.inactive}`}
           onClick={dropDownMenuHandler}

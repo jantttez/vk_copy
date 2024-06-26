@@ -4,12 +4,12 @@ import { pageMiddleware } from "./page-middleware";
 import { Spinner } from "@chakra-ui/react";
 
 export function EditPage() {
-  const loading = pageMiddleware();
+  const state = pageMiddleware();
 
   return (
     <>
       <Header />
-      {loading ? <Spinner /> : <Base component={<MainEditSection />} />}
+      {state!.loading ? <Spinner /> : <Base component={<MainEditSection />} />}
     </>
   );
 }

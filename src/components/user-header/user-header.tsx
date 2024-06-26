@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { ModalWindow } from "@components/modal-window/modal-window";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
+import { getUserId } from "@shared/lib";
+import { useUserStore } from "@shared/lib/storage";
+import { ADD_USER_FRIEND, GET_USER_BY_ID, GET_USER_FRIENDS_IDS } from "@shared/api";
+import { useMutation } from "@apollo/client";
 
 interface Props {
   user: User;
@@ -14,13 +18,42 @@ interface Props {
 export function UserHeader({ user }: Props) {
   const [modalMoreIsActive, setModalMoreIsActive] = useState(false);
   const [imageMore, setImageMore] = useState(false);
+  const currntUser = useUserStore((state) => state.user);
+  const [showTolltip, setShowTolltip] = useState(false);
 
-  const isFriend = false;
+  const newCurrentUserIds = currntUser?.friends ? [...currntUser.friends, user.id] : [];
+  const newPersonUserids = currntUser?.id ? [...user.friends, currntUser!.id] : [];
+
+  const dontShowAddButton = currntUser?.friends.some((friendid) => friendid === user.id);
+
+  const [ADD_FRIEND, { loading, error }] = useMutation(ADD_USER_FRIEND, {
+    variables: {
+      idFirst: currntUser?.id,
+      friendsIdsFirst: newCurrentUserIds,
+      idSecond: user.id,
+      friendsIdsSecond: newPersonUserids,
+    },
+    refetchQueries: [
+      {
+        query: GET_USER_BY_ID,
+        variables: { id: user.id },
+      },
+    ],
+  });
+
+  const addFriendHandler = () => {
+    ADD_FRIEND();
+  };
+
+  const userId = getUserId();
+
   const naviagte = useNavigate();
 
   const editHandler = () => {
     naviagte(`/${user.id}/edit`);
   };
+
+  if (loading) return <Spinner />;
 
   return (
     <div className={styles.header}>
@@ -43,10 +76,20 @@ export function UserHeader({ user }: Props) {
         </div>
       </div>
       <div className={styles.buttonGroup}>
-        {isFriend ? (
-          <div className={styles.userButtonGroup}>
+        {!dontShowAddButton ? (
+          <div
+            className={styles.userButtonGroup}
+            onMouseEnter={() => setShowTolltip(true)}
+            onMouseLeave={() => setShowTolltip(false)}
+          >
             <UserHeaderButton Icon={Handshake} size={20} />
-            <UserHeaderButton Icon={MessageCircle} title="сообщения" size={20} />
+            {showTolltip ? (
+              <div className={styles.tooltip}>
+                <span>{!dontShowAddButton ? "Удалить" : "Добавить"}</span>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         ) : (
           <UserHeaderButton title="Edit" size={20} clickAction={editHandler} />
