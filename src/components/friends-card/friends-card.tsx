@@ -1,8 +1,7 @@
-import { useUserNavigate } from "@shared/hooks";
+import { useRedirect } from "@shared/hooks";
 import styles from "./friends-card.module.scss";
 
 import { Friend } from "@shared/types";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   title: string;
@@ -10,7 +9,8 @@ interface Props {
 }
 
 export function FriendsCard({ title, FriendList }: Props) {
-  const navigate = useNavigate();
+  const redirect = useRedirect();
+
   return (
     <div className={styles.section}>
       <div className={styles.header}>
@@ -24,7 +24,7 @@ export function FriendsCard({ title, FriendList }: Props) {
               src={friend.userPhoto}
               alt={friend.name}
               className={styles.avatar}
-              onClick={() => navigate(`/${friend.id}`)}
+              onClick={() => redirect(`/${friend.id}`)}
             />
             <h3>{friend.name}</h3>
           </div>

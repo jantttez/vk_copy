@@ -33,6 +33,10 @@ export function Comment({ comment }: Props) {
     refetchQueries: [GET_POST_COMMENTS, "GET_POST_COMMENTS"],
   });
 
+  const deleteHandler = () => {
+    DELETE_COMMENT();
+  };
+
   const createdAt = extractDateFromTimestamp(Number(comment.createdAt));
   if (error) return <div>error: {error.message}</div>;
 
@@ -58,7 +62,7 @@ export function Comment({ comment }: Props) {
             {loading ? (
               <Spinner />
             ) : curUserName === comment.authorName ? (
-              <button onClick={DELETE_COMMENT}>Удалить</button>
+              <button onClick={deleteHandler}>Удалить</button>
             ) : (
               <></>
             )}

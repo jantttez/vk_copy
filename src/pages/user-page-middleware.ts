@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";
 
 export function UserPageMiddleware() {
-  const { userId } = useParams("userId");
+  const { userId } = useParams();
   const id = getUserId();
   const navigator = useNavigate();
 

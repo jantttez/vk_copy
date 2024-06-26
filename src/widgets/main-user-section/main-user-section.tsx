@@ -1,11 +1,10 @@
 import styles from "./main-user-section.module.scss";
 
-import { FilterField, FriendsSection, PostList, SubscriptionsSection, UserHeader } from "@components/index";
+import { FilterField, FriendsSection, PostList, UserHeader } from "@components/index";
 
 import { InputField } from "@components/index";
 import { useEffect, useRef, useState } from "react";
 
-import { useUserStore } from "@shared/lib/storage";
 import { getUserId } from "@shared/lib/utils";
 import { Spinner } from "@chakra-ui/react";
 import { useLazyQuery, useQuery } from "@apollo/client";
@@ -19,8 +18,6 @@ interface Props {
 export function MainUserSection({ currentUser }: Props) {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const limit = 5;
   const userId = getUserId();
 
   // const currentUser = useUserStore((state) => state.user);

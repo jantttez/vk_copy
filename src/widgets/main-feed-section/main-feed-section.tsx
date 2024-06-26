@@ -1,11 +1,9 @@
 import { FilterField, InputField, PostList } from "@components/index";
 import styles from "./main-feed-section.module.scss";
-import { useEffect, useRef, useState } from "react";
-import { Post } from "@shared/types";
-import { useLazyQuery, useQuery } from "@apollo/client";
-import { GET_POSTS, GET_POSTS_WITH_PAGINATION } from "@shared/api";
+import { useRef, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_POSTS } from "@shared/api";
 import { Spinner } from "@chakra-ui/react";
-import { useObserve } from "@shared/hooks";
 
 export function MainFeedSection() {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);

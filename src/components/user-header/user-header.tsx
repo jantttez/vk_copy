@@ -1,14 +1,12 @@
-import { CircleAlert, Handshake, MessageCircle } from "lucide-react";
+import { CircleAlert } from "lucide-react";
 import styles from "./user-header.module.scss";
-import { UserHeaderButton } from "@shared/ui";
 import { User } from "@shared/types";
 import { useNavigate } from "react-router-dom";
 import { ModalWindow } from "@components/modal-window/modal-window";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
-import { getUserId } from "@shared/lib";
 import { useUserStore } from "@shared/lib/storage";
-import { ADD_USER_FRIEND, GET_USER_BY_ID, GET_USER_FRIENDS_IDS } from "@shared/api";
+import { ADD_USER_FRIEND, GET_USER_BY_ID } from "@shared/api";
 import { useMutation } from "@apollo/client";
 import { UserHeaderBtnGroup } from "@components/user-header-btn-group/user-header-btn-group";
 

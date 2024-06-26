@@ -8,8 +8,8 @@ import { useMutation } from "@apollo/client";
 import { GET_USER_BY_ID, UPDATE_USER } from "@shared/api";
 import { getUserId } from "@shared/lib";
 import { Spinner } from "@chakra-ui/react";
-import { routes } from "@shared/constant";
 import { useNavigate } from "react-router-dom";
+
 interface EditForm {
   name: string;
   userName: string;
