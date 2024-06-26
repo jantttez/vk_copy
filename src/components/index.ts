@@ -19,3 +19,4 @@ export * from "./player/player";
 export * from "./music-card/music-card";
 export * from "./music-list/music-list";
 export * from "./modal-window/modal-window";
+export * from "./user-header-btn-group/user-header-btn-group";

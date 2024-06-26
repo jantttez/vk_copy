@@ -10,6 +10,7 @@ import { getUserId } from "@shared/lib";
 import { useUserStore } from "@shared/lib/storage";
 import { ADD_USER_FRIEND, GET_USER_BY_ID, GET_USER_FRIENDS_IDS } from "@shared/api";
 import { useMutation } from "@apollo/client";
+import { UserHeaderBtnGroup } from "@components/user-header-btn-group/user-header-btn-group";
 
 interface Props {
   user: User;
@@ -21,18 +22,14 @@ export function UserHeader({ user }: Props) {
   const currntUser = useUserStore((state) => state.user);
   const [showTolltip, setShowTolltip] = useState(false);
 
-  const newCurrentUserIds = currntUser?.friends ? [...currntUser.friends, user.id] : [];
-  const newPersonUserids = currntUser?.id ? [...user.friends, currntUser!.id] : [];
+  const newCurrentUserAddIds = currntUser?.friends ? [...currntUser.friends, user.id] : [];
+  const newPersonUserAddIds = currntUser?.id ? [...user.friends, currntUser.id] : [];
+  const newCurrentUserDeleteIds = currntUser?.friends ? currntUser.friends.filter((friend) => friend !== user.id) : [];
+  const newPersonUserDeleteIds = currntUser?.id ? user.friends.filter((friend) => friend !== currntUser.id) : [];
 
-  const dontShowAddButton = currntUser?.friends.some((friendid) => friendid === user.id);
+  const dontShowAddButton = currntUser?.friends.some((friendId) => friendId === user.id);
 
   const [ADD_FRIEND, { loading, error }] = useMutation(ADD_USER_FRIEND, {
-    variables: {
-      idFirst: currntUser?.id,
-      friendsIdsFirst: newCurrentUserIds,
-      idSecond: user.id,
-      friendsIdsSecond: newPersonUserids,
-    },
     refetchQueries: [
       {
         query: GET_USER_BY_ID,
@@ -42,10 +39,26 @@ export function UserHeader({ user }: Props) {
   });
 
   const addFriendHandler = () => {
-    ADD_FRIEND();
+    ADD_FRIEND({
+      variables: {
+        idFirst: currntUser?.id,
+        friendsIdsFirst: newCurrentUserAddIds,
+        idSecond: user.id,
+        friendsIdsSecond: newPersonUserAddIds,
+      },
+    }).catch((error) => console.error("Error adding friend:", error));
   };
 
-  const userId = getUserId();
+  const deleteFriendHandler = () => {
+    ADD_FRIEND({
+      variables: {
+        idFirst: currntUser?.id,
+        friendsIdsFirst: newCurrentUserDeleteIds,
+        idSecond: user.id,
+        friendsIdsSecond: newPersonUserDeleteIds,
+      },
+    }).catch((error) => console.error("Error adding friend:", error));
+  };
 
   const naviagte = useNavigate();
 
@@ -54,6 +67,8 @@ export function UserHeader({ user }: Props) {
   };
 
   if (loading) return <Spinner />;
+
+  if (error) return <div>error: {error.message}</div>;
 
   return (
     <div className={styles.header}>
@@ -75,26 +90,15 @@ export function UserHeader({ user }: Props) {
           </ModalWindow>
         </div>
       </div>
-      <div className={styles.buttonGroup}>
-        {!dontShowAddButton ? (
-          <div
-            className={styles.userButtonGroup}
-            onMouseEnter={() => setShowTolltip(true)}
-            onMouseLeave={() => setShowTolltip(false)}
-          >
-            <UserHeaderButton Icon={Handshake} size={20} />
-            {showTolltip ? (
-              <div className={styles.tooltip}>
-                <span>{!dontShowAddButton ? "Удалить" : "Добавить"}</span>
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-        ) : (
-          <UserHeaderButton title="Edit" size={20} clickAction={editHandler} />
-        )}
-      </div>
+      <UserHeaderBtnGroup
+        dontShowAddButton={dontShowAddButton}
+        editHandler={editHandler}
+        setShowTolltip={setShowTolltip}
+        showTolltip={showTolltip}
+        addFriend={addFriendHandler}
+        deleteFriend={deleteFriendHandler}
+        headerUserId={user.id}
+      />
     </div>
   );
 }

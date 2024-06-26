@@ -1,0 +1,12 @@
+query get_posts_with_pagination($limit: Int!, $offset: Int!) {
+  posts_aggregate(limit: $limit, offset: $offset) {
+    id
+    createdAt
+    authorId
+    authorPhoto
+    authorName
+    postContent
+    postImage
+    likes
+  }
+}

@@ -2,7 +2,7 @@
 
 ### react ts graphql apollo react-hook-form firebase, react-router-dom, zustand, chakraUI
 
-- декомпозировать + доделать небольшой функционал ддропдайн меню и поповера
+блядь если хочешь делать динамическую пагинацию делай ее с самого начала
 
 # заметки
 
