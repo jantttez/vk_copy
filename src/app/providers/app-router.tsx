@@ -1,0 +1,41 @@
+import { EditPage, FeedPage, LoginPage, MusicPage, PaymentPage, Redirect, RegisterPage, UserPage } from "@pages/index";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/feed",
+    element: <FeedPage />,
+  },
+  {
+    path: "/",
+    element: <Redirect />,
+  },
+  {
+    path: "/:userId",
+    element: <UserPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  },
+  {
+    path: "/payments",
+    element: <PaymentPage />,
+  },
+  {
+    path: "/:userId/edit",
+    element: <EditPage />,
+  },
+  {
+    path: "/music",
+    element: <MusicPage />,
+  },
+]);
+
+export function AppRouter() {
+  return <RouterProvider router={router} />;
+}
