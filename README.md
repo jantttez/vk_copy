@@ -1,4 +1,4 @@
-# TODO
+# если ты будешь открытвать репозиторий обязательно все секреты в env файл вынеси
 
 ### react ts graphql apollo react-hook-form firebase, react-router-dom, zustand, chakraUI
 
