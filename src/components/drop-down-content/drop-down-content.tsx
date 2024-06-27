@@ -1,6 +1,6 @@
 import styles from "./drop-down-content.module.scss";
 
-import { Settings, LogOut, Sun, Moon, Check, Palette } from "lucide-react";
+import { Settings, LogOut, Sun, Moon, Palette } from "lucide-react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";

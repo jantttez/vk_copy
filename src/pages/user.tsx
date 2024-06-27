@@ -1,5 +1,5 @@
 import { MainUserSection } from "@widgets/index";
-import { Header, Base } from "@processes/index";
+import { Header, Base } from "@widgets/index";
 import { Spinner } from "@chakra-ui/react";
 
 import { UserPageMiddleware } from "./user-page-middleware";

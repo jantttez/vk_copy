@@ -1,4 +1,4 @@
-import { Base, Header } from "@processes/index";
+import { Base, Header } from "@widgets/index";
 import { MainPaymentSection } from "@widgets/index";
 
 export function PaymentPage() {

@@ -1,4 +1,4 @@
-import { Base, Header } from "@processes/index";
+import { Base, Header } from "@widgets/index";
 import { MainEditSection } from "@widgets/index";
 import { pageMiddleware } from "./page-middleware";
 import { Spinner } from "@chakra-ui/react";
