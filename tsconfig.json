@@ -28,7 +28,8 @@
       "@app/*": ["src/app/*"],
       "@widgets/*": ["src/widgets/*"],
       "@processes/*": ["src/processes/*"],
-      "@store/*": ["src/shared/lib/storage/*"]
+      "@store/*": ["src/shared/lib/storage/*"],
+      "@entities/*": ["src/entities/*"]
     }
   },
   "include": ["src"],

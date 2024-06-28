@@ -13,6 +13,7 @@ export default defineConfig({
       "@widgets": path.resolve(__dirname, "./src/widgets"),
       "@processes": path.resolve(__dirname, "./src/processes"),
       "@store": path.resolve(__dirname, "./src/shared/lib/storage"),
+      "@entities": path.resolve(__dirname, "./src/entities"),
     },
   },
 });

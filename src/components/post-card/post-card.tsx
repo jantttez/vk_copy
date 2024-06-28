@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import { ShowMore, CommentsList, ModalWindow } from "@components/index";
 import { useMutation } from "@apollo/client";
 import { DELETE_POST_BY_ID, GET_POSTS, UPDATE_POST_LIKES } from "@shared/api";
-import { extractDateFromTimestamp, getUserId } from "@shared/lib";
+import { getUserId } from "@shared/lib";
 import { Spinner } from "@chakra-ui/react";
+import { UserPostPreview } from "@entities/user";
 
 interface Props {
   post: IPost;
@@ -29,7 +30,7 @@ export function PostCard({ post }: Props) {
     } else {
       setPostIsLiked(false);
     }
-  }, [post.likes, userId]); //если добавить postisLiked в зависимости то будет типо эффект моргания как лампочки..
+  }, [post.likes, userId]);
 
   const [updatePostLikes, { loading: likesUpdateLoading, error: likesError }] = useMutation(UPDATE_POST_LIKES, {
     refetchQueries: [GET_POSTS, "GET_POSTS"],
@@ -54,20 +55,12 @@ export function PostCard({ post }: Props) {
     refetchQueries: ["GET_POSTS", "GET_USER_POSTS"],
   });
 
-  const createrAt = extractDateFromTimestamp(Number(post.createdAt));
-
   if (likesError) return <div>error: {likesError.message}</div>;
 
   return (
     <div className={styles.post}>
       <div className={styles.header}>
-        <div className={styles.userInfo}>
-          <img src={post.authorPhoto} alt="User Avatar" className={styles.avatar} />
-          <div className={styles.userDetails}>
-            <span className={styles.userName}>{post.authorName}</span>
-            <span className={styles.date}>{createrAt}</span>
-          </div>
-        </div>
+        <UserPostPreview post={post} />
 
         <button
           className={styles.menuButton}
