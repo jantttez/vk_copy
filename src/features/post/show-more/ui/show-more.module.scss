@@ -1,0 +1,12 @@
+@import "@app/styles/mixins";
+
+.showMore {
+  @include vizual;
+
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+
+  top: 10%;
+  right: 40%;
+}

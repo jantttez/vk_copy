@@ -11,9 +11,9 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "./src/shared"),
       "@app": path.resolve(__dirname, "./src/app"),
       "@widgets": path.resolve(__dirname, "./src/widgets"),
-      "@processes": path.resolve(__dirname, "./src/processes"),
       "@store": path.resolve(__dirname, "./src/shared/lib/storage"),
       "@entities": path.resolve(__dirname, "./src/entities"),
+      "@features": path.resolve(__dirname, "./src/features"),
     },
   },
 });

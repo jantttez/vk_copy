@@ -9,6 +9,10 @@ import { DELETE_POST_BY_ID, GET_POSTS, UPDATE_POST_LIKES } from "@shared/api";
 import { getUserId } from "@shared/lib";
 import { Spinner } from "@chakra-ui/react";
 import { UserPostPreview } from "@entities/user";
+import { PostModalContent } from "@entities/post/post-modal-content";
+import { PostImageCard } from "@entities/post/post-image";
+import { PostContentCard } from "@entities/post/post-content-card";
+import { Box, Button } from "@shared/ui";
 
 interface Props {
   post: IPost;
@@ -58,56 +62,46 @@ export function PostCard({ post }: Props) {
   if (likesError) return <div>error: {likesError.message}</div>;
 
   return (
-    <div className={styles.post}>
-      <div className={styles.header}>
+    <Box className={styles.post}>
+      <Box className="flex justify-between items-center">
         <UserPostPreview post={post} />
 
-        <button
+        <Button
           className={styles.menuButton}
           onMouseEnter={() => setShowMore(true)}
           onMouseLeave={() => setShowMore(false)}
         >
           <MoreHorizontal />
-          {showMore ? (
-            <ShowMore authorId={post.authorId} loading={loading} error={error} deleteAction={DELETE_POST} />
-          ) : (
-            <></>
-          )}
-        </button>
-      </div>
-      <div className={styles.main}>
-        <p className={styles.text}>{post.postContent}</p>
-        {post.postImage && post.postImage !== null ? (
-          <div onClick={() => setImageZoom(!imageZoom)} style={{ cursor: "pointer" }}>
+          {showMore && <ShowMore authorId={post.authorId} loading={loading} error={error} deleteAction={DELETE_POST} />}
+        </Button>
+      </Box>
+      <Box className="mt-4">
+        <PostContentCard content={post.postContent} />
+        {post.postImage && post.postImage !== null && (
+          <Box onClick={() => setImageZoom(!imageZoom)} className="cursor-pointer">
             <ModalWindow isActive={imageZoom} setIsActive={setImageZoom}>
-              <div className={styles.modalImageContent}>
-                <img src={post.postImage} alt="Post Image" style={{ borderRadius: "15px" }} />
-                <Heart />
-                {post.likes.length}
-              </div>
+              <PostModalContent likes={post.likes} postImage={post.postImage} />
             </ModalWindow>
-            <img src={post.postImage} alt="Post Image" className={styles.image} />
-          </div>
-        ) : (
-          <></>
+            <PostImageCard image={post.postImage} />
+          </Box>
         )}
-      </div>
-      <div className={styles.footer}>
+      </Box>
+      <Box className="flex justify-start mt-4">
         {likesUpdateLoading ? (
           <Spinner />
         ) : (
-          <button className={styles.actionButton} onClick={lieksHandler}>
+          <Button className={styles.actionButton} onClick={lieksHandler}>
             <Heart style={postIsLiked ? { color: "red" } : { color: "gray" }} />
             <span>Like</span>
-          </button>
+          </Button>
         )}
 
         <button className={styles.actionButton} onClick={() => setWriteComment(!writeComment)}>
           <MessageSquare />
           <span>Comment</span>
         </button>
-      </div>
-      {writeComment ? <CommentsList postId={post.id} /> : <></>}
-    </div>
+      </Box>
+      {writeComment && <CommentsList postId={post.id} />}
+    </Box>
   );
 }

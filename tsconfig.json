@@ -27,9 +27,9 @@
       "@pages/*": ["src/pages/*"],
       "@app/*": ["src/app/*"],
       "@widgets/*": ["src/widgets/*"],
-      "@processes/*": ["src/processes/*"],
       "@store/*": ["src/shared/lib/storage/*"],
-      "@entities/*": ["src/entities/*"]
+      "@entities/*": ["src/entities/*"],
+      "@features/*": ["src/features/*"]
     }
   },
   "include": ["src"],

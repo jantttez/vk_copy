@@ -1,6 +1,6 @@
 import styles from "./post-list.module.scss";
 
-import { PostCard } from "@components/index";
+import { PostCard } from "@widgets/post";
 import { useFilterList } from "@shared/hooks";
 import { Post } from "@shared/types";
 import { useState } from "react";
