@@ -1,4 +1,4 @@
-import { SideBar } from "@widgets/index";
+import { SideBar } from "@widgets/side-bar";
 import styles from "./base.module.scss";
 import { ReactNode } from "react";
 

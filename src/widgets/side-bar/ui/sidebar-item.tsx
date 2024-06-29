@@ -1,4 +1,4 @@
-import styles from "./side-bar-button.module.scss";
+import styles from "./sidebar-item.module.scss";
 import { ReactNode } from "react";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   Icon: ReactNode;
 }
 
-export function SideBarButton({ title, clickAction, Icon }: Props) {
+export function Btn({ title, clickAction, Icon }: Props) {
   return (
     <button className={styles.button} onClick={clickAction}>
       {Icon}

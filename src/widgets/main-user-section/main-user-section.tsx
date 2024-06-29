@@ -1,6 +1,6 @@
 import styles from "./main-user-section.module.scss";
 
-import { FilterField, FriendsSection, PostList, UserHeader } from "@components/index";
+import { FilterField, FriendsSection, UserHeader } from "@components/index";
 
 import { InputField } from "@components/index";
 import { useEffect, useRef, useState } from "react";
@@ -10,6 +10,7 @@ import { Spinner } from "@chakra-ui/react";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_USER_FRIENDS_IDS, GET_USER_POSTS, GET_USER_FRIEND } from "@shared/api";
 import { User } from "@shared/types";
+import { PostList } from "@widgets/post-list";
 
 interface Props {
   currentUser: User;
