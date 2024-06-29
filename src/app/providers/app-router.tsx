@@ -34,6 +34,10 @@ const router = createBrowserRouter([
     path: "/music",
     element: <MusicPage />,
   },
+  {
+    path: "/friends",
+    element: <div>нету.</div>,
+  },
 ]);
 
 export function AppRouter() {
