@@ -1,13 +1,14 @@
-import { MainFeedSection } from "@widgets/index";
+import { FeedSection } from "./feed-section";
 import { Base, Header } from "@widgets/index";
 import { pageMiddleware } from "@pages/page-middleware";
 
 export function FeedPage() {
   pageMiddleware();
+
   return (
     <>
       <Header />
-      <Base component={<MainFeedSection />} />
+      <Base component={<FeedSection />} />
     </>
   );
 }

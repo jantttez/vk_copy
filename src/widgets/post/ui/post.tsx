@@ -3,12 +3,12 @@ import { MoreHorizontal, MessageSquare } from "lucide-react";
 
 import { Post as IPost } from "@shared/types";
 import { useState } from "react";
-import { CommentsList, ModalWindow } from "@components/index";
+import { CommentsList } from "@components/index";
 import { UserPostPreview } from "@entities/user";
 import { PostModalContent } from "@entities/post/post-modal-content";
 import { PostImageCard } from "@entities/post/post-image";
 import { PostContentCard } from "@entities/post/post-content-card";
-import { Box, Button } from "@shared/ui";
+import { Box, Button, ModalWindow } from "@shared/ui";
 import { usePostLiked } from "../lib";
 import { LikePostBtn } from "@features/post/like-post";
 import { ShowMoreSection } from "@features/post/show-more";

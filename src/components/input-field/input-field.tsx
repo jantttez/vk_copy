@@ -10,7 +10,7 @@ import { useUserStore } from "@shared/lib/storage/use-user-store";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { ADD_POST, GET_POSTS_WITH_PAGINATION, GET_USER_POSTS } from "@shared/api";
+import { ADD_POST, GET_POSTS, GET_USER_POSTS } from "@shared/api";
 import { getNewUUID } from "@shared/lib";
 
 interface Props {
@@ -41,11 +41,8 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
   const [addPost, { loading, error }] = useMutation(ADD_POST, {
     refetchQueries: [
       {
-        query: GET_POSTS_WITH_PAGINATION,
-        variables: {
-          limit: 3,
-          offset: 1,
-        },
+        query: GET_POSTS,
+        variables: {},
       },
       {
         query: GET_USER_POSTS,

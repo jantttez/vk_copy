@@ -1,25 +1,23 @@
 import { FilterField, InputField } from "@components/index";
-import styles from "./main-feed-section.module.scss";
 import { useRef, useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_POSTS } from "@shared/api";
 import { Spinner } from "@chakra-ui/react";
 import { PostList } from "@widgets/post-list";
+import { useFeedPosts } from "@pages/feed/api";
 
-export function MainFeedSection() {
+export function FeedSection() {
   const inputFieldRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(false);
 
-  const { data, loading: dataLoading, error: dataError } = useQuery(GET_POSTS);
+  const { data, loading, error } = useFeedPosts();
 
   return (
-    <div className={styles.mainContainer}>
-      <section className={styles.feed}>
+    <div className="flex w-full">
+      <section className="w-2/3">
         <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
-        {dataLoading ? <Spinner /> : dataError ? <div>Error {dataError.message}</div> : <></>}
+        {loading ? <Spinner /> : error ? <div>Error {error.message}</div> : <></>}
         {data && <PostList posts={data["posts"]} />}
       </section>
-      <div className={styles.rightSection}>
+      <div className="ml-5 w-1/3">
         <FilterField />
       </div>
     </div>

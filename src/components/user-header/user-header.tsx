@@ -2,7 +2,7 @@ import { CircleAlert } from "lucide-react";
 import styles from "./user-header.module.scss";
 import { User } from "@shared/types";
 import { useNavigate } from "react-router-dom";
-import { ModalWindow } from "@components/modal-window/modal-window";
+import { ModalWindow } from "@shared/ui/modal-window/modal-window";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
 import { useUserStore } from "@shared/lib/storage";
