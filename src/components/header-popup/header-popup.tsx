@@ -22,6 +22,7 @@ export function HeaderPopup({ people }: Props) {
   if (error) return <div>error {error.message}</div>;
 
   const currnetUserFriendsIds = data.users[0].friends;
+
   return (
     <div className={styles.popup}>
       <h2>Люди</h2>

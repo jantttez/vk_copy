@@ -21,8 +21,6 @@ export function UserPageMiddleware() {
       variables: { id: userId },
     });
 
-    //console.log(data["users_by_pk"].id);
-
     if (data) {
       addUserIdToStore(userId);
       if (data["users_by_pk"].id !== id) {
