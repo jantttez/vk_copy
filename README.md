@@ -1,3 +1,5 @@
 ## react ts graphql apollo react-hook-form, firebase, react-router-dom, zustand, chakraUI
 
 ### он вообще не доделан. Из за того что я узнал про fsd буду пробовать его переписывать на него
+
+![image]("./image.jpg)
