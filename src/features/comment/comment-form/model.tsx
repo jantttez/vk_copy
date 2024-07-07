@@ -8,7 +8,6 @@ export function useCommentForm() {
   const { register, watch, reset } = useForm<CommentForm>({
     mode: 'onChange',
   });
-  const inputContent = watch('commentContent');
 
-  return { reset, register, inputContent };
+  return { reset, register, watch };
 }

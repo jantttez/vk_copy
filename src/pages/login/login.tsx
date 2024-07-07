@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import styles from "./login.module.scss";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import Cookies from "js-cookie";
-import { routes } from "@shared/constant";
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './login.module.scss';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import Cookies from 'js-cookie';
+import { routes } from '@shared/constant';
 
 interface ILoginForm {
   email: string;
@@ -12,7 +12,7 @@ interface ILoginForm {
 
 export function LoginPage() {
   const { register, handleSubmit, formState } = useForm<ILoginForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const navigator = useNavigate();
@@ -28,8 +28,8 @@ export function LoginPage() {
         const accessToken = userData.refreshToken;
         const userId = userData.uid;
 
-        Cookies.set("access-token", accessToken);
-        Cookies.set("userId", userId);
+        Cookies.set('access-token', accessToken);
+        Cookies.set('userId', userId);
 
         navigator(routes.home);
       })
@@ -44,23 +44,23 @@ export function LoginPage() {
     <div className={styles.loginContainer}>
       <form onSubmit={handleSubmit(inSubmit)} className={styles.loginForm}>
         <h2>Login</h2>
-        <label htmlFor="email">{formState.errors.email?.message}</label>
+        <label htmlFor='email'>{formState.errors.email?.message}</label>
         <input
-          type="email"
-          placeholder="Email"
-          {...register("email", {
-            required: "This field is required",
+          type='email'
+          placeholder='Email'
+          {...register('email', {
+            required: 'This field is required',
           })}
         />
-        <label htmlFor="password">{formState.errors.password?.message}</label>
+        <label htmlFor='password'>{formState.errors.password?.message}</label>
         <input
-          type="password"
-          placeholder="Password"
-          {...register("password", {
-            required: "This field is required",
+          type='password'
+          placeholder='Password'
+          {...register('password', {
+            required: 'This field is required',
           })}
         />
-        <button type="submit">Log In</button>
+        <button type='submit'>Log In</button>
         <p>
           Don't have an account? <Link to={routes.register}>Register</Link>
         </p>

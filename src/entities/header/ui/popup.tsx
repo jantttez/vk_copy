@@ -14,6 +14,7 @@ export function HeaderPopup({ people }: Props) {
   if (!userId) return null;
 
   const { data, loading, error } = usePopupPeople(userId);
+  if (!data) return null;
 
   const currnetUserFriendsIds = data.users[0].friends;
 

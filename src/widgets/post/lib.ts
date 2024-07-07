@@ -1,14 +1,12 @@
-import { getUserId } from "@shared/lib";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 interface Props {
   likes: string[];
   setPostIsLiked: Dispatch<SetStateAction<boolean>>;
+  userId: string;
 }
 
-export function usePostLiked({ likes, setPostIsLiked }: Props) {
-  const userId = getUserId();
-
+export function usePostLiked({ likes, setPostIsLiked, userId }: Props) {
   useEffect(() => {
     const check = likes.some((like) => like === userId);
 

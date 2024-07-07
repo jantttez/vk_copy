@@ -17,6 +17,7 @@ import { usePostComments } from '@entities/comment/api';
 import { Spinner } from '@chakra-ui/react';
 import { Comment } from '@entities/comment';
 import { CommentHeader } from '@entities/comment/ui/comment-header';
+import { getUserId } from '@shared/lib';
 
 interface Props {
   post: IPost;
@@ -29,11 +30,15 @@ export function Post({ post }: Props) {
   const [postIsLiked, setPostIsLiked] = useState(false);
   const { data, loading, error } = usePostComments(post.id);
   const currentUser = useUserStore((state) => state.user);
+  const userId = getUserId();
   if (!currentUser) return null;
+  if (!userId) return null;
 
-  usePostLiked({ likes: post.likes, setPostIsLiked: setPostIsLiked });
+  const { watch, register, reset } = useCommentForm();
 
-  const { inputContent, register, reset } = useCommentForm();
+  usePostLiked({ likes: post.likes, setPostIsLiked: setPostIsLiked, userId: userId });
+
+  const inputContent = watch('commentContent');
 
   if (loading) return <Spinner />;
   if (error) return <div>error: {error.message}</div>;
