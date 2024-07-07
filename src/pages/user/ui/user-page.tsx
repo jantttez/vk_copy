@@ -6,11 +6,12 @@ import { UserPageMiddleware } from '@pages/user-page-middleware';
 
 export function UserPage() {
   const state = UserPageMiddleware();
+  if (!state) return null;
 
   return (
     <>
       <Header />
-      {state?.loading ? <Spinner /> : <Base component={<MainUserSection currentUser={state!.user} />} />}
+      {state?.loading ? <Spinner /> : <Base component={<MainUserSection currentUser={state.user} />} />}
     </>
   );
 }

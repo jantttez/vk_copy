@@ -1,17 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
-
-import { FilterField } from '@components/index';
-import { InputField } from '@components/index';
+import { useRef, useState } from 'react';
 
 import { getUserId } from '@shared/lib/utils';
 import { Spinner } from '@chakra-ui/react';
-import { useLazyQuery, useQuery } from '@apollo/client';
-import { GET_USER_FRIENDS_IDS, GET_USER_POSTS, GET_USER_FRIEND } from '@shared/api';
 import { User } from '@entities/user';
-import { PostList } from '@widgets/post-list';
 import { UserHeader } from '@widgets/user-header';
 import { Friend, Friends, FriendsHeader, FriendsItem } from '@entities/friend';
 import { useUserFriends, useUserFriendsdIds, useUserPosts } from '../api';
+import { InputField } from '@widgets/input-field';
+import { Box } from '@shared/ui';
+import { PostCard } from '@widgets/post';
+import { Post as IPost } from '@entities/post';
 
 interface Props {
   currentUser: User;
@@ -28,28 +26,34 @@ export function MainUserSection({ currentUser }: Props) {
 
   const { friends, friendsLoading } = useUserFriends(friendsIdsLoading, friendsIdsData);
 
-  //подумать на счет нужно ли выносить секции с двумя тернарниками вне jsxa
   return (
-    <div className='w-full min-h-full max-h-fit box-border'>
+    <div className='w-full min-h-full max-h-fit box-border mt-0'>
       {currentUser ? <UserHeader user={currentUser} /> : <Spinner />}
-      <section className='flex flex-wrap w-full items-center my-5 mx-auto'>
+      <section className='flex flex-wrap w-full items-start my-5 mx-auto h-full'>
         <div className='flex flex-col w-3/5 mb-5'>
           <div className='w-full mb-5'>
             {userId !== currentUser.id ? null : (
               <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
             )}
-            <FilterField />
           </div>
           {loading ? (
             <Spinner justifySelf={'center'} alignSelf={'center'} />
           ) : (
-            <div className='w-full'>{data ? <PostList posts={data.posts} /> : null}</div>
+            <div className='w-full'>
+              {data ? (
+                <Box className='flex flex-col items-center w-full'>
+                  {data.posts.map((post: IPost) => (
+                    <PostCard key={post.id} post={post} />
+                  ))}
+                </Box>
+              ) : null}
+            </div>
           )}
         </div>
-        <div className='w-2/5'>
+        <div className='w-2/5 '>
           {friendsLoading ? (
             <Spinner />
-          ) : friends && friends.users ? (
+          ) : friends ? (
             <Friends
               renderFriendsHeader={() => <FriendsHeader title='Друзья' length={friends.users.length} />}
               renderFriendsList={() => (

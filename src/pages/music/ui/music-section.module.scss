@@ -1,0 +1,32 @@
+@import '@app/styles/mixins';
+
+.body {
+  display: flex;
+  width: 100%;
+}
+.rightBody {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+}
+
+.music_field {
+  @include vizual;
+}
+
+.rightSection {
+  width: 35vw;
+}
+
+.leftSection {
+  width: 15vw;
+
+  .UploadBtn {
+    @include vizual;
+    margin-top: 1.2rem;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,81 @@
+@import '@app/styles/mixins';
+
+.dropdownContent {
+  @include vizual;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  justify-content: center;
+
+  .avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+  }
+
+  .userId {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .menuItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #333;
+    }
+
+    svg {
+      margin-left: 10px;
+    }
+    .icon {
+      margin-right: 10px;
+    }
+  }
+
+  .subMenu {
+    @include vizual;
+    position: absolute;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    .subMenuItem {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      justify-content: flex-start;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      .check {
+        margin-left: 25%;
+      }
+
+      &:hover {
+        background-color: #333;
+      }
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+}

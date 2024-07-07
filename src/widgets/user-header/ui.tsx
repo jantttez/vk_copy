@@ -1,6 +1,6 @@
-import { User } from "@entities/user";
-import { UserHeader as Header, UserHeaderBtnGroup } from "@entities/user/user-header";
-import { EditProfile } from "@features/user";
+import { User } from '@entities/user';
+import { UserHeader as Header, UserHeaderBtnGroup } from '@entities/user/user-header';
+import { EditProfile } from '@features/user';
 
 interface Props {
   user: User;

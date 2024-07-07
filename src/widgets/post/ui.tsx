@@ -1,29 +1,22 @@
 import styles from './ui.module.scss';
 import { MoreHorizontal, MessageSquare } from 'lucide-react';
 
-import { Post as IPost } from '@entities/post';
 import { useState } from 'react';
 import { UserPostPreview, useUserStore } from '@entities/user';
-import { PostModalContent } from '@entities/post/post-modal-content';
-import { PostImageCard } from '@entities/post/post-image';
-import { PostContentCard } from '@entities/post/post-content-card';
+import { PostModalContent, PostContentCard, PostImageCard, Post as IPost } from '@entities/post';
 import { Box, Button, ModalWindow } from '@shared/ui';
 import { usePostLiked } from './lib';
-import { LikePostBtn } from '@features/post/like-post';
-import { ShowMoreSection } from '@features/post/show-more';
 import { AddComment, CommentDelete, CommentForm, useCommentForm } from '@features/comment';
-import { CommentModel } from '@entities/comment';
-import { usePostComments } from '@entities/comment/api';
+import { CommentModel, usePostComments, Comment } from '@entities/comment';
 import { Spinner } from '@chakra-ui/react';
-import { Comment } from '@entities/comment';
-import { CommentHeader } from '@entities/comment/ui/comment-header';
 import { getUserId } from '@shared/lib';
+import { LikePostBtn, ShowMoreSection } from '@features/post';
 
 interface Props {
   post: IPost;
 }
 
-export function Post({ post }: Props) {
+export function PostCard({ post }: Props) {
   const [writeComment, setWriteComment] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [imageZoom, setImageZoom] = useState(false);
@@ -31,12 +24,13 @@ export function Post({ post }: Props) {
   const { data, loading, error } = usePostComments(post.id);
   const currentUser = useUserStore((state) => state.user);
   const userId = getUserId();
-  if (!currentUser) return null;
-  if (!userId) return null;
 
   const { watch, register, reset } = useCommentForm();
 
-  usePostLiked({ likes: post.likes, setPostIsLiked: setPostIsLiked, userId: userId });
+  usePostLiked({ likes: post.likes, setPostIsLiked: setPostIsLiked, userId: userId! });
+
+  if (!currentUser) return null;
+  if (!userId) return null;
 
   const inputContent = watch('commentContent');
 

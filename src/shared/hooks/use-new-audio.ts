@@ -1,5 +1,5 @@
-import { Song } from "@shared/types";
-import { useEffect } from "react";
+import { Song } from '@entities/song';
+import { useEffect } from 'react';
 interface Props {
   audioSrc: any;
   setUserSongName: any;
