@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SECOND_TO_TEST=30
+SECOND_TO_TEST=60
 PORT=8090
 
 docker build -t app:extension . -f Dockerfile

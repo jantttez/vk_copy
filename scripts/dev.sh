@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 docker build -t app:dev . -f Dockerfile.dev
 
@@ -11,3 +11,5 @@ docker rm dev --force
 docker rmi app:dev --force 
 
 docker image prune
+
+echo "open browser on 0.0.0.0:8090"
