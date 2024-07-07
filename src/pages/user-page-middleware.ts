@@ -2,8 +2,8 @@ import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID } from "@shared/api";
 import { routes } from "@shared/constant";
 import { getUserId } from "@shared/lib";
-import { useUserStore } from "@shared/lib/storage";
-import { User } from "@shared/types";
+import { useUserStore } from "@entities/user";
+import { User } from "@entities/user";
 import { useNavigate, useParams } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";
 

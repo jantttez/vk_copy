@@ -6,7 +6,7 @@ import { Input, Spinner } from "@chakra-ui/react";
 import { SendHorizontal } from "lucide-react";
 
 import { useClickOutside } from "@shared/hooks";
-import { useUserStore } from "@shared/lib/storage/use-user-store";
+import { useUserStore } from "@entities/user";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";

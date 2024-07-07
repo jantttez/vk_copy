@@ -1,42 +1,38 @@
-import { FeedPage } from "@pages/feed/index";
-import { EditPage, LoginPage, MusicPage, PaymentPage, Redirect, RegisterPage, UserPage } from "@pages/index";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { FeedPage } from '@pages/feed/index';
+import { EditPage, LoginPage, MusicPage, Redirect, RegisterPage, UserPage } from '@pages/index';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
-    path: "/feed",
+    path: '/feed',
     element: <FeedPage />,
   },
   {
-    path: "/",
+    path: '/',
     element: <Redirect />,
   },
   {
-    path: "/:userId",
+    path: '/:userId',
     element: <UserPage />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <LoginPage />,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <RegisterPage />,
   },
   {
-    path: "/payments",
-    element: <PaymentPage />,
-  },
-  {
-    path: "/:userId/edit",
+    path: '/:userId/edit',
     element: <EditPage />,
   },
   {
-    path: "/music",
+    path: '/music',
     element: <MusicPage />,
   },
   {
-    path: "/friends",
+    path: '/friends',
     element: <div>нету.</div>,
   },
 ]);

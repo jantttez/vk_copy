@@ -1,1 +1,1 @@
-export { PostImageCard } from "./ui/post-image-card";
+export { PostImageCard } from "./ui";

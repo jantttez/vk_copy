@@ -1,5 +1,5 @@
-import { Post } from "@shared/types";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Post } from '@entities/post';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 interface Props {
   posts: Post[];

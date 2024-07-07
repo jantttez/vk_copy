@@ -1,14 +1,14 @@
-import styles from "./drop-down-content.module.scss";
+import styles from './drop-down-content.module.scss';
 
-import { Settings, LogOut, Sun, Moon, Palette } from "lucide-react";
-import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { Settings, LogOut, Sun, Moon, Palette } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
-import { DropDownMenuButton } from "@shared/ui";
-import { useClickOutside } from "@shared/hooks";
-import { useUserStore } from "@shared/lib/storage/index";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { DropDownMenuButton } from '@shared/ui';
+import { useClickOutside } from '@shared/hooks';
+import { useUserStore } from '@entities/user';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 export function DropDownContent() {
   const [themeMenuIsOpen, setThemeIsMenuOpen] = useState(false);
@@ -23,14 +23,14 @@ export function DropDownContent() {
   };
 
   const handleSettingsClick = () => {
-    navigator("/settings");
+    navigator('/settings');
   };
 
   const handleLogout = () => {
-    Cookies.remove("access-token");
-    Cookies.remove("userId");
+    Cookies.remove('access-token');
+    Cookies.remove('userId');
 
-    navigator("/");
+    navigator('/');
   };
 
   //надо будет еще ращз запонмить что можно так темы менять в чакре
@@ -40,9 +40,9 @@ export function DropDownContent() {
 
   return (
     <div className={styles.dropdownContent} onClick={(e) => e.stopPropagation()}>
-      <img src={currentUser?.userPhoto} alt="User Avatar" className={styles.avatar} />
+      <img src={currentUser?.userPhoto} alt='User Avatar' className={styles.avatar} />
       <p className={styles.userId}>ID: {currentUser?.id}</p>
-      <DropDownMenuButton Icon={Palette} handleClick={handleThemeClick} title="Change Theme" />
+      <DropDownMenuButton Icon={Palette} handleClick={handleThemeClick} title='Change Theme' />
       {themeMenuIsOpen && (
         <div className={styles.subMenu} ref={subMenuRef}>
           <div className={styles.subMenuItem} onClick={toggleColorMode}>
@@ -51,9 +51,9 @@ export function DropDownContent() {
           </div>
         </div>
       )}
-      <DropDownMenuButton Icon={Settings} handleClick={handleSettingsClick} title="Settings" />
+      <DropDownMenuButton Icon={Settings} handleClick={handleSettingsClick} title='Settings' />
 
-      <DropDownMenuButton Icon={LogOut} handleClick={handleLogout} title="Logout" />
+      <DropDownMenuButton Icon={LogOut} handleClick={handleLogout} title='Logout' />
     </div>
   );
 }

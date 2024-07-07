@@ -1,6 +1,6 @@
-import { ChangeEvent, ReactNode, useRef } from "react";
+import { ChangeEvent, ReactNode, useRef } from 'react';
 interface Props {
-  setFile: (file: any) => void; //TODO: сделать классь ддля песни и сюда вставить в сетстейт актион его
+  setFile: (file: any) => void;
   accept: string;
   children: ReactNode;
 }
@@ -14,7 +14,7 @@ export function UploadFile({ setFile, accept, children }: Props) {
 
   return (
     <div onClick={() => uploadRef.current?.click()}>
-      <input type="file" accept={accept} style={{ display: "none" }} onChange={onChange} ref={uploadRef} />
+      <input type='file' accept={accept} style={{ display: 'none' }} onChange={onChange} ref={uploadRef} />
       {children}
     </div>
   );

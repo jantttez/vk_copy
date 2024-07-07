@@ -1,1 +1,1 @@
-export { Btn as DeleteBtn } from "./ui/delete-post-btn";
+export { Btn as DeleteBtn } from "./ui";

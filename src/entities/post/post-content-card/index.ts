@@ -1,1 +1,1 @@
-export { PostContentCard } from "./ui/post-content-card";
+export { PostContentCard } from "./ui";

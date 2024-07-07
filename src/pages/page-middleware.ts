@@ -1,11 +1,11 @@
 import { getUserId } from "@shared/lib/utils";
-import { useUserStore } from "@shared/lib/storage/use-user-store";
+import { useUserStore } from "@entities/user";
 import { useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";
 import { routes } from "@shared/constant";
 import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID } from "@shared/api";
-import { User } from "@shared/types";
+import { User } from "@entities/user";
 
 export function pageMiddleware() {
   const id = getUserId();

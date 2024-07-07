@@ -1,14 +1,14 @@
-import { useUserStore } from "@shared/lib/storage";
-import styles from "./main-edit-section.module.scss";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Accessibility } from "lucide-react";
-import { useEffect } from "react";
-import { useToastError } from "@shared/hooks";
-import { useMutation } from "@apollo/client";
-import { GET_USER_BY_ID, UPDATE_USER } from "@shared/api";
-import { getUserId } from "@shared/lib";
-import { Spinner } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useUserStore } from '@entities/user';
+import styles from './main-edit-section.module.scss';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Accessibility } from 'lucide-react';
+import { useEffect } from 'react';
+import { useToastError } from '@shared/hooks';
+import { useMutation } from '@apollo/client';
+import { GET_USER_BY_ID, UPDATE_USER } from '@shared/api';
+import { getUserId } from '@shared/lib';
+import { Spinner } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 interface EditForm {
   name: string;
@@ -25,7 +25,7 @@ export function MainEditSection() {
   const useId = getUserId();
 
   const { register, reset, handleSubmit, formState } = useForm<EditForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const navigate = useNavigate();
@@ -82,56 +82,56 @@ export function MainEditSection() {
           <h1>Edit Profile</h1>
           <form className={styles.mainContainer} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.container_head}>
-              <img src={currentUser.userPhoto} alt="User" className={styles.userImage} />
+              <img src={currentUser.userPhoto} alt='User' className={styles.userImage} />
               <div className={styles.inputRow_head}>
                 <input
-                  type="text"
-                  placeholder="Name"
+                  type='text'
+                  placeholder='Name'
                   className={styles.inputField}
-                  {...register("name", {
-                    required: "name field isrequired",
+                  {...register('name', {
+                    required: 'name field isrequired',
                   })}
                 />
                 <input
-                  type="text"
-                  placeholder="Username"
+                  type='text'
+                  placeholder='Username'
                   className={styles.inputField}
-                  {...register("userName", {
-                    required: "userName field isrequired",
+                  {...register('userName', {
+                    required: 'userName field isrequired',
                   })}
                 />
               </div>
             </div>
             <div className={styles.container}>
-              <input type="text" placeholder="imageUrl" className={styles.inputField} {...register("imageURL")} />
+              <input type='text' placeholder='imageUrl' className={styles.inputField} {...register('imageURL')} />
             </div>
             <div className={styles.container}>
-              <input type="text" placeholder="Status" className={styles.inputField} {...register("status")} />
+              <input type='text' placeholder='Status' className={styles.inputField} {...register('status')} />
             </div>
             <div className={styles.container}>
               <div className={styles.formGroup}>
                 <div className={styles.inputRow}>
                   <input
-                    type="text"
-                    placeholder="Password"
+                    type='text'
+                    placeholder='Password'
                     className={styles.inputField}
-                    {...register("password", {
+                    {...register('password', {
                       minLength: {
                         value: 6,
-                        message: "password field must be longer or equal then 6 character",
+                        message: 'password field must be longer or equal then 6 character',
                       },
                     })}
                   />
                 </div>
                 <input
-                  type="email"
-                  placeholder="Email"
+                  type='email'
+                  placeholder='Email'
                   className={styles.inputField}
-                  {...register("email", {
+                  {...register('email', {
                     pattern: {
                       value:
                         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i,
-                      message: "Please enter a valid email address",
+                      message: 'Please enter a valid email address',
                     },
                   })}
                 />
@@ -140,7 +140,7 @@ export function MainEditSection() {
             {loading ? (
               <Spinner />
             ) : (
-              <button type="submit" className={styles.submitButton}>
+              <button type='submit' className={styles.submitButton}>
                 <h3>Submit</h3>
                 <Accessibility size={20} />
               </button>
