@@ -1,6 +1,6 @@
 ## react ts graphql apollo react-hook-form, firebase, react-router-dom, zustand, chakraUI
 
-run
+if u use ubuntu or mint linux distro, run
 
 ```bash
 sh setup.sh
