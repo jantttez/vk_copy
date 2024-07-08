@@ -1,11 +1,10 @@
-@import "@app/styles/mixins";
+@import '@app/styles/mixins';
 
 .InputField {
   @include vizual;
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 2%;
 
   border-radius: 10px;
 

@@ -6,12 +6,12 @@ docker run -p 8090:8000 -v "/home/jantttez/Documents/projects/vkcopy:/app" -d --
 
 echo "open browser on 0.0.0.0:8090"
 
-sleep 3600
+sleep 36000
 
 docker rm dev --force 
 
 docker rmi app:dev --force 
 
-docker image prune -y
+docker image prune 
 
 

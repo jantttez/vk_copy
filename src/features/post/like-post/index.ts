@@ -1,2 +1,2 @@
-export * from "./model";
-export { Btn as LikePostBtn } from "./ui";
+export * from './model';
+export { LikePostBtn } from './ui';

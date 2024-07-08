@@ -1,69 +1,30 @@
-import { useUserStore } from '@entities/user';
 import styles from './edit-section.module.scss';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { Accessibility } from 'lucide-react';
-import { useEffect } from 'react';
+import { SubmitHandler } from 'react-hook-form';
 import { useToastError } from '@shared/hooks';
-import { useMutation } from '@apollo/client';
-import { GET_USER_BY_ID, UPDATE_USER } from '@shared/api';
+import { useUserStore } from '@entities/user';
 import { getUserId } from '@shared/lib';
-import { Spinner } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-
-interface EditForm {
-  name: string;
-  userName: string;
-  imageURL: string;
-  status: string;
-  password?: string;
-  email?: string;
-}
+import { model } from '@entities/edit';
+import { useEditFormModel, api, EditForm, EditFormButton } from '@features/edit';
+import { useUserPostUpdate, userPostUpdate as UPU } from '@features/post/post-update';
 
 export function MainEditSection() {
   const currentUser = useUserStore((state) => state.user);
-
+  const navigate = useNavigate();
   const useId = getUserId();
 
-  const { register, reset, handleSubmit, formState } = useForm<EditForm>({
-    mode: 'onChange',
-  });
+  const { register, reset, handleSubmit, formState } = useEditFormModel();
+  const { userPostUpdate } = useUserPostUpdate();
 
-  const navigate = useNavigate();
+  model.useResetDefaultFormValue(reset, currentUser);
 
-  useEffect(() => {
-    if (currentUser) {
-      reset({
-        name: currentUser.name,
-        userName: currentUser.userName,
-        imageURL: currentUser.userPhoto,
-        status: currentUser.status,
-        password: currentUser.password,
-        email: currentUser.email,
-      });
-    }
-  }, [currentUser]);
+  const { error, loading, updateUser } = api.useUpdateUser(useId!);
 
-  const [updateUser, { loading, error }] = useMutation(UPDATE_USER, {
-    refetchQueries: [
-      {
-        query: GET_USER_BY_ID,
-        variables: { id: useId },
-      },
-    ],
-  });
+  const onSubmit: SubmitHandler<model.EditForm> = (data) => {
+    if (!useId) return null;
 
-  const onSubmit: SubmitHandler<EditForm> = (data) => {
-    updateUser({
-      variables: {
-        id: useId,
-        name: data.name,
-        userName: data.userName,
-        imageUrl: data.imageURL,
-        status: data.status,
-        email: data.email,
-        password: data.password,
-      },
-    }).then(() => navigate(`/${useId}`));
+    api.UpdateUserHandler(updateUser, useId, data, navigate);
+    UPU(userPostUpdate, useId, data);
   };
 
   useToastError({
@@ -80,72 +41,13 @@ export function MainEditSection() {
       {currentUser && (
         <>
           <h1>Edit Profile</h1>
-          <form className={styles.mainContainer} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.container_head}>
-              <img src={currentUser.userPhoto} alt='User' className={styles.userImage} />
-              <div className={styles.inputRow_head}>
-                <input
-                  type='text'
-                  placeholder='Name'
-                  className={styles.inputField}
-                  {...register('name', {
-                    required: 'name field isrequired',
-                  })}
-                />
-                <input
-                  type='text'
-                  placeholder='Username'
-                  className={styles.inputField}
-                  {...register('userName', {
-                    required: 'userName field isrequired',
-                  })}
-                />
-              </div>
-            </div>
-            <div className={styles.container}>
-              <input type='text' placeholder='imageUrl' className={styles.inputField} {...register('imageURL')} />
-            </div>
-            <div className={styles.container}>
-              <input type='text' placeholder='Status' className={styles.inputField} {...register('status')} />
-            </div>
-            <div className={styles.container}>
-              <div className={styles.formGroup}>
-                <div className={styles.inputRow}>
-                  <input
-                    type='text'
-                    placeholder='Password'
-                    className={styles.inputField}
-                    {...register('password', {
-                      minLength: {
-                        value: 6,
-                        message: 'password field must be longer or equal then 6 character',
-                      },
-                    })}
-                  />
-                </div>
-                <input
-                  type='email'
-                  placeholder='Email'
-                  className={styles.inputField}
-                  {...register('email', {
-                    pattern: {
-                      value:
-                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i,
-                      message: 'Please enter a valid email address',
-                    },
-                  })}
-                />
-              </div>
-            </div>
-            {loading ? (
-              <Spinner />
-            ) : (
-              <button type='submit' className={styles.submitButton}>
-                <h3>Submit</h3>
-                <Accessibility size={20} />
-              </button>
-            )}
-          </form>
+          <EditForm
+            handleSubmit={handleSubmit}
+            onSubmit={onSubmit}
+            register={register}
+            userPhoto={currentUser.userPhoto}
+            renderEditFormButton={() => <EditFormButton loading={loading} />}
+          />
         </>
       )}
     </div>

@@ -3,7 +3,6 @@ import styles from './ui.module.scss';
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
 import { Input, Spinner } from '@chakra-ui/react';
-import { SendHorizontal } from 'lucide-react';
 
 import { useClickOutside } from '@shared/hooks';
 import { useUserStore } from '@entities/user';
@@ -12,20 +11,21 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { ADD_POST, GET_POSTS, GET_USER_POSTS } from '@shared/api';
 import { getNewUUID } from '@shared/lib';
+import { api, model, PostAddBtn } from '@features/post/post-add';
 
 interface Props {
-  inputFieldRef: MutableRefObject<HTMLDivElement | null>;
+  inputFieldRef: MutableRefObject<HTMLFormElement | null>;
   isActive: boolean;
   setIsActive: Dispatch<SetStateAction<boolean>>;
 }
 
-interface FormState {
+export interface FormState {
   imageUrl: string;
   inputText: string;
 }
 
 export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
-  useClickOutside<HTMLDivElement>({ ref: inputFieldRef, setState: setIsActive });
+  useClickOutside<HTMLFormElement>({ ref: inputFieldRef, setState: setIsActive });
 
   const currentUser = useUserStore((state) => state.user);
 
@@ -33,48 +33,13 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
     setIsActive(!isActive);
   };
 
-  const { register, handleSubmit, reset } = useForm<FormState>({
-    mode: 'onChange',
-  });
+  const { register, handleSubmit, reset } = model.usePostForm();
 
-  const [addPost, { loading, error }] = useMutation(ADD_POST, {
-    refetchQueries: [
-      {
-        query: GET_POSTS,
-        variables: {},
-      },
-      {
-        query: GET_USER_POSTS,
-        variables: {},
-      },
-    ],
-  });
+  const { addPost, loading, error } = api.useAddPost();
 
   const onSubmit: SubmitHandler<FormState> = (data) => {
     if (!currentUser) return null;
-    const id = getNewUUID();
-    const date = Date.now();
-
-    const authorPhoto = currentUser.userPhoto;
-    const authorid = currentUser.id;
-    const authorName = currentUser.name;
-    addPost({
-      variables: {
-        objects: [
-          {
-            id: id,
-            authorId: authorid,
-            authorPhoto: authorPhoto,
-            createdAt: date,
-            authorName: authorName,
-            postImage: data.imageUrl,
-            postContent: data.inputText,
-            likes: [],
-          },
-        ],
-      },
-    }).catch((e) => console.error(e));
-
+    api.addPost(addPost, data, currentUser.userPhoto, currentUser.id, currentUser.name);
     reset();
   };
 
@@ -82,7 +47,12 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
   if (error) return `Submission error! ${error.message}`;
   if (!currentUser) return null;
   return (
-    <div className={styles.InputField} ref={inputFieldRef} onClick={fieldActiveHandler}>
+    <form
+      className={styles.InputField}
+      ref={inputFieldRef}
+      onClick={fieldActiveHandler}
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <div className={styles.inputContainer}>
         <img src={currentUser.userPhoto} alt='avatar' className={styles.inputImage} />
         {isActive ? (
@@ -90,9 +60,7 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
         ) : (
           <Input placeholder='Что у вас нового?' variant='unstyled' />
         )}
-        <button className={styles.popoverButton} onClick={handleSubmit(onSubmit)}>
-          <SendHorizontal />
-        </button>
+        <PostAddBtn />
       </div>
       {isActive && (
         <>
@@ -108,6 +76,6 @@ export function InputField({ inputFieldRef, isActive, setIsActive }: Props) {
           </div>
         </>
       )}
-    </div>
+    </form>
   );
 }

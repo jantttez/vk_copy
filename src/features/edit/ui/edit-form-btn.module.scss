@@ -1,0 +1,20 @@
+@import '@app/styles/mixins';
+
+.submitButton {
+  @include vizual;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.submitButton:hover {
+  background-color: rgba(40, 40, 40, 0.8);
+}

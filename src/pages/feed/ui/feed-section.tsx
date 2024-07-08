@@ -8,7 +8,7 @@ import { useFilterList } from '@shared/hooks';
 import { Post } from '@entities/post';
 
 export function FeedSection() {
-  const inputFieldRef = useRef<HTMLDivElement | null>(null);
+  const inputFieldRef = useRef<HTMLFormElement | null>(null);
   const [isActive, setIsActive] = useState(false);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
