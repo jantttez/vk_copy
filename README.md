@@ -1,4 +1,6 @@
-## react ts graphql apollo react-hook-form, firebase, react-router-dom, zustand, chakraUI
+## fsd, react ts graphql apollo react-hook-form, firebase, react-router-dom, zustand, chakraUI
+
+- гавно кода дофига.
 
 if u use ubuntu or mint linux distro, run
 
