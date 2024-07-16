@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_POST_COMMENTS = gql`
   query GET_POST_COMMENTS($postId: String!) {

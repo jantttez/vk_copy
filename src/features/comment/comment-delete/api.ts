@@ -18,7 +18,9 @@ export function useDeleteCommentById(commentId: string) {
 
 export const deleteHandler = (
   DELETE_COMMENT: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>
 ) => {
   DELETE_COMMENT();

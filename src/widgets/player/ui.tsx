@@ -81,7 +81,9 @@ export function Player({ audioSrc, currentSong }: Props) {
         )}
       </div>
       <div className={styles.centerSection}>
-        <button onClick={PlayStopHanlder}>{isPlay ? <Pause size={20} /> : <Play size={20} />}</button>
+        <button onClick={PlayStopHanlder}>
+          {isPlay ? <Pause size={20} /> : <Play size={20} />}
+        </button>
         <div className={styles.centerRange}>
           <input
             type='range'

@@ -33,9 +33,7 @@ export function DropDownContent() {
     navigator('/');
   };
 
-  //надо будет еще ращз запонмить что можно так темы менять в чакре
   const ThemeIcon = useColorModeValue(Sun, Moon);
-  //const text = useColorModeValue(Theme.light, Theme.dark);
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (

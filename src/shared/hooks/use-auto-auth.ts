@@ -1,11 +1,11 @@
-import { useAuthStore } from "@shared/lib/storage/index";
-import Cookies from "js-cookie";
+import { useAuthStore } from '@shared/lib/storage/index';
+import Cookies from 'js-cookie';
 
 export function useAutoAuth() {
   const setAuth = useAuthStore((state) => state.setAuth);
 
-  const token = Cookies.get("access-token");
-  const userId = Cookies.get("userId");
+  const token = Cookies.get('access-token');
+  const userId = Cookies.get('userId');
   let authStatus;
   if (!token) {
     authStatus = false;

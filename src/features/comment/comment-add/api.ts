@@ -19,7 +19,9 @@ export function useAddComment() {
 
 export const addHandler = (
   ADD_COMMENT: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>,
   reset: any,
   loading: boolean,

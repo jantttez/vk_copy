@@ -76,7 +76,10 @@ export function PostCard({ post }: Props) {
           {data.comments.map((comment: CommentModel) => (
             <Box key={comment.id}>
               <hr />
-              <Comment comment={comment} renderCommentDeleteButton={() => <CommentDelete commentId={comment.id} />} />
+              <Comment
+                comment={comment}
+                renderCommentDeleteButton={() => <CommentDelete commentId={comment.id} />}
+              />
             </Box>
           ))}
 

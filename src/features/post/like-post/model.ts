@@ -1,4 +1,4 @@
-import { getUserId } from "@shared/lib";
+import { getUserId } from '@shared/lib';
 
 interface Props {
   updatePostLikes: (variables: any) => void;

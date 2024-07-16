@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_POSTS_WITH_PAGINATION = gql`
   query get_posts_with_pagination($limit: Int!, $offset: Int!) {

@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { User } from "@entities/user";
+import { create } from 'zustand';
+import { User } from '@entities/user';
 
 interface UserStoreState {
   userId: string | null;

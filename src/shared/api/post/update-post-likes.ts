@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const UPDATE_POST_LIKES = gql`
   mutation updatePostLikes($postId: String!, $likes: [String!]) {

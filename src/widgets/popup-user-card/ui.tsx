@@ -11,7 +11,11 @@ interface Props {
 }
 
 export function PopupUserCard({ person, currnetUserFriendsIds, currentUserId }: Props) {
-  const { newCurrentUserIds, newPersonUserids } = lib.getAddUserIds(currnetUserFriendsIds, person, currentUserId);
+  const { newCurrentUserIds, newPersonUserids } = lib.getAddUserIds(
+    currnetUserFriendsIds,
+    person,
+    currentUserId
+  );
 
   const { newCurrentUserDeleteIds, newPersonUserDeleteIds } = lib.getDeleteUserids(
     currnetUserFriendsIds,
@@ -29,7 +33,12 @@ export function PopupUserCard({ person, currnetUserFriendsIds, currentUserId }: 
 
   return (
     <li key={person.id} className={styles.personItem}>
-      <img src={person.userPhoto} alt={person.name} className={styles.avatar} onClick={clickPhotohandler} />
+      <img
+        src={person.userPhoto}
+        alt={person.name}
+        className={styles.avatar}
+        onClick={clickPhotohandler}
+      />
       <span className={styles.name}>{person.name}</span>
       {currentUserId === person.id ? null : dontShowAddButton ? (
         <DeleteFriend

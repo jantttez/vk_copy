@@ -2,9 +2,9 @@ type Post {
   id: String!
   createdAt: Int!
   authorId: String!
-  authorPhoto: String?
+  authorPhoto: String
   authorName: String!
   postContent: String!
-  postImage: String?
-  likes: [String?]!
+  postImage: String
+  likes: [String]!
 }

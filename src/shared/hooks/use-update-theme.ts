@@ -1,5 +1,5 @@
-import { Theme } from "@shared/types";
-import { useEffect } from "react";
+import { Theme } from '@shared/types';
+import { useEffect } from 'react';
 
 interface Props {
   theme: Theme;

@@ -28,7 +28,7 @@ export function Header() {
   const userId = getUserId();
   if (!userId) return null;
 
-  const { data: users, loading: load, error } = usePopupPeople(userId);
+  const { data: users } = usePopupPeople(userId);
   const { data, loading } = useQuery(GET_POPUP_PEOPLE);
   if (!data) return null;
   if (!users) return null;
@@ -94,7 +94,10 @@ export function Header() {
           )
         )}
       </div>
-      <div className={`${styles.avatar} ${avatarIsActive ? styles.active : ''}`} ref={dropDownMenuRef}>
+      <div
+        className={`${styles.avatar} ${avatarIsActive ? styles.active : ''}`}
+        ref={dropDownMenuRef}
+      >
         {currentUser?.id === userId && (
           <button className={styles.avatarButton} onClick={avatarEvent}>
             <img src={currentUser?.userPhoto} alt='Avatar' className={styles.avatarPhoto} />

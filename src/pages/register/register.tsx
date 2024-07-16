@@ -1,12 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
-import styles from "./register.module.scss";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useToastError } from "@shared/hooks";
-import { routes } from "@shared/constant";
-import { useMutation } from "@apollo/client";
-import { ADD_USER } from "@shared/api";
-import { Spinner } from "@chakra-ui/react";
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './register.module.scss';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { useToastError } from '@shared/hooks';
+import { routes } from '@shared/constant';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '@shared/api';
+import { Spinner } from '@chakra-ui/react';
 
 interface IRegisterForm {
   PhotoUrl: string;
@@ -18,7 +18,7 @@ interface IRegisterForm {
 
 export function RegisterPage() {
   const { register, handleSubmit, formState } = useForm<IRegisterForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const navigator = useNavigate();
@@ -52,9 +52,9 @@ export function RegisterPage() {
               friends: [],
               token: userCredentials.refreshToken,
               createdAt: currentDate,
-              userTheme: "light",
-              isPostView: "all",
-              isProfileView: "all",
+              userTheme: 'light',
+              isPostView: 'all',
+              isProfileView: 'all',
             },
           ],
         },
@@ -67,43 +67,43 @@ export function RegisterPage() {
   };
 
   if (error) return <div>errorrs {error.message}</div>;
-  if (loading) return <Spinner justifySelf={"center"} alignSelf={"center"} />;
+  if (loading) return <Spinner justifySelf={'center'} alignSelf={'center'} />;
 
   return (
     <div className={styles.RegisterContainer}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.RegisterForm}>
         <h2>Register</h2>
-        <input type="text" placeholder="PhotoUrl" {...register("PhotoUrl")} />
+        <input type='text' placeholder='PhotoUrl' {...register('PhotoUrl')} />
         <input
-          type="text"
-          placeholder="UserName"
-          {...register("userName", {
-            required: "UserName field is required",
+          type='text'
+          placeholder='UserName'
+          {...register('userName', {
+            required: 'UserName field is required',
           })}
         />
         <input
-          type="text"
-          placeholder="Name"
-          {...register("name", {
-            required: "Name field is required",
+          type='text'
+          placeholder='Name'
+          {...register('name', {
+            required: 'Name field is required',
           })}
         />
         <input
-          type="email"
-          placeholder="Email"
-          {...register("email", {
-            required: "Email field is required",
+          type='email'
+          placeholder='Email'
+          {...register('email', {
+            required: 'Email field is required',
           })}
         />
         <input
-          type="password"
-          placeholder="Password"
-          {...register("password", {
-            required: "Password field is required",
-            deps: ["email"],
+          type='password'
+          placeholder='Password'
+          {...register('password', {
+            required: 'Password field is required',
+            deps: ['email'],
           })}
         />
-        <button type="submit">Register</button>
+        <button type='submit'>Register</button>
         <p>
           Do you have an account? <Link to={routes.signIn}>Sign In</Link>
         </p>

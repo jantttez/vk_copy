@@ -1,7 +1,12 @@
-import { firebaseConfig } from "@app/firebase";
-import { initializeApp } from "firebase/app";
+import { firebaseConfig } from '@app/firebase';
+import { initializeApp } from 'firebase/app';
 
-import { AppApolloProvider, AppChakraUIProvider, AppQueryClientProvider, AppRouter } from "./providers";
+import {
+  AppApolloProvider,
+  AppChakraUIProvider,
+  AppQueryClientProvider,
+  AppRouter,
+} from './providers';
 
 export const app = initializeApp(firebaseConfig);
 

@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function MainUserSection({ currentUser }: Props) {
-  const inputFieldRef = useRef<HTMLDivElement | null>(null);
+  const inputFieldRef = useRef<HTMLFormElement | null>(null);
   const [isActive, setIsActive] = useState(false);
   const userId = getUserId();
 
@@ -33,7 +33,11 @@ export function MainUserSection({ currentUser }: Props) {
         <div className='flex flex-col w-3/5 mb-5'>
           <div className='w-full mb-5'>
             {userId !== currentUser.id ? null : (
-              <InputField inputFieldRef={inputFieldRef} isActive={isActive} setIsActive={setIsActive} />
+              <InputField
+                inputFieldRef={inputFieldRef}
+                isActive={isActive}
+                setIsActive={setIsActive}
+              />
             )}
           </div>
           {loading ? (
@@ -55,7 +59,9 @@ export function MainUserSection({ currentUser }: Props) {
             <Spinner />
           ) : friends ? (
             <Friends
-              renderFriendsHeader={() => <FriendsHeader title='Друзья' length={friends.users.length} />}
+              renderFriendsHeader={() => (
+                <FriendsHeader title='Друзья' length={friends.users.length} />
+              )}
               renderFriendsList={() => (
                 <div className='flex items-center gap-5'>
                   {friends.users.slice(0, 3).map((friend: Friend) => (

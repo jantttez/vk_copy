@@ -1,3 +1,3 @@
-import { chakra, ChakraComponent } from "@chakra-ui/react";
+import { chakra, ChakraComponent } from '@chakra-ui/react';
 
-export const Button: ChakraComponent<"button"> = (props) => <chakra.button {...props} />;
+export const Button: ChakraComponent<'button'> = (props) => <chakra.button {...props} />;

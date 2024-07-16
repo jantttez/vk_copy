@@ -5,8 +5,8 @@ import {
   MutationFunctionOptions,
   OperationVariables,
   useMutation,
-} from "@apollo/client";
-import { ADD_USER_FRIEND, GET_USER_BY_ID } from "@shared/api";
+} from '@apollo/client';
+import { ADD_USER_FRIEND, GET_USER_BY_ID } from '@shared/api';
 
 export function useAddFriend(userId: string) {
   const [ADD_FRIEND, { loading, error }] = useMutation(ADD_USER_FRIEND, {
@@ -23,7 +23,9 @@ export function useAddFriend(userId: string) {
 
 export const addFriendHandler = (
   ADD_FRIEND: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>,
   currntUserId: string,
   newCurrentUserAddIds: string[],
@@ -37,12 +39,14 @@ export const addFriendHandler = (
       idSecond: userId,
       friendsIdsSecond: newPersonUserAddIds,
     },
-  }).catch((error: Error) => console.error("Error adding friend:", error.message));
+  }).catch((error: Error) => console.error('Error adding friend:', error.message));
 };
 
 export const deleteFriendHandler = (
   ADD_FRIEND: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>,
   currntUserId: string,
   newCurrentUserDeleteIds: string[],
@@ -56,5 +60,5 @@ export const deleteFriendHandler = (
       idSecond: userId,
       friendsIdsSecond: newPersonUserDeleteIds,
     },
-  }).catch((error: Error) => console.error("Error adding friend:", error.message));
+  }).catch((error: Error) => console.error('Error adding friend:', error.message));
 };

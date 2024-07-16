@@ -1,11 +1,11 @@
-import { getUserId } from "@shared/lib/utils";
-import { useUserStore } from "@entities/user";
-import { useNavigate } from "react-router-dom";
-import { useShallow } from "zustand/react/shallow";
-import { routes } from "@shared/constant";
-import { useQuery } from "@apollo/client";
-import { GET_USER_BY_ID } from "@shared/api";
-import { User } from "@entities/user";
+import { getUserId } from '@shared/lib/utils';
+import { useUserStore } from '@entities/user';
+import { useNavigate } from 'react-router-dom';
+import { useShallow } from 'zustand/react/shallow';
+import { routes } from '@shared/constant';
+import { useQuery } from '@apollo/client';
+import { GET_USER_BY_ID } from '@shared/api';
+import { User } from '@entities/user';
 
 export function pageMiddleware() {
   const id = getUserId();
@@ -23,8 +23,8 @@ export function pageMiddleware() {
 
     if (data) {
       addUserIdToStore(id);
-      addUserToStore(data["users_by_pk"]);
-      user = data["users_by_pk"] as User;
+      addUserToStore(data['users_by_pk']);
+      user = data['users_by_pk'] as User;
     }
 
     return { loading, user };

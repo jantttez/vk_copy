@@ -1,14 +1,13 @@
-import React from 'react';
 import styles from './ui.module.scss';
 import { FormatedNumToDuraction } from '@shared/lib';
 import { Song } from '@entities/song';
 
-interface MusicCardProps {
+interface Props {
   song: Song;
   addHandler: (song: Song) => void;
 }
 
-export const MusicCard: React.FC<MusicCardProps> = ({ song, addHandler }) => {
+export const MusicCard = ({ song, addHandler }: Props) => {
   const formattedTime = FormatedNumToDuraction(song.duration);
 
   return (

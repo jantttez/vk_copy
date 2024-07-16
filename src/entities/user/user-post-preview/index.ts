@@ -1,1 +1,1 @@
-export { UserPostPreview } from "./ui";
+export { UserPostPreview } from './ui';

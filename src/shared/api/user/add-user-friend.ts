@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const ADD_USER_FRIEND = gql`
   mutation ADD_FRIEND(
@@ -7,10 +7,16 @@ export const ADD_USER_FRIEND = gql`
     $idSecond: String!
     $friendsIdsSecond: [String!]!
   ) {
-    updateFirstUser: update_users(where: { id: { _eq: $idFirst } }, _set: { friends: $friendsIdsFirst }) {
+    updateFirstUser: update_users(
+      where: { id: { _eq: $idFirst } }
+      _set: { friends: $friendsIdsFirst }
+    ) {
       affected_rows
     }
-    updateSecondUser: update_users(where: { id: { _eq: $idSecond } }, _set: { friends: $friendsIdsSecond }) {
+    updateSecondUser: update_users(
+      where: { id: { _eq: $idSecond } }
+      _set: { friends: $friendsIdsSecond }
+    ) {
       affected_rows
     }
   }

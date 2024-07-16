@@ -1,8 +1,8 @@
-import { Theme } from "@shared/types";
+import { Theme } from '@shared/types';
 
 export enum visibility {
-  all = "all",
-  friends = "friends",
+  all = 'all',
+  friends = 'friends',
 }
 
 export interface User {

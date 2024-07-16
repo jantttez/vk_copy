@@ -14,7 +14,13 @@ export function UploadFile({ setFile, accept, children }: Props) {
 
   return (
     <div onClick={() => uploadRef.current?.click()}>
-      <input type='file' accept={accept} style={{ display: 'none' }} onChange={onChange} ref={uploadRef} />
+      <input
+        type='file'
+        accept={accept}
+        style={{ display: 'none' }}
+        onChange={onChange}
+        ref={uploadRef}
+      />
       {children}
     </div>
   );

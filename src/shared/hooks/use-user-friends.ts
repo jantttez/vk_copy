@@ -1,6 +1,6 @@
-import { useQuery } from "@chakra-ui/react";
-import { GET_USER_FRIENDS } from "@shared/api";
-import { useEffect } from "react";
+import { useQuery } from '@chakra-ui/react';
+import { GET_USER_FRIENDS } from '@shared/api';
+import { useEffect } from 'react';
 
 export function useUserFriends({ friendsIdsLoading, friendsIds }) {
   useEffect(() => {
@@ -10,7 +10,7 @@ export function useUserFriends({ friendsIdsLoading, friendsIds }) {
       });
 
       if (!loading) {
-        console.log(data["friends"]);
+        console.log(data['friends']);
 
         //setFriends(data["friends"]);
       }

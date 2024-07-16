@@ -1,4 +1,4 @@
-import { Dispatch, MutableRefObject, SetStateAction, useEffect } from "react";
+import { Dispatch, MutableRefObject, SetStateAction, useEffect } from 'react';
 
 interface Props<T> {
   ref: MutableRefObject<T | null>;
@@ -13,10 +13,10 @@ export function useClickOutside<T extends HTMLElement>({ ref, setState }: Props<
       }
     };
 
-    document.addEventListener("mousedown", clickOutsideHandler);
+    document.addEventListener('mousedown', clickOutsideHandler);
 
     return () => {
-      document.removeEventListener("mousedown", clickOutsideHandler);
+      document.removeEventListener('mousedown', clickOutsideHandler);
     };
   }, []);
 }

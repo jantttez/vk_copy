@@ -1,6 +1,9 @@
 mutation userPostUpdate($id: String!, $authorName: String!, $authorPhoto: String!) {
   update_posts_many(
-    updates: { where: { authorId: { _eq: $id } }, _set: { authorName: $authorName, authorPhoto: $authorPhoto } }
+    updates: {
+      where: { authorId: { _eq: $id } }
+      _set: { authorName: $authorName, authorPhoto: $authorPhoto }
+    }
   ) {
     affected_rows
   }

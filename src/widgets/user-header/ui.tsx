@@ -11,7 +11,10 @@ export const UserHeader = ({ user }: Props) => {
     <Header
       user={user}
       UserHeaderBtnGroup={() => (
-        <UserHeaderBtnGroup renderEditButton={() => <EditProfile userId={user.id} />} headerUserId={user.id} />
+        <UserHeaderBtnGroup
+          renderEditButton={() => <EditProfile userId={user.id} />}
+          headerUserId={user.id}
+        />
       )}
     />
   );

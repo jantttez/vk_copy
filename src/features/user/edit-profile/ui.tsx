@@ -1,5 +1,5 @@
-import { UserHeaderButton } from "@entities/user/user-header";
-import { useNavigate } from "react-router-dom";
+import { UserHeaderButton } from '@entities/user/user-header';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   userId: string;
@@ -12,5 +12,5 @@ export const EditProfile = ({ userId }: Props) => {
     naviagte(`/${userId}/edit`);
   };
 
-  return <UserHeaderButton title="Edit" size={20} clickAction={editHandler} />;
+  return <UserHeaderButton title='Edit' size={20} clickAction={editHandler} />;
 };

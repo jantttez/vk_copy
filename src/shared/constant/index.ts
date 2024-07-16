@@ -1,2 +1,2 @@
-export * from "./routes";
-export * from "./mock-music";
+export * from './routes';
+export * from './mock-music';

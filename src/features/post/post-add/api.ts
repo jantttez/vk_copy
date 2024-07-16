@@ -29,7 +29,9 @@ export function useAddPost() {
 
 export const addPost = (
   addPost: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>,
   data: FormState,
   authorPhoto: string,

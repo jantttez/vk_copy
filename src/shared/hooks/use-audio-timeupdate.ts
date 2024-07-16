@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 interface Props {
   audioPlay: any;
@@ -14,10 +14,10 @@ export function useAudioTimeupdate({ audioPlay, setCurrentTime }: Props) {
         setCurrentTime(audio.currentTime);
       };
 
-      audio.addEventListener("timeupdate", handleTimeUpdate);
+      audio.addEventListener('timeupdate', handleTimeUpdate);
 
       return () => {
-        audio.removeEventListener("timeupdate", handleTimeUpdate);
+        audio.removeEventListener('timeupdate', handleTimeUpdate);
       };
     }
   }, [audioPlay]);

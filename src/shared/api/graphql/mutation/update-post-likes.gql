@@ -1,5 +1,5 @@
-mutation UPDATE_POST_LIKES($postId: String!, likes: [String!]) {
-    update_posts(where: {id: {_eq: $postId}}, _set: { likes: $likes }) {
-        affected_rows
-    }
+mutation UPDATE_POST_LIKES($postId: String!, $likes: [String!]) {
+  update_posts(where: { id: { _eq: $postId } }, _set: { likes: $likes }) {
+    affected_rows
+  }
 }

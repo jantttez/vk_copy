@@ -1,6 +1,6 @@
-import { SideBar } from "@widgets/side-bar";
-import styles from "./base.module.scss";
-import { ReactNode } from "react";
+import { SideBar } from '@widgets/side-bar';
+import styles from './base.module.scss';
+import { ReactNode } from 'react';
 
 interface Props {
   component: ReactNode;

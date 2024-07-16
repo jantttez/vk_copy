@@ -2,7 +2,7 @@ type Comment {
   id: String!
   createdAt: Int!
   authorId: String!
-  authorPhoto: String?
+  authorPhoto: String
   postId: String!
   authorName: String!
   content: String!

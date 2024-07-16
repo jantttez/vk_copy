@@ -17,10 +17,16 @@ export function useUserFriendsdIds(userId: string) {
 }
 
 export function useUserFriends(friendsIdsLoading: boolean, friendsIdsData: any) {
-  const [GET_USER_FRIENDS, { data: friends, loading: friendsLoading }] = useLazyQuery(GET_USER_FRIEND);
+  const [GET_USER_FRIENDS, { data: friends, loading: friendsLoading }] =
+    useLazyQuery(GET_USER_FRIEND);
 
   useEffect(() => {
-    if (!friendsIdsLoading && friendsIdsData && friendsIdsData.users && friendsIdsData.users.length > 0) {
+    if (
+      !friendsIdsLoading &&
+      friendsIdsData &&
+      friendsIdsData.users &&
+      friendsIdsData.users.length > 0
+    ) {
       const ids = friendsIdsData.users[0].friends;
 
       GET_USER_FRIENDS({

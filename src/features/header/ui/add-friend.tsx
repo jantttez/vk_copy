@@ -8,7 +8,12 @@ interface Props {
   newPersonUserids: string[];
   personaId: string;
 }
-export const AddFriend = ({ currentUserId, newCurrentUserIds, newPersonUserids, personaId }: Props) => {
+export const AddFriend = ({
+  currentUserId,
+  newCurrentUserIds,
+  newPersonUserids,
+  personaId,
+}: Props) => {
   const { ADD_FRIEND, error, loading } = api.useAddFriend(
     currentUserId,
     newCurrentUserIds,

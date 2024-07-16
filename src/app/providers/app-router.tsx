@@ -1,4 +1,12 @@
-import { EditPage, FeedPage, LoginPage, MusicPage, Redirect, RegisterPage, UserPage } from '@pages/index';
+import {
+  EditPage,
+  FeedPage,
+  LoginPage,
+  MusicPage,
+  Redirect,
+  RegisterPage,
+  UserPage,
+} from '@pages/index';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([

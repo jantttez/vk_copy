@@ -1,4 +1,4 @@
-import { User } from "@entities/user";
+import { User } from '@entities/user';
 
 export const getAddNewIds = (currntUser: User, user: User) => {
   const newCurrentUserAddIds = [...currntUser.friends, user.id];

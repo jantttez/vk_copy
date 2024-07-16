@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const ADD_POST = gql`
   mutation addPost($objects: [posts_insert_input!]!) {

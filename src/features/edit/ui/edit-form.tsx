@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './edit-form.module.scss';
 import { SubmitHandler } from 'react-hook-form';
 import { model } from '@entities/edit';
@@ -11,7 +10,13 @@ interface Props {
   renderEditFormButton: () => JSX.Element;
 }
 
-export const EditForm: React.FC<Props> = ({ handleSubmit, onSubmit, userPhoto, register, renderEditFormButton }) => {
+export const EditForm = ({
+  handleSubmit,
+  onSubmit,
+  userPhoto,
+  register,
+  renderEditFormButton,
+}: Props) => {
   return (
     <form className={styles.mainContainer} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container_head}>
@@ -36,10 +41,20 @@ export const EditForm: React.FC<Props> = ({ handleSubmit, onSubmit, userPhoto, r
         </div>
       </div>
       <div className={styles.container}>
-        <input type='text' placeholder='imageUrl' className={styles.inputField} {...register('imageURL')} />
+        <input
+          type='text'
+          placeholder='imageUrl'
+          className={styles.inputField}
+          {...register('imageURL')}
+        />
       </div>
       <div className={styles.container}>
-        <input type='text' placeholder='Status' className={styles.inputField} {...register('status')} />
+        <input
+          type='text'
+          placeholder='Status'
+          className={styles.inputField}
+          {...register('status')}
+        />
       </div>
       <div className={styles.container}>
         <div className={styles.formGroup}>

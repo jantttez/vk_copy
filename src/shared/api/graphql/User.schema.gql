@@ -1,20 +1,16 @@
-
-
-export type User {
+type User {
   id: String!
   createdAt: Int!
-  updatedAt: Int?
-  userPhoto: String?
+  updatedAt: Int
+  userPhoto: String
   name: String!
   userName: String!
-  friends: [String?]!
-  subscription: [String?]!
-  status: String?
+  friends: [String]!
+  subscription: [String]!
+  status: String
   email: String!
   password: String!
   token: String!
   isPostView: String!
   isProfileView: String!
 }
-
-

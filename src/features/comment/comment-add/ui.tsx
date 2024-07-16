@@ -11,11 +11,28 @@ interface Props {
   authorName: string;
   inputContent: string;
 }
-export const AddComment = ({ reset, loading, authorPhoto, postId, authorId, authorName, inputContent }: Props) => {
+export const AddComment = ({
+  reset,
+  loading,
+  authorPhoto,
+  postId,
+  authorId,
+  authorName,
+  inputContent,
+}: Props) => {
   const { ADD_COMMENT, errorState, loadState } = api.useAddComment();
 
   const add = () => {
-    api.addHandler(ADD_COMMENT, reset, loading, authorPhoto, postId, authorId, authorName, inputContent);
+    api.addHandler(
+      ADD_COMMENT,
+      reset,
+      loading,
+      authorPhoto,
+      postId,
+      authorId,
+      authorName,
+      inputContent
+    );
   };
 
   if (loadState) return <Spinner />;

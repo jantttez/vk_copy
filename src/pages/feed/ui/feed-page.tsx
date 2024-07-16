@@ -1,6 +1,6 @@
-import { FeedSection } from "./feed-section";
-import { Base, Header } from "@widgets/index";
-import { pageMiddleware } from "@pages/page-middleware";
+import { FeedSection } from './feed-section';
+import { Base, Header } from '@widgets/index';
+import { pageMiddleware } from '@pages/page-middleware';
 
 export function FeedPage() {
   pageMiddleware();

@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const DELETE_POST_BY_ID = gql`
   mutation DELETE_POST($id: String!) {

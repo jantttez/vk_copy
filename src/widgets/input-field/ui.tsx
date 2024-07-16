@@ -7,10 +7,7 @@ import { Input, Spinner } from '@chakra-ui/react';
 import { useClickOutside } from '@shared/hooks';
 import { useUserStore } from '@entities/user';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useMutation } from '@apollo/client';
-import { ADD_POST, GET_POSTS, GET_USER_POSTS } from '@shared/api';
-import { getNewUUID } from '@shared/lib';
+import { SubmitHandler } from 'react-hook-form';
 import { api, model, PostAddBtn } from '@features/post/post-add';
 
 interface Props {

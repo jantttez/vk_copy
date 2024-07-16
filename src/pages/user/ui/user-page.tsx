@@ -11,7 +11,11 @@ export function UserPage() {
   return (
     <>
       <Header />
-      {state?.loading ? <Spinner /> : <Base component={<MainUserSection currentUser={state.user} />} />}
+      {state?.loading ? (
+        <Spinner />
+      ) : (
+        <Base component={<MainUserSection currentUser={state.user} />} />
+      )}
     </>
   );
 }

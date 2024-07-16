@@ -17,7 +17,9 @@ export function useUserPostUpdate() {
 
 export function userPostUpdate(
   userPostUpdate: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>,
   useId: string,
   data: model.EditForm

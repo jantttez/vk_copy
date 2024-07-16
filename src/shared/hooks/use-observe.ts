@@ -1,6 +1,11 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect } from 'react';
 
-export function useObserve(ref: RefObject<HTMLDivElement>, callback: () => void, isLoading: boolean, hasMore: boolean) {
+export function useObserve(
+  ref: RefObject<HTMLDivElement>,
+  callback: () => void,
+  isLoading: boolean,
+  hasMore: boolean
+) {
   useEffect(() => {
     if (isLoading) return;
     if (!hasMore) return;

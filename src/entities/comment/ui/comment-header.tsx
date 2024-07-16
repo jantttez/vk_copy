@@ -12,7 +12,11 @@ export const CommentHeader = ({ comment, toggleMenu }: Props) => {
   return (
     <div className='flex justify-between mb-2 items-center'>
       <div className='flex'>
-        <img src={comment.authorPhoto} alt='User Avatar' className='w-10 h-10 rounded-full overflow-hidden ,r-3' />
+        <img
+          src={comment.authorPhoto}
+          alt='User Avatar'
+          className='w-10 h-10 rounded-full overflow-hidden ,r-3'
+        />
         <div className='flex flex-col ml-2'>
           <span className='text-xs font-bold text-comment-text'>{comment.authorName}</span>
           <span className='text-post-gray text-xs'>{createdAt}</span>

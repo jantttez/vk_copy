@@ -1,8 +1,8 @@
-import { useAutoAuth } from "@shared/hooks";
+import { useAutoAuth } from '@shared/hooks';
 
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { routes } from "@shared/constant";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { routes } from '@shared/constant';
 
 export function Redirect() {
   const navigate = useNavigate();

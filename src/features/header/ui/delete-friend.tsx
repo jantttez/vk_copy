@@ -27,7 +27,13 @@ export const DeleteFriend = ({
   );
 
   const handler = () => {
-    api.deleteFriendHandler(ADD_FRIEND, currentUserId, newCurrentUserDeleteIds, personaId, newPersonUserDeleteIds);
+    api.deleteFriendHandler(
+      ADD_FRIEND,
+      currentUserId,
+      newCurrentUserDeleteIds,
+      personaId,
+      newPersonUserDeleteIds
+    );
   };
 
   if (loading) return <Spinner />;

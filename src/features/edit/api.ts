@@ -7,7 +7,7 @@ import {
   useMutation,
 } from '@apollo/client';
 import { model } from '@entities/edit';
-import { GET_USER_BY_ID, GET_USER_POSTS, UPDATE_USER, USER_POSTS_UPDATE } from '@shared/api';
+import { GET_USER_BY_ID, UPDATE_USER } from '@shared/api';
 
 export function useUpdateUser(useId: string) {
   const [updateUser, { loading, error }] = useMutation(UPDATE_USER, {
@@ -24,7 +24,9 @@ export function useUpdateUser(useId: string) {
 
 export function UpdateUserHandler(
   updateUser: (
-    options?: MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>> | undefined
+    options?:
+      | MutationFunctionOptions<any, OperationVariables, DefaultContext, ApolloCache<any>>
+      | undefined
   ) => Promise<FetchResult<any>>,
   useId: string,
   data: model.EditForm,

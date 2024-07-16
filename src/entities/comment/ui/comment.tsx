@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './comment.module.scss';
 import { useClickOutside } from '@shared/hooks';
 import { Comment as IComment } from '../model';

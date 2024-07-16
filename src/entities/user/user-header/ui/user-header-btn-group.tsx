@@ -11,7 +11,9 @@ export function UserHeaderBtnGroup({ renderEditButton, headerUserId }: Props) {
   const currUserId = getUserId();
   return (
     <Box>
-      <Box className={styles.buttonGroup}>{currUserId === headerUserId ? renderEditButton() : null}</Box>
+      <Box className={styles.buttonGroup}>
+        {currUserId === headerUserId ? renderEditButton() : null}
+      </Box>
     </Box>
   );
 }
