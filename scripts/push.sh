@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+#first message after sh push.sh this is ur commit message
 MESSAGE="$1"
 DATE=$(date)
 

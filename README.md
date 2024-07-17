@@ -8,4 +8,4 @@ if u use ubuntu or mint linux distro, run
 sh setup.sh
 ```
 
-![image](./images/image.jpg)
+![image](./images/mem.png)
